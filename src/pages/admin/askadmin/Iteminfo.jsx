@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import ActionBtn from "../../../components/Btn/ActionBtn";
+
 const ItemBox = styled.div`
   width: 352px;
   height: auto;
@@ -120,35 +122,38 @@ const ItemInfo = ({ lend }) => {
       <ZeroImo>（*＾-＾*）</ZeroImo>
     </ZeroPadding>
   ) : (
-    <ItemBox>
-      <ItemPadding>
-        <Date>{lend.date}</Date>
-        <Photo src={lend.src} alt="person" />
-        <Name>{lend.name}</Name>
-        <GrayLine />
-        <ContentGap>
-          <ContentItem>
-            <Content>대여 요청 물품</Content>
-            <Item>
-              {lend.item.map((it, index) => (
-                <React.Fragment key={index}>
-                  {it}
-                  <br />
-                </React.Fragment>
-              ))}
-            </Item>
-          </ContentItem>
-          <ContentItem>
-            <Content>학번</Content>
-            <Item>{lend.studentId}</Item>
-          </ContentItem>
-          <ContentItem>
-            <Content>전화번호</Content>
-            <Item>{lend.phone}</Item>
-          </ContentItem>
-        </ContentGap>
-      </ItemPadding>
-    </ItemBox>
+    <>
+      <ItemBox>
+        <ItemPadding>
+          <Date>{lend.date}</Date>
+          <Photo src={lend.src} alt="person" />
+          <Name>{lend.name}</Name>
+          <GrayLine />
+          <ContentGap>
+            <ContentItem>
+              <Content>대여 요청 물품</Content>
+              <Item>
+                {lend.item.map((it, index) => (
+                  <React.Fragment key={index}>
+                    {it}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </Item>
+            </ContentItem>
+            <ContentItem>
+              <Content>학번</Content>
+              <Item>{lend.studentId}</Item>
+            </ContentItem>
+            <ContentItem>
+              <Content>전화번호</Content>
+              <Item>{lend.phone}</Item>
+            </ContentItem>
+          </ContentGap>
+        </ItemPadding>
+      </ItemBox>
+      <ActionBtn children="신청 내역 관리하기"></ActionBtn>
+    </>
   );
 };
 

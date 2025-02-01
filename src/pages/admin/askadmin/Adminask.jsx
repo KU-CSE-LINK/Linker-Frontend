@@ -3,7 +3,6 @@ import Title from "../../ask/Title";
 import ItemInfo from "./Iteminfo";
 import originalphoto from "../../../assets/originalphoto.svg";
 import styled from "styled-components";
-import ActionBtn from "../../../components/Btn/ActionBtn";
 const Center = styled.div`
   display: flex;
   justify-content: center;
@@ -48,8 +47,7 @@ const AdminAsk = () => {
     <>
       <Title title="신청 목록 조회" />
       <Center>
-        <ItemInfo lend={lendRequests[3]} />
-        <ActionBtn children="신청 내역 관리하기"></ActionBtn>
+        <ItemInfo lend={lendRequests[1]} />
       </Center>
     </>
   );

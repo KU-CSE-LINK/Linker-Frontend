@@ -106,7 +106,7 @@ const ZeroPadding = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const ItemInfo = ({ lend }) => {
+const StudentIdCard = ({ lend }) => {
   // {
   //     date: "2025-01-26",
   //     name: "박지훈",
@@ -157,4 +157,4 @@ const ItemInfo = ({ lend }) => {
   );
 };
 
-export default ItemInfo;
+export default StudentIdCard;

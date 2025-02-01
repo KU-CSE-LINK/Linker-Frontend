@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "../../ask/Title";
-import ItemInfo from "./Iteminfo";
+import ItemInfo from "./StudentIdCard";
 import originalphoto from "../../../assets/originalphoto.svg";
 import styled from "styled-components";
 const Center = styled.div`

@@ -70,7 +70,7 @@ const MaxNumber = styled.div`
   color: #9d9d9d;
 `;
 
-const Graph = () => {
+const Table = () => {
   const [items, setItems] = React.useState([
     {
       name: `블루투스 키보드  &\n 마우스 세트`,
@@ -125,4 +125,4 @@ const Graph = () => {
   );
 };
 
-export default Graph;
+export default Table;

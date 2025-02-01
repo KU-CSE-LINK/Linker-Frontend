@@ -1,16 +1,14 @@
 import React, { Children } from "react";
 import styled from "styled-components";
-// import Header from "../../components/Header/Header";
 import MenuBtn from "../../../components/Btn/MenuBtn";
-// import Bottom from "../../components/Bottom/Bottom";
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 19px;
   align-items: center;
 `;
-const Admin = () => {
+const Adminmain = () => {
   return (
     <Content>
       <MenuBtn onClick={console.log(Children)}>신청 목록 조회</MenuBtn>
@@ -20,4 +18,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Adminmain;

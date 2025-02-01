@@ -9,23 +9,23 @@ const Router = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />, // Layout으로 감싸기
+      element: <Layout />,
       children: [
         {
           path: "/main",
-          element: <MainPage />, // 메인 페이지
+          element: <MainPage />,
         },
         {
           path: "/ask",
-          element: <Ask />, // 다른 페이지
+          element: <Ask />,
         },
         {
           path: "/admin",
-          element: <Admin />, // 다른 페이지
+          element: <Admin />,
         },
         {
           path: "/admin/ask",
-          element: <AdminAsk />, // 다른 페이지
+          element: <AdminAsk />,
         },
       ],
     },

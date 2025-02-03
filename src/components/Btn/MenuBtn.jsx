@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledBtn = styled.button`
   display: flex;
@@ -26,7 +26,7 @@ const StyledBtn = styled.button`
   }
 `;
 
-const MenuBtn = ({ children, onClick, type = "button" }) => {
+const MenuBtn = ({ children, onClick, type = 'button' }) => {
   return (
     <StyledBtn type={type} onClick={onClick}>
       {children}

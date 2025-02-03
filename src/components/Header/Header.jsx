@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import profileIcon from "../../assets/profileIcon.svg";
-import alarmIcon from "../../assets/alarmIcon.svg";
+import React from 'react';
+import styled from 'styled-components';
+import profileIcon from '../../assets/profileIcon.svg';
+import alarmIcon from '../../assets/alarmIcon.svg';
 
 const HeaderContainer = styled.div`
   display: flex;

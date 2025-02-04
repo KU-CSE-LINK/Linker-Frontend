@@ -1,78 +1,91 @@
 import { useState } from 'react';
-import { Container } from './Rental.styles';
+import {
+  Container,
+  Logo,
+  ProfileImg,
+  TitleText,
+  BoldText,
+  NameInput,
+  PhoneInput,
+  StdIdInput,
+  ChoiceWrapper,
+  ChoiceContainer,
+  ChoiceText,
+  ButtonContainer,
+  ApplyButton,
+  Host,
+  HiddenCheckbox,
+  HiddenRadio,
+  ChoiceLabel,
+  StyledLabel,
+} from './Rental.styles';
 import Profile from '../../assets/profileIcon.svg';
 import Checked from './checked.svg';
 import UnChecked from './unchecked.svg';
+
+// 📌 기자재 리스트 (id를 숫자로 관리)
+const dummyGoods = [
+  { id: 1, name: '블루투스 키보드 & 마우스 세트' },
+  { id: 2, name: '노트북 거치대' },
+  { id: 3, name: '노트북 C타입 충전기' },
+];
+
 const Rental = () => {
-  const [selectedChoices, setSelectedChoices] = useState({
-    keyboardMouse: false,
-    stand: false,
-    charger: false,
-  });
+  // 기자재 선택 상태 관리 (id를 숫자로 저장)
+  const [selectedEquipments, setSelectedEquipments] = useState(dummyGoods.reduce((acc, item) => ({ ...acc, [item.id]: false }), {}));
 
-  const [selectedBtn, setSelectedBtn] = useState(null);
-
-  const handleChoiceClick = (choice) => {
-    setSelectedChoices((prevState) => ({
+  // 기자재 선택 시 상태 업데이트
+  const handleChoiceClick = (id) => {
+    setSelectedEquipments((prevState) => ({
       ...prevState,
-      [choice]: !prevState[choice],
+      [id]: !prevState[id],
     }));
-  };
-
-  const handleBtnClick = (btn) => {
-    setSelectedBtn(selectedBtn === btn ? null : btn);
   };
 
   return (
     <Container>
-      <div className="logo">
+      <Logo>
         LINKER
-        <img className="profile" src={Profile} alt="프로필아이콘" />
-      </div>
-      <span className="title-text">대여 신청</span>
-      <span id="name-text" className="bold-text">
-        이름
-      </span>
-      <input type="text" className="name-input" />
-      <span id="phone-text" className="bold-text">
-        전화번호
-      </span>
-      <input type="text" className="phone-input" />
-      <span id="stdId-text" className="bold-text">
-        학번
-      </span>
-      <input type="text" className="stdId-input" />
-      <span id="equiment-text" className="bold-text">
-        대여할 기자재 선택
-      </span>
-      <span className="duplicate-text">중복 선택 가능</span>
-      <div className="choice-wrapper">
-        <div className="choice-container" onClick={() => handleChoiceClick('keyboardMouse')}>
-          <img src={selectedChoices.keyboardMouse ? Checked : UnChecked} alt="체크안됨" />
-          <p className={`choice-text ${selectedChoices.keyboardMouse ? 'selected' : ''}`}>블루투스 키보드 & 마우스 세트</p>
-        </div>
-        <div className="choice-container" onClick={() => handleChoiceClick('stand')}>
-          <img className="check-img" src={selectedChoices.stand ? Checked : UnChecked} alt="체크안됨" />
-          <p className={`choice-text ${selectedChoices.stand ? 'selected' : ''}`}>노트북 거치대</p>
-        </div>
-        <div className="choice-container" onClick={() => handleChoiceClick('charger')}>
-          <img className="check-img" src={selectedChoices.charger ? Checked : UnChecked} alt="체크안됨" />
-          <p className={`choice-text ${selectedChoices.charger ? 'selected' : ''}`}>노트북 C타입 충전기</p>
-        </div>
-      </div>
-      <span id="period-text" className="bold-text">
-        대여기간
-      </span>
-      <div className="gray-btn-container">
-        <div className={`gray-btn ${selectedBtn === 'short' ? 'selected' : ''}`} onClick={() => handleBtnClick('short')}>
-          단기
-        </div>
-        <div className={`gray-btn ${selectedBtn === 'long' ? 'selected' : ''}`} onClick={() => handleBtnClick('long')}>
-          장기
-        </div>
-      </div>
-      <div className="apply-btn">대여 신청하기</div>
-      <div className="host">제6대 컴퓨터공학부 학생회 LINK</div>
+        <ProfileImg src={Profile} alt="프로필아이콘" />
+      </Logo>
+      <TitleText>대여 신청</TitleText>
+
+      <BoldText style={{ position: 'absolute', top: '237px', left: '150px' }}>이름</BoldText>
+      <NameInput type="text" />
+
+      <BoldText style={{ position: 'absolute', top: '362px', left: '150px' }}>전화번호</BoldText>
+      <PhoneInput type="text" />
+
+      <BoldText style={{ position: 'absolute', top: '362px', left: '405px' }}>학번</BoldText>
+      <StdIdInput type="text" />
+
+      <BoldText style={{ position: 'absolute', top: '487px', left: '150px' }}>대여할 기자재 선택</BoldText>
+      <span className="choice-desc">중복 선택 가능</span>
+
+      <ChoiceWrapper>
+        {dummyGoods.map((item) => (
+          <ChoiceContainer key={item.id}>
+            <HiddenCheckbox type="checkbox" id={`equipment-${item.id}`} checked={selectedEquipments[item.id]} onChange={() => handleChoiceClick(item.id)} />
+            <ChoiceLabel htmlFor={`equipment-${item.id}`}>
+              <img src={selectedEquipments[item.id] ? Checked : UnChecked} alt="체크" />
+              <ChoiceText selected={selectedEquipments[item.id]}>{item.name}</ChoiceText>
+            </ChoiceLabel>
+          </ChoiceContainer>
+        ))}
+      </ChoiceWrapper>
+
+      <BoldText style={{ position: 'absolute', top: '676px', left: '150px' }}>대여기간</BoldText>
+
+      <ButtonContainer>
+        <HiddenRadio type="radio" name="rentalPeriod" id="short" />
+        <StyledLabel htmlFor="short">단기</StyledLabel>
+
+        <HiddenRadio type="radio" name="rentalPeriod" id="long" />
+        <StyledLabel htmlFor="long">장기</StyledLabel>
+      </ButtonContainer>
+
+      <ApplyButton>대여 신청하기</ApplyButton>
+      <Host>제6대 컴퓨터공학부 학생회 LINK</Host>
     </Container>
   );
 };

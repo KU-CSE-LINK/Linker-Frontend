@@ -16,7 +16,7 @@ import {
   SubTitleText,
   TitleText,
 } from './Rental.styles';
-import CustomCheckBox from '../../components/input/CustomCheckBox.jsx';
+import EquipmentCheckBox from '../../components/equipment/CustomCheckBox.jsx';
 import InputWithLabel from '../../components/input/InputWithLabel.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer.jsx';
@@ -58,7 +58,7 @@ const Rental = () => {
           </EquipmentTitleContainer>
           <CheckboxContainer>
             {dummyEquipments.map((item, index) => (
-              <CustomCheckBox key={item.id} equipment={item} ref={equipmentRefs[index]} />
+              <EquipmentCheckBox key={item.id} equipment={item} ref={equipmentRefs[index]} />
             ))}
           </CheckboxContainer>
         </EquipmentContainer>

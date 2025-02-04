@@ -23,7 +23,6 @@ import Profile from '../../assets/profileIcon.svg';
 import Checked from './checked.svg';
 import UnChecked from './unchecked.svg';
 
-// 📌 기자재 리스트 (id를 숫자로 관리)
 const dummyGoods = [
   { id: 1, name: '블루투스 키보드 & 마우스 세트' },
   { id: 2, name: '노트북 거치대' },
@@ -31,10 +30,8 @@ const dummyGoods = [
 ];
 
 const Rental = () => {
-  // 기자재 선택 상태 관리 (id를 숫자로 저장)
   const [selectedEquipments, setSelectedEquipments] = useState(dummyGoods.reduce((acc, item) => ({ ...acc, [item.id]: false }), {}));
 
-  // 기자재 선택 시 상태 업데이트
   const handleChoiceClick = (id) => {
     setSelectedEquipments((prevState) => ({
       ...prevState,

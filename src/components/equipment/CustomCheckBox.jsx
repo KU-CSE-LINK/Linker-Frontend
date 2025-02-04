@@ -31,7 +31,6 @@ const CustomCheckBox = forwardRef(({ equipment }, ref) => {
   const isAvailable = equipment.availableStock > 0;
 
   const handleChange = () => {
-    ref.current.checked = !checked;
     setChecked((prevState) => !prevState);
   };
 
@@ -46,9 +45,9 @@ const CustomCheckBox = forwardRef(({ equipment }, ref) => {
 
   return (
     <Container onClick={handleChange}>
-      <HiddenCheckbox ref={ref} $checked={checked} />
+      <HiddenCheckbox ref={ref} checked={checked} readOnly={true} />
       <img src={checked ? CheckSvg : UncheckSvg} alt="체크박스" />
-      <CheckboxLabel checked={checked}>{equipment.name}</CheckboxLabel>
+      <CheckboxLabel $checked={checked}>{equipment.name}</CheckboxLabel>
     </Container>
   );
 });

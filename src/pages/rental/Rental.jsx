@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import {
-  Container,
-  Logo,
-  ProfileImg,
-  TitleText,
-  BoldText,
-  NameInput,
-  PhoneInput,
-  StdIdInput,
-  ChoiceWrapper,
-  ChoiceContainer,
-  ChoiceText,
-  ButtonContainer,
   ApplyButton,
-  Host,
+  BoldText,
+  ButtonContainer,
+  ChoiceContainer,
+  ChoiceLabel,
+  ChoiceText,
+  ChoiceWrapper,
+  Container,
   HiddenCheckbox,
   HiddenRadio,
-  ChoiceLabel,
+  Host,
+  Logo,
+  NameInput,
+  PhoneInput,
+  ProfileImg,
+  StdIdInput,
   StyledLabel,
+  TitleText,
 } from './Rental.styles';
 import Profile from '../../assets/profileIcon.svg';
-import Checked from './checked.svg';
-import UnChecked from './unchecked.svg';
+import Checked from '../../assets/checked.svg';
+import UnChecked from '../../assets/unchecked.svg';
 
 const dummyGoods = [
   { id: 1, name: '블루투스 키보드 & 마우스 세트' },

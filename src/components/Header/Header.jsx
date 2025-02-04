@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import styled from 'styled-components';
 import profileIcon from '../../assets/profileIcon.svg';
 import alarmIcon from '../../assets/alarmIcon.svg';

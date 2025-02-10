@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../pages/Main';
-import ItemListManagement from '../pages/admin/ApplicationManagement/ItemListManagement';
-import ApplicationManagement from '../pages/admin/ApplicationManagement/ApplicationManagement';
+import Rental from '../pages/rental/Rental';
+import RentalManagement from '../pages/admin/rental-management/RentalManagement';
+import ItemListManagement from '../pages/admin/rental-management/ItemListManagement';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -10,11 +11,15 @@ const Router = () => {
       element: <Main />,
     },
     {
-      path: '/applicationmanagement',
-      element: <ApplicationManagement />,
+      path: '/rental',
+      element: <Rental />,
     },
     {
-      path: '/itemlistmangement',
+      path: '/admin/rental',
+      element: <RentalManagement />,
+    },
+    {
+      path: '/admin/rental/equipment',
       element: <ItemListManagement />,
     },
   ]);

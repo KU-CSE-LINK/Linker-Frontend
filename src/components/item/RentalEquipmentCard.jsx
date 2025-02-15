@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryItemWrapper, TitleContainer, ItemName, ItemCount, RentalInfoWrapper, RentalInfoTitle, RentalInfo } from './ManageCategoryItem.styles';
+import { CategoryItemWrapper, TitleContainer, ItemName, ItemCount, RentalInfoWrapper, RentalInfoTitle, RentalInfo } from './RentalEquipmentCard.styles';
 
 const RentalInfoItem = ({ user }) => {
   return (
@@ -11,29 +11,29 @@ const RentalInfoItem = ({ user }) => {
   );
 };
 
-const ManageCategoryItem = ({ itemData }) => {
+const RentalEquipmentCard = ({ equipmentData }) => {
   return (
     <CategoryItemWrapper>
       <TitleContainer>
         {/* 블루투스 키보드&마우스 세트 아이콘 만들어지기 전까지 임시 이미지*/}
-        <img src={itemData.imgSrc} alt="블루투스 키보드&마우스 세트 아이콘" />
-        <ItemName>{itemData.itemName}</ItemName>
+        <img src={equipmentData.imgSrc} alt="블루투스 키보드&마우스 세트 아이콘" />
+        <ItemName>{equipmentData.itemName}</ItemName>
         <ItemCount>
           <span>(</span>
-          <span>{itemData.totalCount - itemData.rentCount}</span>
-          <span>/{itemData.totalCount}</span>
+          <span>{equipmentData.totalCount - equipmentData.rentCount}</span>
+          <span>/{equipmentData.totalCount}</span>
           <span>)</span>
         </ItemCount>
       </TitleContainer>
       <RentalInfoWrapper>
-        {itemData.user.length !== 0 ? (
+        {equipmentData.user.length !== 0 ? (
           <>
             <RentalInfoTitle>
               <span>대여자</span>
               <span>대여일</span>
               <span>반납일</span>
             </RentalInfoTitle>
-            {itemData.user.map((user) => (
+            {equipmentData.user.map((user) => (
               <RentalInfo key={user.studentId}>
                 <RentalInfoItem user={user} />
               </RentalInfo>
@@ -47,4 +47,4 @@ const ManageCategoryItem = ({ itemData }) => {
   );
 };
 
-export default ManageCategoryItem;
+export default RentalEquipmentCard;

@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../pages/Main';
 import Rental from '../pages/rental/Rental';
 import RentalManagement from '../pages/admin/rental-management/RentalManagement';
-import ItemListManagement from '../pages/admin/rental-management/ItemListManagement';
+import AdminEquipmentList from '../pages/admin/rental-management/AdminEquipmentList';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -20,7 +20,7 @@ const Router = () => {
     },
     {
       path: '/admin/rental/equipment',
-      element: <ItemListManagement />,
+      element: <AdminEquipmentList />,
     },
   ]);
 

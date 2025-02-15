@@ -16,7 +16,6 @@ const ContentWrapper = styled.div`
 `;
 const Title = styled.h3`
   color: #000;
-  font-family: Pretendard;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -39,8 +38,8 @@ const RentalManagement = () => {
       <ContentWrapper>
         <Title>신청 내역 관리</Title>
         <BtnWrapper>
-          <MenuBtn type="button" children="물품 별로 보기" />
-          <MenuBtn type="button" children="대여자 별로 보기" />
+          <MenuBtn type="button">물품 별로 보기</MenuBtn>
+          <MenuBtn type="button">대여자 별로 보기</MenuBtn>
         </BtnWrapper>
       </ContentWrapper>
     </Wrapper>

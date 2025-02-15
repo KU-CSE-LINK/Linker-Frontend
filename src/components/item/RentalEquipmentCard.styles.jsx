@@ -19,7 +19,6 @@ const TitleContainer = styled.div`
 `;
 const ItemName = styled.span`
   color: #000;
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -28,7 +27,6 @@ const ItemName = styled.span`
 `;
 const ItemCount = styled.span`
   color: #9d9d9d;
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -60,7 +58,6 @@ const RentalInfoTitle = styled.p`
   width: 100%;
   justify-content: space-around;
   color: ${(props) => props.color || '#000'};
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -84,7 +81,6 @@ const RentalInfo = styled.div`
     border-radius: 50px;
     background: #f1f1f1;
     color: #9d9d9d;
-    font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
@@ -92,7 +88,6 @@ const RentalInfo = styled.div`
   }
   > span {
     color: #000;
-    font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;

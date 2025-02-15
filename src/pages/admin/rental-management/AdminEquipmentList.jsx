@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import laptopStand from '../../../assets/laptopStand.svg';
 import laptopPowerAdapter from '../../../assets/laptopPowerAdapter.svg';
 import Header from '../../../components/Header/Header';
-import ManageCategoryItem from '../../../components/item/ManageCategoryItem';
+import RentalEquipmentCard from '../../../components/item/RentalEquipmentCard';
 
 const Wrapper = styled.div`
   padding: 50px 75px 75px 75px;
@@ -15,7 +15,6 @@ const TitleWrapper = styled.div`
 `;
 const Title = styled.h3`
   color: #000;
-  font-family: Pretendard;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -26,7 +25,6 @@ const PageLink = styled.span`
   cursor: pointer;
   color: #3773f5;
   text-align: right;
-  font-family: Pretendard;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -38,7 +36,7 @@ const ItemContainer = styled.div`
   gap: 90px;
 `;
 
-const ItemListManagement = () => {
+const AdminEquipmentList = () => {
   return (
     <>
       <Header />
@@ -48,8 +46,8 @@ const ItemListManagement = () => {
           <PageLink>대여자 별로 보기 →</PageLink>
         </TitleWrapper>
         <ItemContainer>
-          {itemData.map((item) => (
-            <ManageCategoryItem key={item.id} itemData={item} />
+          {rentalEquipmentData.map((equipment) => (
+            <RentalEquipmentCard key={equipment.id} equipmentData={equipment} />
           ))}
         </ItemContainer>
       </Wrapper>
@@ -57,9 +55,9 @@ const ItemListManagement = () => {
   );
 };
 
-export default ItemListManagement;
+export default AdminEquipmentList;
 
-const itemData = [
+const rentalEquipmentData = [
   {
     id: 1,
     itemName: '블루투스 키보드 & 마우스 세트',

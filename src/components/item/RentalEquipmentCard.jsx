@@ -1,12 +1,22 @@
 import React from 'react';
-import { CategoryItemWrapper, TitleContainer, ItemName, ItemCount, RentalInfoWrapper, RentalInfoTitle, RentalInfo } from './RentalEquipmentCard.styles';
+import {
+  CategoryItemWrapper,
+  TitleContainer,
+  ItemName,
+  ItemCount,
+  RentalInfoWrapper,
+  RentalInfoTitle,
+  RentalInfo,
+  RentalUserName,
+  RentalDate,
+} from './RentalEquipmentCard.styles';
 
 const RentalInfoItem = ({ user }) => {
   return (
     <>
-      <div>{user.userName}</div>
-      <span>{user.rentalStartDate}</span>
-      <span>{user.rentalEndDate}</span>
+      <RentalUserName>{user.userName}</RentalUserName>
+      <RentalDate>{user.rentalStartDate}</RentalDate>
+      <RentalDate>{user.rentalEndDate}</RentalDate>
     </>
   );
 };

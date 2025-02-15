@@ -70,29 +70,29 @@ const RentalInfo = styled.div`
   justify-content: space-around;
   align-items: center;
   padding-left: 10px;
-  > div {
-    display: flex;
-    box-sizing: border-box;
-    width: 80px;
-    height: 45px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    background: #f1f1f1;
-    color: #9d9d9d;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-  }
-  > span {
-    color: #000;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-  }
+`;
+const RentalUserName = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  width: 80px;
+  height: 45px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: #f1f1f1;
+  color: #9d9d9d;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+`;
+const RentalDate = styled.span`
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 `;
 
-export { CategoryItemWrapper, TitleContainer, ItemName, ItemCount, RentalInfoWrapper, RentalInfoTitle, RentalInfo };
+export { CategoryItemWrapper, TitleContainer, ItemName, ItemCount, RentalInfoWrapper, RentalInfoTitle, RentalInfo, RentalUserName, RentalDate };

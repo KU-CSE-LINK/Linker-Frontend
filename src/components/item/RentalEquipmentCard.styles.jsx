@@ -4,7 +4,6 @@ const CategoryItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
@@ -25,22 +24,24 @@ const ItemName = styled.span`
   line-height: normal;
   margin-left: 13px;
 `;
-const ItemCount = styled.span`
+const ItemCountTotal = styled.span`
+  color: #9d9d9d;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 5px;
+`;
+const ItemCountAvailable = styled.span`
+  color: #3773f5;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 5px;
+`;
+const ItemCountParens = styled.span`
   color: #9d9d9d;
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   margin-left: 5px;
-  > span:nth-of-type(2) {
-    color: #3773f5;
-  }
-  > span:nth-of-type(3) {
-    font-size: 16px;
-    font-weight: 400;
-  }
 `;
-
 const RentalInfoWrapper = styled.div`
   display: flex;
   min-height: 200px;
@@ -53,16 +54,16 @@ const RentalInfoWrapper = styled.div`
   border: 1px solid #000;
   background: #fff;
 `;
-const RentalInfoTitle = styled.p`
+const RentalInfoTitleContainer = styled.p`
   display: flex;
   width: 100%;
   justify-content: space-around;
+  margin: 0;
+`;
+const RentalInfoTitle = styled.span`
   color: ${(props) => props.color || '#000'};
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  margin: 0;
 `;
 const RentalInfo = styled.div`
   display: flex;
@@ -95,4 +96,17 @@ const RentalDate = styled.span`
   line-height: normal;
 `;
 
-export { CategoryItemWrapper, TitleContainer, ItemName, ItemCount, RentalInfoWrapper, RentalInfoTitle, RentalInfo, RentalUserName, RentalDate };
+export {
+  CategoryItemWrapper,
+  TitleContainer,
+  ItemName,
+  ItemCountTotal,
+  ItemCountAvailable,
+  ItemCountParens,
+  RentalInfoWrapper,
+  RentalInfoTitleContainer,
+  RentalInfoTitle,
+  RentalInfo,
+  RentalUserName,
+  RentalDate,
+};

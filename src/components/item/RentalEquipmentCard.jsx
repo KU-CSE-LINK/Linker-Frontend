@@ -3,8 +3,11 @@ import {
   CategoryItemWrapper,
   TitleContainer,
   ItemName,
-  ItemCount,
+  ItemCountTotal,
+  ItemCountAvailable,
+  ItemCountParens,
   RentalInfoWrapper,
+  RentalInfoTitleContainer,
   RentalInfoTitle,
   RentalInfo,
   RentalUserName,
@@ -28,21 +31,19 @@ const RentalEquipmentCard = ({ equipmentData }) => {
         {/* 블루투스 키보드&마우스 세트 아이콘 만들어지기 전까지 임시 이미지*/}
         <img src={equipmentData.imgSrc} alt="블루투스 키보드&마우스 세트 아이콘" />
         <ItemName>{equipmentData.itemName}</ItemName>
-        <ItemCount>
-          <span>(</span>
-          <span>{equipmentData.totalCount - equipmentData.rentCount}</span>
-          <span>/{equipmentData.totalCount}</span>
-          <span>)</span>
-        </ItemCount>
+        <ItemCountParens>(</ItemCountParens>
+        <ItemCountAvailable>{equipmentData.totalCount - equipmentData.rentCount}</ItemCountAvailable>
+        <ItemCountTotal>/{equipmentData.totalCount}</ItemCountTotal>
+        <ItemCountParens>)</ItemCountParens>
       </TitleContainer>
       <RentalInfoWrapper>
         {equipmentData.user.length !== 0 ? (
           <>
-            <RentalInfoTitle>
-              <span>대여자</span>
-              <span>대여일</span>
-              <span>반납일</span>
-            </RentalInfoTitle>
+            <RentalInfoTitleContainer>
+              <RentalInfoTitle>대여자</RentalInfoTitle>
+              <RentalInfoTitle>대여일</RentalInfoTitle>
+              <RentalInfoTitle>반납일</RentalInfoTitle>
+            </RentalInfoTitleContainer>
             {equipmentData.user.map((user) => (
               <RentalInfo key={user.studentId}>
                 <RentalInfoItem user={user} />

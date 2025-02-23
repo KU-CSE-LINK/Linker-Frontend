@@ -4,7 +4,7 @@ import Footer from '../../../components/footer/footer.jsx';
 import RequestCard from './RequestCard/RequestCard';
 
 const RequestList = () => {
-  const data = [
+  const retals = [
     {
       date: '2025-01-24',
       name: '장유정',
@@ -18,16 +18,15 @@ const RequestList = () => {
       <Header />
       <TitleText>신청 목록 조회</TitleText>
       <SubContainer>
-        {!data.length ? (
+        {!retals.length ? (
           <EmptyCard>
             <EmptyTitle>새로운 대여 요청이 없습니다.</EmptyTitle>
             <EmptyContent>（*＾-＾*）</EmptyContent>
           </EmptyCard>
         ) : (
-          data.map((item, index) => <RequestCard key={index} item={item} />)
+          retals.map((item, index) => <RequestCard key={index} item={item} />)
         )}
       </SubContainer>
-
       <Footer />
     </Container>
   );

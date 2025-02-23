@@ -19,7 +19,7 @@ const Router = () => {
       element: <AdminMain />,
     },
     {
-      path: '/admin/RequestList',
+      path: '/admin/requests',
       element: <RequestList />,
     },
     {

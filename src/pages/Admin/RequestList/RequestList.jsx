@@ -24,7 +24,7 @@ const RequestList = () => {
             <EmptyContent>（*＾-＾*）</EmptyContent>
           </EmptyCard>
         ) : (
-          retals.map((item, index) => <RequestCard key={index} item={item} />)
+          retals.map((Equipments, index) => <RequestCard key={index} Equipments={Equipments} />)
         )}
       </SubContainer>
       <Footer />

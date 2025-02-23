@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../pages/Main';
 import Rental from '../pages/rental/Rental';
 import Available from '../pages/available-equipment/AvailableEquipment';
+import AdminMain from '../pages/Admin/AdminMain/AdminMain';
 const Router = () => {
   const router = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const Router = () => {
     {
       path: '/available',
       element: <Available />,
+    },
+    {
+      path: '/adminmain',
+      element: <AdminMain />,
     },
     {
       path: '/rental',

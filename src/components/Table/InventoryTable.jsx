@@ -14,7 +14,7 @@ import {
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
-  const [Equipments, setEquipments] = useState([
+  const [equipments, setEquipments] = useState([
     { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },
     { name: '노트북 거치대', available: 8, max: 15 },
     { name: '노트북 C 타입 충전기', available: 0, max: 5 },
@@ -31,22 +31,22 @@ const InventoryTable = () => {
 
       <TableRow>
         <TableColumn>
-          {Equipments.map((Equipment, index) => (
-            <EquipmentLabel key={index}>{Equipment.name}</EquipmentLabel>
+          {equipments.map((equipment, index) => (
+            <EquipmentLabel key={index}>{equipment.name}</EquipmentLabel>
           ))}
         </TableColumn>
 
         <TableColumn>
-          {Equipments.map((Equipment, index) => (
+          {equipments.map((equipment, index) => (
             <EquipmentCount key={index}>
-              {Equipment.available !== 0 ? <AvailableCount>{Equipment.available}</AvailableCount> : <UnavailableCount>{Equipment.available}</UnavailableCount>}
-              <TotalCount>/ {Equipment.max}</TotalCount>
+              {equipment.available !== 0 ? <AvailableCount>{equipment.available}</AvailableCount> : <UnavailableCount>{equipment.available}</UnavailableCount>}
+              <TotalCount>/ {equipment.max}</TotalCount>
             </EquipmentCount>
           ))}
         </TableColumn>
         <TableColumn>
-          {Equipments.map((Equipment, index) => (
-            <LendBtn key={index} disabled={Equipment.available} />
+          {equipments.map((equipment, index) => (
+            <LendBtn key={index} disabled={equipment.available} />
           ))}
         </TableColumn>
       </TableRow>

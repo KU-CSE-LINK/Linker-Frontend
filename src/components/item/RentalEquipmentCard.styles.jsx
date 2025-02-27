@@ -58,7 +58,6 @@ const RentalInfoTitleContainer = styled.p`
   display: flex;
   width: 100%;
   justify-content: space-around;
-  margin: 0;
 `;
 const RentalInfoTitle = styled.span`
   color: ${(props) => props.color || '#000'};

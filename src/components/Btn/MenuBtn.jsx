@@ -11,6 +11,7 @@ const StyledBtn = styled.button`
   align-items: center;
   border-radius: 20px;
   border: 1px solid #000;
+  background-color: white;
   // 폰트 내용
   color: #000;
   font-family: Pretendard;

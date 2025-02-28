@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import laptopStand from '../../../assets/laptopStand.svg';
 import laptopPowerAdapter from '../../../assets/laptopPowerAdapter.svg';
-import Header from '../../../components/Header/Header';
 import RentalEquipmentCard from '../../../components/item/RentalEquipmentCard';
+import Header from '../../../components/header/Header';
 
 const Wrapper = styled.div`
   padding: 50px 75px 75px 75px;

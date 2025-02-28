@@ -1,7 +1,7 @@
 import React from 'react';
-import MenuBtn from '../../../components/Btn/MenuBtn';
 import styled from 'styled-components';
-import Header from '../../../components/Header/Header';
+import Header from '../../../components/header/Header';
+import MenuBtn from '../../../components/btn/MenuBtn';
 
 const Wrapper = styled.div`
   height: 100vh;

@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
+import 'react';
+import styled from 'styled-components';
 
 const sizeStyle = {
   lg: {
-    width: "332px",
-    height: "26px",
+    width: '332px',
+    height: '26px',
   },
   xl: {
-    width: "360px",
-    height: "40px",
+    width: '360px',
+    height: '40px',
   },
 };
 
@@ -32,7 +32,7 @@ const StyledBtn = styled.button`
   line-height: normal;
 `;
 
-const ActionBtn = ({ children, onClick, type = "button", size = "xl" }) => {
+const ActionBtn = ({ children, onClick, type = 'button', size = 'xl' }) => {
   return (
     <StyledBtn type={type} size={size} onClick={onClick}>
       {children}

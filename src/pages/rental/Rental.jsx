@@ -1,88 +1,88 @@
-import { useState } from 'react';
+import { createRef } from 'react';
 import {
-  Container,
-  Logo,
-  ProfileImg,
-  TitleText,
-  BoldText,
-  NameInput,
-  PhoneInput,
-  StdIdInput,
-  ChoiceWrapper,
-  ChoiceContainer,
-  ChoiceText,
   ButtonContainer,
-  ApplyButton,
-  Host,
-  HiddenCheckbox,
+  CheckboxContainer,
+  Container,
+  DescriptionText,
+  EquipmentContainer,
+  EquipmentTitleContainer,
   HiddenRadio,
-  ChoiceLabel,
-  StyledLabel,
+  InputContainer,
+  InputPanel,
+  RadioLabel,
+  SubButtonContainer,
+  SubContainer,
+  SubmitButton,
+  SubTitleText,
+  TitleText,
 } from './Rental.styles';
-import Profile from '../../assets/profileIcon.svg';
-import Checked from './checked.svg';
-import UnChecked from './unchecked.svg';
+import EquipmentCheckBox from '../../components/equipment/CustomCheckBox.jsx';
+import InputWithLabel from '../../components/input/InputWithLabel.jsx';
+import Header from '../../components/header/Header.jsx';
+import Footer from '../../components/footer/footer.jsx';
 
-const dummyGoods = [
-  { id: 1, name: '블루투스 키보드 & 마우스 세트' },
-  { id: 2, name: '노트북 거치대' },
-  { id: 3, name: '노트북 C타입 충전기' },
+const dummyEquipments = [
+  { id: 1, name: '블루투스 키보드 & 마우스 세트', totalStock: 10, availableStock: 5 },
+  { id: 2, name: '노트북 거치대', totalStock: 5, availableStock: 0 },
+  { id: 3, name: '노트북 C타입 충전기', totalStock: 5, availableStock: 5 },
 ];
 
 const Rental = () => {
-  const [selectedEquipments, setSelectedEquipments] = useState(dummyGoods.reduce((acc, item) => ({ ...acc, [item.id]: false }), {}));
-
-  const handleChoiceClick = (id) => {
-    setSelectedEquipments((prevState) => ({
-      ...prevState,
-      [id]: !prevState[id],
-    }));
-  };
+  const equipmentRefs = dummyEquipments.map(() => createRef());
+  const nameInputRef = createRef();
+  const phoneInputRef = createRef();
+  const studentIdInputRef = createRef();
 
   return (
     <Container>
-      <Logo>
-        LINKER
-        <ProfileImg src={Profile} alt="프로필아이콘" />
-      </Logo>
+      <Header />
       <TitleText>대여 신청</TitleText>
 
-      <BoldText style={{ position: 'absolute', top: '237px', left: '150px' }}>이름</BoldText>
-      <NameInput type="text" />
+      <SubContainer>
+        <InputContainer>
+          <InputPanel fill={2}>
+            <InputWithLabel text={'이름'} ref={nameInputRef} />
+          </InputPanel>
+          <InputPanel>
+            <InputWithLabel text={'전화번호'} ref={phoneInputRef} />
+          </InputPanel>
+          <InputPanel>
+            <InputWithLabel text={'학번'} ref={studentIdInputRef} />
+          </InputPanel>
+        </InputContainer>
 
-      <BoldText style={{ position: 'absolute', top: '362px', left: '150px' }}>전화번호</BoldText>
-      <PhoneInput type="text" />
+        <EquipmentContainer>
+          <EquipmentTitleContainer>
+            <SubTitleText>대여할 기자재 선택</SubTitleText>
+            <DescriptionText>중복 선택 가능</DescriptionText>
+          </EquipmentTitleContainer>
+          <CheckboxContainer>
+            {dummyEquipments.map((item, index) => (
+              <EquipmentCheckBox key={item.id} equipment={item} ref={equipmentRefs[index]} />
+            ))}
+          </CheckboxContainer>
+        </EquipmentContainer>
 
-      <BoldText style={{ position: 'absolute', top: '362px', left: '405px' }}>학번</BoldText>
-      <StdIdInput type="text" />
+        <ButtonContainer>
+          <SubTitleText>대여기간</SubTitleText>
+          <SubButtonContainer>
+            <HiddenRadio type="radio" name="rentalPeriod" id="short" />
+            <RadioLabel htmlFor="short">단기</RadioLabel>
 
-      <BoldText style={{ position: 'absolute', top: '487px', left: '150px' }}>대여할 기자재 선택</BoldText>
-      <span className="choice-desc">중복 선택 가능</span>
+            <HiddenRadio type="radio" name="rentalPeriod" id="long" />
+            <RadioLabel htmlFor="long">장기</RadioLabel>
+          </SubButtonContainer>
+        </ButtonContainer>
 
-      <ChoiceWrapper>
-        {dummyGoods.map((item) => (
-          <ChoiceContainer key={item.id}>
-            <HiddenCheckbox type="checkbox" id={`equipment-${item.id}`} checked={selectedEquipments[item.id]} onChange={() => handleChoiceClick(item.id)} />
-            <ChoiceLabel htmlFor={`equipment-${item.id}`}>
-              <img src={selectedEquipments[item.id] ? Checked : UnChecked} alt="체크" />
-              <ChoiceText selected={selectedEquipments[item.id]}>{item.name}</ChoiceText>
-            </ChoiceLabel>
-          </ChoiceContainer>
-        ))}
-      </ChoiceWrapper>
-
-      <BoldText style={{ position: 'absolute', top: '676px', left: '150px' }}>대여기간</BoldText>
-
-      <ButtonContainer>
-        <HiddenRadio type="radio" name="rentalPeriod" id="short" />
-        <StyledLabel htmlFor="short">단기</StyledLabel>
-
-        <HiddenRadio type="radio" name="rentalPeriod" id="long" />
-        <StyledLabel htmlFor="long">장기</StyledLabel>
-      </ButtonContainer>
-
-      <ApplyButton>대여 신청하기</ApplyButton>
-      <Host>제6대 컴퓨터공학부 학생회 LINK</Host>
+        <SubmitButton
+          onClick={() => {
+            console.log(equipmentRefs.map((ref) => ref.current?.checked));
+          }}
+        >
+          대여 신청하기
+        </SubmitButton>
+      </SubContainer>
+      <Footer />
     </Container>
   );
 };

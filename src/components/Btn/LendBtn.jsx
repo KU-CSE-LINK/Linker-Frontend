@@ -16,7 +16,7 @@ const StyledBtn = styled.button`
   cursor: ${(props) => (!props.disabled ? 'not-allowed' : 'pointer')};
 `;
 
-const ActionBtn = ({ onClick, type = 'button', disabled }) => {
+const LendBtn = ({ onClick, type = 'button', disabled }) => {
   return (
     <StyledBtn type={type} disabled={disabled} onClick={disabled ? undefined : onClick}>
       {!disabled ? '대여 불가' : '대여 신청'}
@@ -24,4 +24,4 @@ const ActionBtn = ({ onClick, type = 'button', disabled }) => {
   );
 };
 
-export default ActionBtn;
+export default LendBtn;

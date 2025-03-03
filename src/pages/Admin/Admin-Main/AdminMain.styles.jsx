@@ -8,6 +8,7 @@ export const Container = styled.div`
   gap: 180px;
   box-sizing: border-box;
 `;
+
 export const SubContainer = styled.div`
   display: flex;
   flex-direction: column;

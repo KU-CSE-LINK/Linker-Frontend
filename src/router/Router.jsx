@@ -2,7 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../pages/Main';
 import Rental from '../pages/rental/Rental';
 import Available from '../pages/available-equipment/AvailableEquipment';
-import AdminMain from '../pages/Admin/AdminMain/AdminMain';
+import AdminMain from '../pages/Admin/Admin-Main/AdminMain';
+import RequestList from '../pages/Admin/RequestList/RequestList';
 const Router = () => {
   const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const Router = () => {
     {
       path: '/admin/main',
       element: <AdminMain />,
+    },
+    {
+      path: '/admin/requests',
+      element: <RequestList />,
     },
     {
       path: '/rental',

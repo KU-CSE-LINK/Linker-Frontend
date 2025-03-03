@@ -8,6 +8,7 @@ export const Container = styled.div`
   gap: 40px;
   box-sizing: border-box;
 `;
+
 export const TitleText = styled.span`
   font-size: 25px;
   font-weight: 700;

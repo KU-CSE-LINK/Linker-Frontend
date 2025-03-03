@@ -3,10 +3,7 @@ import styled from 'styled-components';
 const StyledBtn = styled.button`
   color: ${(props) => (!props.disabled ? '#9D9D9D' : '#fff')};
   background-color: ${(props) => (!props.disabled ? '#F1F1F1' : '#3773F5')};
-  text-align: center;
-  font-family: Pretendard;
   font-size: 20px;
-  font-style: normal;
   font-weight: 700;
   line-height: normal;
   display: inline-flex;

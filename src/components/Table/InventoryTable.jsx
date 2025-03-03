@@ -1,20 +1,20 @@
-import React from 'react';
-import LendBtn from '../../../components/btn/LendBtn';
+import LendBtn from '../btn/LendBtn';
+import { useState } from 'react';
 import {
   TableContainer,
   TableRow,
   TableHeader,
   TableColumn,
   Divider,
-  ItemLabel,
-  ItemCount,
+  EquipmentLabel,
+  EquipmentCount,
   AvailableCount,
   UnavailableCount,
   TotalCount,
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
-  const [items, setItems] = React.useState([
+  const [equipments, setEquipments] = useState([
     { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },
     { name: '노트북 거치대', available: 8, max: 15 },
     { name: '노트북 C 타입 충전기', available: 0, max: 5 },
@@ -31,22 +31,22 @@ const InventoryTable = () => {
 
       <TableRow>
         <TableColumn>
-          {items.map((item, index) => (
-            <ItemLabel key={index}>{item.name}</ItemLabel>
+          {equipments.map((equipment, index) => (
+            <EquipmentLabel key={index}>{equipment.name}</EquipmentLabel>
           ))}
         </TableColumn>
 
         <TableColumn>
-          {items.map((item, index) => (
-            <ItemCount key={index}>
-              {item.available !== 0 ? <AvailableCount>{item.available}</AvailableCount> : <UnavailableCount>{item.available}</UnavailableCount>}
-              <TotalCount>/ {item.max}</TotalCount>
-            </ItemCount>
+          {equipments.map((equipment, index) => (
+            <EquipmentCount key={index}>
+              {equipment.available !== 0 ? <AvailableCount>{equipment.available}</AvailableCount> : <UnavailableCount>{equipment.available}</UnavailableCount>}
+              <TotalCount>/ {equipment.max}</TotalCount>
+            </EquipmentCount>
           ))}
         </TableColumn>
         <TableColumn>
-          {items.map((item, index) => (
-            <LendBtn key={index} disabled={item.available} />
+          {equipments.map((equipment, index) => (
+            <LendBtn key={index} disabled={equipment.available} />
           ))}
         </TableColumn>
       </TableRow>

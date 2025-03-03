@@ -14,11 +14,7 @@ export const TableRow = styled.div`
 `;
 
 export const TableHeader = styled.div`
-  color: #000;
-  text-align: center;
-  font-family: 'Pretendard';
   font-size: 22px;
-  font-weight: 550;
 `;
 
 export const Divider = styled.div`
@@ -35,13 +31,13 @@ export const TableColumn = styled.div`
   text-align: center;
 `;
 
-export const ItemLabel = styled.div`
+export const EquipmentLabel = styled.div`
   font-size: 20px;
   font-weight: 300;
   white-space: pre-line;
 `;
 
-export const ItemCount = styled.div`
+export const EquipmentCount = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

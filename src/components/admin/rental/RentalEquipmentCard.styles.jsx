@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-const CategoryItemWrapper = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
@@ -11,11 +12,12 @@ const TitleContainer = styled.div`
   height: 45px;
   padding: 0 27px;
   white-space: nowrap;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0 0;
   border: 1px solid #000;
   border-bottom: none;
   background: #fff;
 `;
+
 const ItemName = styled.span`
   color: #000;
   font-size: 20px;
@@ -24,24 +26,28 @@ const ItemName = styled.span`
   line-height: normal;
   margin-left: 13px;
 `;
+
 const ItemCountTotal = styled.span`
   color: #9d9d9d;
   font-size: 16px;
   font-weight: 400;
   margin-left: 5px;
 `;
+
 const ItemCountAvailable = styled.span`
   color: #3773f5;
   font-size: 20px;
   font-weight: 500;
   margin-left: 5px;
 `;
+
 const ItemCountParens = styled.span`
   color: #9d9d9d;
   font-size: 20px;
   font-weight: 500;
   margin-left: 5px;
 `;
+
 const RentalInfoWrapper = styled.div`
   display: flex;
   min-height: 200px;
@@ -54,23 +60,32 @@ const RentalInfoWrapper = styled.div`
   border: 1px solid #000;
   background: #fff;
 `;
+
 const RentalInfoTitleContainer = styled.p`
   display: flex;
   width: 100%;
   justify-content: space-around;
 `;
+
 const RentalInfoTitle = styled.span`
-  color: ${(props) => props.color || '#000'};
+  color: ${({ color }) => color || '#000'};
   font-size: 20px;
   font-weight: 500;
 `;
+
 const RentalInfo = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  padding-left: 10px;
 `;
+
+const RentalInfoCell = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
 const RentalUserName = styled.div`
   display: flex;
   box-sizing: border-box;
@@ -87,6 +102,7 @@ const RentalUserName = styled.div`
   font-weight: 300;
   line-height: normal;
 `;
+
 const RentalDate = styled.span`
   color: #000;
   font-size: 18px;
@@ -96,7 +112,7 @@ const RentalDate = styled.span`
 `;
 
 export {
-  CategoryItemWrapper,
+  Container,
   TitleContainer,
   ItemName,
   ItemCountTotal,
@@ -106,6 +122,7 @@ export {
   RentalInfoTitleContainer,
   RentalInfoTitle,
   RentalInfo,
+  RentalInfoCell,
   RentalUserName,
   RentalDate,
 };

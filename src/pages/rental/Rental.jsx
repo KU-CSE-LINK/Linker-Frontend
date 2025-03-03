@@ -15,7 +15,7 @@ import {
   SubmitButton,
   SubTitleText,
   TitleText,
-} from './Rental.styles';
+} from './Rental.styles.jsx';
 import EquipmentCheckBox from '../../components/equipment/CustomCheckBox.jsx';
 import InputWithLabel from '../../components/input/InputWithLabel.jsx';
 import Header from '../../components/header/Header.jsx';

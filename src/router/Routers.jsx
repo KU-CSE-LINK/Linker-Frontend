@@ -21,7 +21,7 @@ const Routers = () => {
       element: <Rental />,
     },
     {
-      path: '/admin/main',
+      path: '/admin',
       element: <AdminMain />,
     },
     {

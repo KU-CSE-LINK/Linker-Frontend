@@ -9,7 +9,7 @@ const AdminRentals = () => {
     return (
       <Container>
         <Header />
-        <TitleText>신청 목록 조회</TitleText>
+        <TitleText>신청 내역 관리</TitleText>
         <SubContainer>
           <EmptyCard>
             <EmptyTitle>새로운 대여 요청이 없습니다.</EmptyTitle>
@@ -24,7 +24,7 @@ const AdminRentals = () => {
   return (
     <Container>
       <Header />
-      <TitleText>신청 목록 조회</TitleText>
+      <TitleText>신청 내역 관리</TitleText>
       <SubContainer>
         {rentals.map((rental) => (
           <RentalCard key={rental.studentId} rental={rental} />

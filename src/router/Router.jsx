@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../pages/Main';
 import Rental from '../pages/rental/Rental';
+import RentalComplete from '../pages/rental/rentalComplete/RentalComplete';
 const Router = () => {
   const router = createBrowserRouter([
     {
@@ -10,6 +11,10 @@ const Router = () => {
     {
       path: '/rental',
       element: <Rental />,
+    },
+    {
+      path: '/rental/comlete',
+      element: <RentalComplete />,
     },
   ]);
 

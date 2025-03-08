@@ -5,6 +5,7 @@ import AdminRentalsByEquipment from '../pages/admin/rental/AdminRentalsByEquipme
 import Equipments from '../pages/equipment/Equipments.jsx';
 import AdminMain from '../pages/admin/main/AdminMain';
 import AdminRentals from '../pages/admin/rental/AdminRentals.jsx';
+import RentalComplete from '../pages/rental/rentalComplete/RentalComplete.jsx';
 
 const Routers = () => {
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const Routers = () => {
     {
       path: '/rental',
       element: <Rental />,
+    },
+    {
+      path: '/rental/complete',
+      element: <RentalComplete />,
     },
     {
       path: '/admin',

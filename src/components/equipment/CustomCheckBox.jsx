@@ -13,6 +13,8 @@ const Container = styled.div`
   cursor: pointer;
 `;
 
+const Image = styled.img``;
+
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   display: none;
 `;
@@ -37,7 +39,7 @@ const CustomCheckBox = forwardRef(({ equipment }, ref) => {
   if (!isAvailable) {
     return (
       <Container>
-        <img src={DisabledCheckSvg} alt="체크박스" />
+        <Image src={DisabledCheckSvg} alt="체크박스" />
         <UnAvailableCheckboxLabel>{equipment.name}</UnAvailableCheckboxLabel>
       </Container>
     );
@@ -46,7 +48,7 @@ const CustomCheckBox = forwardRef(({ equipment }, ref) => {
   return (
     <Container onClick={handleChange}>
       <HiddenCheckbox ref={ref} checked={checked} readOnly={true} />
-      <img src={checked ? CheckSvg : UncheckSvg} alt="체크박스" />
+      <Image src={checked ? CheckSvg : UncheckSvg} alt="체크박스" />
       <CheckboxLabel $checked={checked}>{equipment.name}</CheckboxLabel>
     </Container>
   );

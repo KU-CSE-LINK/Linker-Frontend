@@ -1,9 +1,9 @@
-import { Container, TitleText } from './AvailableEquipment.styles';
+import { Container, TitleText } from './Equipments.styles.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer';
-import InventoryTable from '../../components/Table/InventoryTable.jsx';
+import InventoryTable from '../../components/table/InventoryTable.jsx';
 
-export default function Main() {
+const Equipments = () => {
   return (
     <Container>
       <Header />
@@ -12,4 +12,6 @@ export default function Main() {
       <Footer />
     </Container>
   );
-}
+};
+
+export default Equipments;

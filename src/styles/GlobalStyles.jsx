@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
   ${fonts}
 
   * {
-    font-family: 'Pretendard-Regular', sans-serif;
+    font-family: 'Pretendard', sans-serif;
   }
 `;
 

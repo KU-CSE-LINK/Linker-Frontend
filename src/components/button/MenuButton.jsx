@@ -1,7 +1,8 @@
-import React from 'react';
+import 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const StyledBtn = styled.button`
+const Container = styled.button`
   display: flex;
   box-sizing: content-box;
   width: 280px;
@@ -12,13 +13,12 @@ const StyledBtn = styled.button`
   border-radius: 20px;
   border: 1px solid #000;
   background-color: white;
-  // 폰트 내용
   color: #000;
-  font-family: Pretendard;
   font-size: 22px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
   &:hover {
     background: #3773f5;
     color: #fff;
@@ -27,12 +27,18 @@ const StyledBtn = styled.button`
   }
 `;
 
-const MenuBtn = ({ children, onClick, type = 'button' }) => {
+const MenuButton = ({ children, onClick, type = 'button' }) => {
   return (
-    <StyledBtn type={type} onClick={onClick}>
+    <Container type={type} onClick={onClick}>
       {children}
-    </StyledBtn>
+    </Container>
   );
 };
 
-export default MenuBtn;
+MenuButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  type: PropTypes.string,
+};
+
+export default MenuButton;

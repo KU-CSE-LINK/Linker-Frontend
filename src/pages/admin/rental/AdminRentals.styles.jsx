@@ -23,6 +23,7 @@ export const SubContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 100px;
 `;
 
 export const EmptyTitle = styled.div`

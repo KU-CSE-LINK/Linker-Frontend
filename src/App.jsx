@@ -1,7 +1,11 @@
-import Router from './router/Router';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import GlobalStyles from './styles/GlobalStyles.jsx';
+import Routers from './router/Routers.jsx';
 
-function App() {
-  return <Router />;
-}
-
-export default App;
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <GlobalStyles />
+    <Routers />
+  </StrictMode>,
+);

@@ -12,7 +12,7 @@ const Router = () => {
   const router = createBrowserRouter([
     { path: '/', element: <Main /> },
     { path: '/rental', element: <Rental /> },
-    { path: '/rental/complete', element: <RentalComplete /> }, // 오타 수정 (comlete → complete)
+    { path: '/rental/complete', element: <RentalComplete /> },
     { path: '/available', element: <Available /> },
     { path: '/admin/main', element: <AdminMain /> },
     { path: '/admin/requests', element: <RequestList /> },

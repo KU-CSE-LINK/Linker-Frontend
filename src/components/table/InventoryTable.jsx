@@ -1,16 +1,16 @@
-import LendBtn from '../btn/LendBtn';
+import LendButton from '../button/LendButton.jsx';
 import { useState } from 'react';
 import {
-  TableContainer,
-  TableRow,
-  TableHeader,
-  TableColumn,
-  Divider,
-  EquipmentLabel,
-  EquipmentCount,
   AvailableCount,
-  UnavailableCount,
+  Divider,
+  EquipmentCount,
+  EquipmentLabel,
+  TableColumn,
+  TableContainer,
+  TableHeader,
+  TableRow,
   TotalCount,
+  UnavailableCount,
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
@@ -46,7 +46,7 @@ const InventoryTable = () => {
         </TableColumn>
         <TableColumn>
           {equipments.map((equipment, index) => (
-            <LendBtn key={index} disabled={equipment.available} />
+            <LendButton key={index} disabled={equipment.available} />
           ))}
         </TableColumn>
       </TableRow>

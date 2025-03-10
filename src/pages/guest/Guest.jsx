@@ -1,10 +1,10 @@
 import { createRef } from 'react';
 import Header from '../../components/header/Header';
-import { Container, TitleText, InputContainer, InputPanel, SubmitButton, SubContainer } from './UserCertify.styles';
+import { Container, TitleText, InputContainer, InputPanel, SubmitButton, SubContainer } from './Guest.styles';
 import InputWithLabel from '../../components/input/InputWithLabel';
 import Footer from '../../components/footer/footer';
 
-const UserCertify = () => {
+const Guest = () => {
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
@@ -32,4 +32,4 @@ const UserCertify = () => {
   );
 };
 
-export default UserCertify;
+export default Guest;

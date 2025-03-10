@@ -6,7 +6,7 @@ import Equipments from '../pages/equipment/Equipments.jsx';
 import AdminMain from '../pages/admin/main/AdminMain';
 import AdminRentals from '../pages/admin/rental/AdminRentals.jsx';
 import RentalComplete from '../pages/rental/rentalComplete/RentalComplete.jsx';
-import UserCertify from '../pages/userCertify/UserCertify';
+import Guest from '../pages/guest/Guest';
 
 const Routers = () => {
   const router = createBrowserRouter([
@@ -38,7 +38,7 @@ const Routers = () => {
       path: '/admin/rentals/equipments',
       element: <AdminRentalsByEquipment />,
     },
-    { path: '/usercertify', element: <UserCertify /> },
+    { path: '/guest', element: <Guest /> },
   ]);
 
   return <RouterProvider router={router} />;

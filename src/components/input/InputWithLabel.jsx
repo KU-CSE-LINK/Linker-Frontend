@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 6px;
 `;
 
 const Label = styled.label`

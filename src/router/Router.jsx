@@ -7,6 +7,7 @@ import AdminEquipmentList from '../pages/admin/rental-management/AdminEquipmentL
 import Available from '../pages/available-equipment/AvailableEquipment';
 import AdminMain from '../pages/Admin/Admin-Main/AdminMain';
 import RequestList from '../pages/Admin/RequestList/RequestList';
+import UserCertify from '../pages/userCertify/UserCertify';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -18,6 +19,7 @@ const Router = () => {
     { path: '/admin/requests', element: <RequestList /> },
     { path: '/admin/rental', element: <RentalManagement /> },
     { path: '/admin/rental/equipment', element: <AdminEquipmentList /> },
+    { path: '/usercertify', element: <UserCertify /> },
   ]);
 
   return <RouterProvider router={router} />;

@@ -9,7 +9,19 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export const TitleText = styled.span`
-  font-size: 25px;
+export const GuestName = styled.span`
+  font-size: 30px;
   font-weight: 700;
+`;
+
+export const SubText = styled.span`
+  color: #000;
+  font-size: 25px;
+  font-weight: 400;
+`;
+
+export const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
 `;

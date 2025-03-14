@@ -9,6 +9,7 @@ export default function AdminMain() {
       <Header />
       <SubContainer>
         <MenuButton>신청 내역 관리</MenuButton>
+        <MenuButton>물품 별로 보기</MenuButton>
         <MenuButton>블랙리스트</MenuButton>
       </SubContainer>
       <Footer />

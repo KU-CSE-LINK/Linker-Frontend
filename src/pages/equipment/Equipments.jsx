@@ -2,7 +2,6 @@ import { Container, TitleText } from './Equipments.styles.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer';
 import InventoryTable from '../../components/table/InventoryTable.jsx';
-
 const Equipments = () => {
   return (
     <Container>

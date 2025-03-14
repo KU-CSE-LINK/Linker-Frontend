@@ -7,6 +7,9 @@ const GlobalStyles = createGlobalStyle`
   * {
     font-family: 'Pretendard', sans-serif;
   }
+  p {
+    margin: 0;
+  }
 `;
 
 export default GlobalStyles;

@@ -10,7 +10,7 @@ import {
   UserIcon,
   UserName,
   UserProfile,
-  BtnContent,
+  ButtonContent,
 } from './RentalCard.styles.jsx';
 import request from '../../../assets/admin/request.svg';
 import PropTypes from 'prop-types';
@@ -42,7 +42,7 @@ const RentalCard = ({ rental }) => {
         </RequestInfo>
       </CardContainer>
       <ActionButton size="lg">
-        <BtnContent>신청 내역 관리하기</BtnContent>
+        <ButtonContent>신청 내역 관리하기</ButtonContent>
       </ActionButton>
     </Container>
   );

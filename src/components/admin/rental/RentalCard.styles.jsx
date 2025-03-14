@@ -94,7 +94,7 @@ export const InfoValue = styled.div`
   white-space: pre-line;
 `;
 
-export const BtnContent = styled.span`
+export const ButtonContent = styled.span`
   font-size: 22px;
   font-weight: 600;
 `;

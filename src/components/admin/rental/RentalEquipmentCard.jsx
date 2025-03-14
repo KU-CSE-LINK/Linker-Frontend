@@ -8,7 +8,6 @@ const RentalEquipmentCard = ({ equipment }) => {
   return (
     <Container>
       <TitleContainer>
-        {/* 블루투스 키보드&마우스 세트 아이콘 만들어지기 전까지 임시 이미지*/}
         <img src={equipment.imgUrl} alt="블루투스 키보드&마우스 세트 아이콘" />
         <ItemName>{equipment.name}</ItemName>
         <ItemCountParens>(</ItemCountParens>

@@ -65,7 +65,6 @@ export const RequestInfo = styled.div`
 export const InfoItem = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 39px;
 `;
 
 export const InfoLabel = styled.div`
@@ -80,7 +79,7 @@ export const InfoLabel = styled.div`
 export const InfoValue = styled.div`
   color: #000;
   text-align: right;
-  font-size: 15px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

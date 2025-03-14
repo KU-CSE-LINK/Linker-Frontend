@@ -3,6 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 19px;
+`;
+
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: auto;
@@ -86,4 +92,9 @@ export const InfoValue = styled.div`
   line-height: normal;
   width: 172px;
   white-space: pre-line;
+`;
+
+export const BtnContent = styled.span`
+  font-size: 22px;
+  font-weight: 600;
 `;

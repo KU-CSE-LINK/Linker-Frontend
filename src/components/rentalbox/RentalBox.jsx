@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Container, ItemTitle, ItemName, RentInfo, CategoryWrapper, MainText, StatusText, DateText } from './RentalBox.styles';
 
-const Item = ({ itemName, imageSrc, status, rentalDate, returnDate }) => {
+const RentalBox = ({ itemName, imageSrc, status, rentalDate, returnDate }) => {
   return (
     <Container>
       <ItemTitle>
@@ -26,7 +26,7 @@ const Item = ({ itemName, imageSrc, status, rentalDate, returnDate }) => {
   );
 };
 
-Item.propTypes = {
+RentalBox.propTypes = {
   itemName: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
@@ -34,4 +34,4 @@ Item.propTypes = {
   returnDate: PropTypes.string.isRequired,
 };
 
-export default Item;
+export default RentalBox;

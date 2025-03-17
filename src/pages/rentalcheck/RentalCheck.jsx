@@ -3,7 +3,7 @@ import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
 import itemPlaceholder from '../../assets/Itemplaceholder.svg';
-const Check = () => {
+const RentalCheck = () => {
   const userData = {
     name: '장유정',
     rentals: [
@@ -49,4 +49,4 @@ const Check = () => {
   );
 };
 
-export default Check;
+export default RentalCheck;

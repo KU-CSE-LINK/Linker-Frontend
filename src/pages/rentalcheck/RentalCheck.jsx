@@ -1,6 +1,6 @@
-import { Container, GuestName, SubText, ItemContainer } from './Check.styles';
+import { Container, GuestName, SubText, BoxContainer } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
-import Item from './Item';
+import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
 import itemPlaceholder from '../../assets/Itemplaceholder.svg';
 const Check = () => {
@@ -32,9 +32,9 @@ const Check = () => {
       <SubText>
         <GuestName>{userData.name}</GuestName>님의 신청내역
       </SubText>
-      <ItemContainer>
+      <BoxContainer>
         {userData.rentals.map((rental) => (
-          <Item
+          <RentalBox
             key={rental.id}
             itemName={rental.itemName}
             imageSrc={rental.imageSrc}
@@ -43,7 +43,7 @@ const Check = () => {
             returnDate={rental.returnDate}
           />
         ))}
-      </ItemContainer>
+      </BoxContainer>
       <Footer />
     </Container>
   );

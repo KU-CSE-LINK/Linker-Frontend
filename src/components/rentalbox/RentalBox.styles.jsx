@@ -25,7 +25,6 @@ export const ItemName = styled.span`
 
 export const RentInfo = styled.div`
   display: flex;
-  // gap: 110.55px;
   justify-content: space-evenly;
 `;
 

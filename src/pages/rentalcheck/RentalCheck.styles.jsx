@@ -20,7 +20,7 @@ export const SubText = styled.span`
   font-weight: 400;
 `;
 
-export const ItemContainer = styled.div`
+export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 42px;

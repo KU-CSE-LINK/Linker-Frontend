@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Container, ItemTitle, ItemName, RentInfo, CategoryWrapper, MainText, StatusText, DateText } from './Item.styles';
+import { Container, ItemTitle, ItemName, RentInfo, CategoryWrapper, MainText, StatusText, DateText } from './RentalBox.styles';
 
 const Item = ({ itemName, imageSrc, status, rentalDate, returnDate }) => {
   return (

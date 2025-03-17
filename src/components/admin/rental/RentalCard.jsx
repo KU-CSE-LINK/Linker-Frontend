@@ -15,8 +15,11 @@ import {
 import request from '../../../assets/admin/request.svg';
 import PropTypes from 'prop-types';
 import ActionButton from '../../button/ActionButton.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const RentalCard = ({ rental }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <CardContainer>
@@ -42,7 +45,7 @@ const RentalCard = ({ rental }) => {
         </RequestInfo>
       </CardContainer>
       <ActionButton size="lg">
-        <ButtonContent>신청 내역 관리하기</ButtonContent>
+        <ButtonContent onClick={() => navigate('/admin/rentals/status', { state: { rental: rental } })}>신청 내역 관리하기</ButtonContent>
       </ActionButton>
     </Container>
   );

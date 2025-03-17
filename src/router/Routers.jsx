@@ -7,6 +7,7 @@ import AdminMain from '../pages/admin/main/AdminMain';
 import AdminRentals from '../pages/admin/rental/AdminRentals.jsx';
 import RentalComplete from '../pages/rental/rentalComplete/RentalComplete.jsx';
 import Guest from '../pages/guest/Guest';
+import RentalCheck from '../pages/rentalcheck/RentalCheck.jsx';
 
 const Routers = () => {
   const router = createBrowserRouter([
@@ -39,6 +40,7 @@ const Routers = () => {
       element: <AdminRentalsByEquipment />,
     },
     { path: '/guest', element: <Guest /> },
+    { path: '/check', element: <RentalCheck /> },
   ]);
 
   return <RouterProvider router={router} />;

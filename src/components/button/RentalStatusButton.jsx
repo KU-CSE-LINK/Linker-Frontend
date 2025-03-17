@@ -16,9 +16,9 @@ const ButtonContent = styled.span`
   font-weight: 700;
 `;
 
-const RentalStatusButton = ({ children, onClick, type = 'button', isClicked }) => {
+const RentalStatusButton = ({ children, onClick, isClicked }) => {
   return (
-    <Container type={type} onClick={onClick} $isClicked={isClicked}>
+    <Container type="button" onClick={onClick} $isClicked={isClicked}>
       <ButtonContent $isClicked={isClicked}>{children}</ButtonContent>
     </Container>
   );

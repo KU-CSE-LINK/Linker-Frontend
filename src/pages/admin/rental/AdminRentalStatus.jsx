@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RentalStatusCard from '../../../components/admin/rental/RentalStatusCard';
 import RentalStatusButton from '../../../components/button/RentalStatusButton';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../../../components/header/Header';
 
 const Wrapper = styled.div`
@@ -38,15 +38,19 @@ const ButtonContainer = styled.div`
 `;
 
 const AdminRentalStatus = () => {
-  const [statusType, setStatusType] = useState('REQUESTED');
-  const location = useLocation();
-  const { rental } = location.state;
   const statusButtons = [
     { type: 'REQUESTED', label: '신청 완료' },
     { type: 'PREPARED', label: '대여 준비 완료' },
     { type: 'RENTED', label: '대여중' },
     { type: 'RETURNED', label: '반납 완료' },
   ];
+  const [rentalData, setRentalData] = useState(null);
+  const { id } = useParams();
+  useEffect(() => {
+    if (!id) return;
+    console.log(id);
+  }, [id]);
+
   return (
     <>
       <Header />
@@ -56,10 +60,10 @@ const AdminRentalStatus = () => {
           <PageLink>물품 별로 보기 →</PageLink>
         </TitleWrapper>
         <ContentWrapper>
-          <RentalStatusCard rental={rental} status={statusType} />
+          <RentalStatusCard rental={rentalData} />
           <ButtonContainer>
             {statusButtons.map(({ type, label }) => (
-              <RentalStatusButton key={type} onClick={() => setStatusType(type)} isClicked={statusType === type}>
+              <RentalStatusButton key={type} onClick={() => console.log(type)} isClicked={rentalData.status === type}>
                 {label}
               </RentalStatusButton>
             ))}

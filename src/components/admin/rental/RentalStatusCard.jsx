@@ -60,7 +60,7 @@ const RentalStatus = styled.span`
   font-weight: 300;
 `;
 
-const RentalStatusCard = ({ rental, status }) => {
+const RentalStatusCard = ({ rental }) => {
   const convertRentalStatus = (status) => {
     switch (status) {
       case 'REQUESTED':
@@ -98,7 +98,7 @@ const RentalStatusCard = ({ rental, status }) => {
         </InfoItem>
         <InfoItem>
           <InfoLabel>신청 상황</InfoLabel>
-          <RentalStatus>{convertRentalStatus(status)}</RentalStatus>
+          <RentalStatus>{convertRentalStatus(rental.status)}</RentalStatus>
         </InfoItem>
       </RequestInfo>
     </Container>

@@ -60,7 +60,7 @@ const RentalStatus = styled.span`
   font-weight: 300;
 `;
 
-const RentalStatusCard = ({ rental }) => {
+const RentalStatusCard = ({ rental, status }) => {
   const convertRentalStatus = (status) => {
     switch (status) {
       case 'REQUESTED':
@@ -69,6 +69,8 @@ const RentalStatusCard = ({ rental }) => {
         return '대여 준비 완료';
       case 'RENTED':
         return '대여중';
+      case 'RETURNED':
+        return '반납 완료';
     }
   };
   return (
@@ -96,7 +98,7 @@ const RentalStatusCard = ({ rental }) => {
         </InfoItem>
         <InfoItem>
           <InfoLabel>신청 상황</InfoLabel>
-          <RentalStatus>{convertRentalStatus(rental.status)}</RentalStatus>
+          <RentalStatus>{convertRentalStatus(status)}</RentalStatus>
         </InfoItem>
       </RequestInfo>
     </Container>

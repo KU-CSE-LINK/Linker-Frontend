@@ -61,7 +61,7 @@ const RentalStatus = styled.span`
 `;
 
 const RentalStatusCard = ({ rental }) => {
-  const translateRentalStatus = (status) => {
+  const convertRentalStatus = (status) => {
     switch (status) {
       case 'REQUESTED':
         return '신청 완료';
@@ -96,7 +96,7 @@ const RentalStatusCard = ({ rental }) => {
         </InfoItem>
         <InfoItem>
           <InfoLabel>신청 상황</InfoLabel>
-          <RentalStatus>{translateRentalStatus(rental.status)}</RentalStatus>
+          <RentalStatus>{convertRentalStatus(rental.status)}</RentalStatus>
         </InfoItem>
       </RequestInfo>
     </Container>

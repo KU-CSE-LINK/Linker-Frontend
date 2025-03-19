@@ -40,7 +40,7 @@ const Routers = () => {
       element: <AdminRentalsByEquipment />,
     },
     {
-      path: '/admin/rentals/status/:id',
+      path: '/admin/rentals/status',
       element: <AdminRentalStatus />,
     },
     { path: '/guest', element: <Guest /> },

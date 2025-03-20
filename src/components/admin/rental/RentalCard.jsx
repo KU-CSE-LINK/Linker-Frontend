@@ -20,6 +20,9 @@ import { useNavigate } from 'react-router-dom';
 const RentalCard = ({ rental }) => {
   const navigate = useNavigate();
   const param = new URLSearchParams({ id: rental.id });
+  const onClick = () => {
+    navigate({ pathname: '/admin/rentals/status', search: param.toString() });
+  };
 
   return (
     <Container>
@@ -46,7 +49,7 @@ const RentalCard = ({ rental }) => {
         </RequestInfo>
       </CardContainer>
       <ActionButton size="lg">
-        <ButtonContent onClick={() => navigate({ pathname: '/admin/rentals/status', search: param.toString() })}>신청 내역 관리하기</ButtonContent>
+        <ButtonContent onClick={onClick}>신청 내역 관리하기</ButtonContent>
       </ActionButton>
     </Container>
   );

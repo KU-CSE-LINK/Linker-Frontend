@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -22,6 +23,12 @@ const RentalStatusButton = ({ children, onClick, isClicked }) => {
       <ButtonContent $isClicked={isClicked}>{children}</ButtonContent>
     </Container>
   );
+};
+
+RentalStatusButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isClicked: PropTypes.bool.isRequired,
 };
 
 export default RentalStatusButton;

@@ -3,12 +3,8 @@ import Header from '../../../components/header/Header.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 import RentalCard from '../../../components/admin/rental/RentalCard.jsx';
 import laptopStand from '../../../assets/laptopStand.svg';
-import ActionButton from '../../../components/button/ActionButton.jsx';
-import { useNavigate } from 'react-router-dom';
 
 const AdminRentals = () => {
-  const navigate = useNavigate();
-
   if (!rentals.length) {
     return (
       <Container>
@@ -31,9 +27,7 @@ const AdminRentals = () => {
       <TitleText>신청 내역 관리</TitleText>
       <SubContainer>
         {rentals.map((rental) => (
-          <>
-            <RentalCard key={rental.studentId} rental={rental} />
-          </>
+          <RentalCard key={rental.studentId} rental={rental} />
         ))}
       </SubContainer>
       <Footer />

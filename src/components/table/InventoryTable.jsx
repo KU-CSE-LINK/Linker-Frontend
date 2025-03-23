@@ -1,6 +1,7 @@
 import LendButton from '../button/LendButton.jsx';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useEquipment from '../../api/equipments/equipment.js';
 import {
   AvailableCount,
   Divider,
@@ -15,13 +16,16 @@ import {
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
+  const { data, loading, error } = useEquipment();
+
   const navigate = useNavigate();
   const [equipments, setEquipments] = useState([
     { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },
     { name: '노트북 거치대', available: 8, max: 15 },
     { name: '노트북 C 타입 충전기', available: 0, max: 5 },
   ]);
-
+  if (loading) return <p>🔄 기자재 목록을 불러오는 중...</p>;
+  if (error) return <p>❌ 오류 발생: {error}</p>;
   return (
     <TableContainer>
       <TableRow>

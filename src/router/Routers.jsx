@@ -7,6 +7,7 @@ import AdminMain from '../pages/admin/main/AdminMain';
 import AdminRentals from '../pages/admin/rental/AdminRentals.jsx';
 import RentalComplete from '../pages/rental/rentalComplete/RentalComplete.jsx';
 import Guest from '../pages/guest/Guest';
+import AdminRentalStatus from '../pages/admin/rental/AdminRentalStatus.jsx';
 import RentalCheck from '../pages/rentalcheck/RentalCheck.jsx';
 
 const Routers = () => {
@@ -38,6 +39,10 @@ const Routers = () => {
     {
       path: '/admin/rentals/equipments',
       element: <AdminRentalsByEquipment />,
+    },
+    {
+      path: '/admin/rentals/status',
+      element: <AdminRentalStatus />,
     },
     { path: '/guest', element: <Guest /> },
     { path: '/check', element: <RentalCheck /> },

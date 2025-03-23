@@ -69,6 +69,8 @@ const RentalStatusCard = ({ rental }) => {
         return '대여 준비 완료';
       case 'RENTED':
         return '대여중';
+      case 'RETURNED':
+        return '반납 완료';
     }
   };
   return (

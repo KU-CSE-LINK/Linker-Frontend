@@ -1,5 +1,6 @@
 import LendButton from '../button/LendButton.jsx';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   AvailableCount,
   Divider,
@@ -14,6 +15,7 @@ import {
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
+  const navigate = useNavigate();
   const [equipments, setEquipments] = useState([
     { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },
     { name: '노트북 거치대', available: 8, max: 15 },
@@ -46,7 +48,7 @@ const InventoryTable = () => {
         </TableColumn>
         <TableColumn>
           {equipments.map((equipment, index) => (
-            <LendButton key={index} disabled={equipment.available} />
+            <LendButton key={index} disabled={equipment.available === 0} onClick={() => navigate('/rental')} />
           ))}
         </TableColumn>
       </TableRow>

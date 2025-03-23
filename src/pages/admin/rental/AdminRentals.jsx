@@ -33,7 +33,6 @@ const AdminRentals = () => {
         {rentals.map((rental) => (
           <>
             <RentalCard key={rental.studentId} rental={rental} />
-            <ActionButton onClick={() => navigate('/admin/rentals/equipments')}>신청 내역 관리하기</ActionButton>
           </>
         ))}
       </SubContainer>

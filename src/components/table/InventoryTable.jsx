@@ -52,7 +52,7 @@ const InventoryTable = () => {
         </TableColumn>
         <TableColumn>
           {equipments.map((equipment, index) => (
-            <LendButton key={index} disabled={equipment.available === 0} onClick={() => navigate('/guest')} />
+            <LendButton key={index} disabled={equipment.available === 0} onClick={() => navigate('/rental')} />
           ))}
         </TableColumn>
       </TableRow>

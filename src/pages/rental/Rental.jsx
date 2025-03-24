@@ -51,7 +51,7 @@ const Rental = () => {
       phoneNumber: phoneInputRef.current?.value || '',
       name: nameInputRef.current?.value || '',
       studentId: Number(studentIdInputRef.current?.value) || 0,
-      rentalType: rentalType === 'short' ? '단기' : '장기',
+      rentalType: rentalType === 'short' ? 'SHORT_TERM' : 'LONG_TERM',
     };
 
     submitRental(data);

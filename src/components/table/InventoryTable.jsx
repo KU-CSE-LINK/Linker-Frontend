@@ -1,7 +1,7 @@
 import LendButton from '../button/LendButton.jsx';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useEquipment from '../../api/equipments/equipment.js';
+import useEquipment from '../../api/equipments/useEquipment.js';
 import {
   AvailableCount,
   Divider,
@@ -17,7 +17,7 @@ import {
 
 const InventoryTable = () => {
   const { data, loading, error } = useEquipment();
-
+  console.log(data);
   const navigate = useNavigate();
   const [equipments, setEquipments] = useState([
     { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },

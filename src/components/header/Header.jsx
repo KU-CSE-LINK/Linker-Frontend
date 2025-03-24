@@ -1,7 +1,11 @@
 import 'react';
 import styled from 'styled-components';
 import profileIcon from '../../assets/profileIcon.svg';
+<<<<<<< HEAD
 import useAuth from '../../hooks/auth/useAuth.jsx';
+=======
+import postDiscordLink from '../../apis/auth/postDiscordLink';
+>>>>>>> e622ded (Feat: Header에 연결)
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -30,7 +34,11 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HiddenIcon src={profileIcon} alt="헤더바 아이콘" />
+<<<<<<< HEAD
       <HeaderTitle onClick={sendLoginUrl}>LINKER</HeaderTitle>
+=======
+      <HeaderTitle onClick={() => postDiscordLink()}>LINKER</HeaderTitle>
+>>>>>>> e622ded (Feat: Header에 연결)
       <img src={profileIcon} alt="헤더바 아이콘" />
     </HeaderContainer>
   );

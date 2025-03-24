@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HiddenIcon src={profileIcon} alt="헤더바 아이콘" />
-      <HeaderTitle onClick={() => postDiscordLink()}>LINKER</HeaderTitle>
+      <HeaderTitle onClick={postDiscordLink}>LINKER</HeaderTitle>
       <img src={profileIcon} alt="헤더바 아이콘" />
     </HeaderContainer>
   );

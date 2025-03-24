@@ -9,6 +9,7 @@ import RentalComplete from '../pages/rental/rentalComplete/RentalComplete.jsx';
 import Guest from '../pages/guest/Guest';
 import AdminRentalStatus from '../pages/admin/rental/AdminRentalStatus.jsx';
 import RentalCheck from '../pages/rentalcheck/RentalCheck.jsx';
+import LoginRedirect from '../pages/admin/LoginRedirect.jsx';
 
 const Routers = () => {
   const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const Routers = () => {
     },
     { path: '/guest', element: <Guest /> },
     { path: '/check', element: <RentalCheck /> },
+    {
+      path: '/login',
+      element: <LoginRedirect />,
+    },
   ]);
 
   return <RouterProvider router={router} />;

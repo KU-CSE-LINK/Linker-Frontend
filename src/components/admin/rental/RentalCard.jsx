@@ -28,7 +28,7 @@ const RentalCard = ({ rental }) => {
     <Container>
       <CardContainer>
         <UserProfile>
-          <Date>{rental.createdAt}</Date>
+          <Date>{rental.equipment.createdAt}</Date>
           <UserIcon src={request} alt="requestIcon" />
           <UserName>{rental.name}</UserName>
         </UserProfile>
@@ -61,14 +61,17 @@ RentalCard.propTypes = {
     equipment: PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
-      imgUrl: PropTypes.string,
+      imageUrl: PropTypes.string,
       totalStock: PropTypes.number,
       availableStock: PropTypes.number,
+      createdAt: PropTypes.string,
+      updatedAt: PropTypes.string,
     }),
     phoneNumber: PropTypes.string,
     name: PropTypes.string,
     studentId: PropTypes.number,
     rentalType: PropTypes.string,
+    returnDate: PropTypes.string,
     status: PropTypes.string,
     createdAt: PropTypes.string,
     updatedAt: PropTypes.string,

@@ -11,7 +11,6 @@ import {
   TableHeader,
   TableRow,
   TotalCount,
-  UnavailableCount,
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
@@ -31,25 +30,21 @@ const InventoryTable = () => {
 
       <TableRow>
         <TableColumn>
-          {data.slice(0, 3).map((equipment) => (
+          {data.map((equipment) => (
             <EquipmentLabel key={equipment.id}>{equipment.name}</EquipmentLabel>
           ))}
         </TableColumn>
 
         <TableColumn>
-          {data.slice(0, 3).map((equipment) => (
+          {data.map((equipment) => (
             <EquipmentCount key={equipment.id}>
-              {equipment.availableStock !== 0 ? (
-                <AvailableCount>{equipment.availableStock}</AvailableCount>
-              ) : (
-                <UnavailableCount>{equipment.availableStock}</UnavailableCount>
-              )}
+              <AvailableCount available={equipment.availableStock !== 0}>{equipment.availableStock}</AvailableCount>
               <TotalCount>/ {equipment.totalStock}</TotalCount>
             </EquipmentCount>
           ))}
         </TableColumn>
         <TableColumn>
-          {data.slice(0, 3).map((equipment) => (
+          {data.map((equipment) => (
             <LendButton key={equipment.id} disabled={equipment.availableStock === 0} onClick={() => navigate('/rental')} />
           ))}
         </TableColumn>

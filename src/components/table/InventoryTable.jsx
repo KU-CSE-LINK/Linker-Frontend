@@ -1,4 +1,6 @@
 import LendButton from '../button/LendButton.jsx';
+import { useEffect, useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import useEquipment from '../../apis/equipments/useEquipment.js';
 import {
@@ -14,11 +16,24 @@ import {
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
-  const { data, loading, error } = useEquipment();
+  const fetchEquipment = useEquipment();
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  if (loading) return <p>🔄 기자재 목록을 불러오는 중...</p>;
-  if (error) return <p>❌ 오류 발생: {error}</p>;
+  useEffect(() => {
+    fetchEquipment()
+      .then((result) => {
+        setData(result);
+      })
+      .catch((err) => {
+        setError(err.message || '에러 발생');
+      });
+  }, []);
+
+  if (error) return <div>❌ 오류: {error}</div>;
+  if (!data) return <div>⌛ 로딩 중...</div>;
+
   return (
     <TableContainer>
       <TableRow>

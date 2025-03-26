@@ -72,6 +72,8 @@ const Rental = () => {
       rentalType: rentalType === 'short' ? 'SHORT_TERM' : 'LONG_TERM',
     };
 
+    localStorage.setItem('userName', name);
+    localStorage.setItem('userStudentId', studentId);
     submitRental(data);
   };
 

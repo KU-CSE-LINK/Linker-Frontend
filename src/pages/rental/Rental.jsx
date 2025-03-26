@@ -37,20 +37,38 @@ const Rental = () => {
   const submitRental = useRentalRequest();
 
   const handleRentalSubmit = async () => {
-    const selectedIndex = equipmentRefs.findIndex((ref) => ref.current?.checked);
+    const selectedEquipment = dummyEquipments.find((_, index) => equipmentRefs[index].current?.checked);
 
-    if (selectedIndex === -1) {
-      alert('하나 이상의 기자재를 선택해주세요.');
+    if (!selectedEquipment) {
+      alert('기자재를 선택해주세요.');
       return;
     }
 
-    const selectedEquipment = dummyEquipments[selectedIndex];
+    const rawPhone = phoneInputRef.current?.value || '';
+    const cleanedPhone = rawPhone.replace(/-/g, '');
+    const name = nameInputRef.current?.value?.trim() || '';
+    const studentId = studentIdInputRef.current?.value || '';
+
+    if (!name) {
+      alert('이름을 입력해주세요.');
+      return;
+    }
+
+    if (!cleanedPhone || !/^\d{10,11}$/.test(cleanedPhone)) {
+      alert('전화번호를 정확히 입력해주세요. (숫자만 10~11자리)');
+      return;
+    }
+
+    if (!/^\d{9}$/.test(studentId)) {
+      alert('학번은 9자리 숫자여야 합니다.');
+      return;
+    }
 
     const data = {
       equipmentId: selectedEquipment.id,
-      phoneNumber: phoneInputRef.current?.value || '',
-      name: nameInputRef.current?.value || '',
-      studentId: Number(studentIdInputRef.current?.value) || 0,
+      phoneNumber: cleanedPhone,
+      name,
+      studentId: Number(studentId),
       rentalType: rentalType === 'short' ? 'SHORT_TERM' : 'LONG_TERM',
     };
 

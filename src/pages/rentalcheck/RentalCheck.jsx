@@ -1,39 +1,45 @@
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Container, GuestName, SubText, BoxContainer } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
-import itemPlaceholder from '../../assets/Itemplaceholder.svg';
+import getRentalData from '../../apis/rental/getRentalData';
+
 const RentalCheck = () => {
-  const userData = {
-    name: '장유정',
-    rentals: [
-      {
-        id: 1,
-        itemName: '블루투스 키보드 & 마우스 세트',
-        imageSrc: itemPlaceholder,
-        status: '신청완료',
-        rentalDate: '2025-01-24',
-        returnDate: '2025-02-24',
-      },
-      {
-        id: 2,
-        itemName: '노트북 거치대',
-        imageSrc: itemPlaceholder,
-        status: '대여 준비 완료',
-        rentalDate: '2025-01-10',
-        returnDate: '2025-02-20',
-      },
-    ],
-  };
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get('name');
+  const studentId = searchParams.get('studentId');
+
+  const [rentalData, setRentalData] = useState([]);
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getRentalData({ name, studentId });
+        setRentalData(data);
+        if (data.length > 0) setUserName(data[0].name);
+        console.log(data);
+      } catch (error) {
+        alert('대여 내역 조회 중 문제가 발생했습니다.');
+        console.error('[ERROR] 대여 내역 불러오기 실패:', error);
+      }
+    };
+
+    if (name && studentId) {
+      fetchData();
+    }
+  }, [name, studentId]);
 
   return (
     <Container>
       <Header />
       <SubText>
-        <GuestName>{userData.name}</GuestName>님의 신청내역
+        <GuestName>{userName}</GuestName>님의 신청내역
       </SubText>
       <BoxContainer>
-        {userData.rentals.map((rental) => (
+        {rentalData.map((rental) => (
           <RentalBox
             key={rental.id}
             itemName={rental.itemName}

@@ -1,6 +1,8 @@
 import LendButton from '../button/LendButton.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
+import useEquipment from '../../apis/equipments/useEquipment.js';
 import {
   AvailableCount,
   Divider,
@@ -11,16 +13,26 @@ import {
   TableHeader,
   TableRow,
   TotalCount,
-  UnavailableCount,
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
+  const fetchEquipment = useEquipment();
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [equipments, setEquipments] = useState([
-    { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },
-    { name: '노트북 거치대', available: 8, max: 15 },
-    { name: '노트북 C 타입 충전기', available: 0, max: 5 },
-  ]);
+
+  useEffect(() => {
+    fetchEquipment()
+      .then((result) => {
+        setData(result);
+      })
+      .catch((err) => {
+        setError(err.message || '에러 발생');
+      });
+  }, []);
+
+  if (error) return <div>❌ 오류: {error}</div>;
+  if (!data) return <div>⌛ 로딩 중...</div>;
 
   return (
     <TableContainer>
@@ -33,22 +45,22 @@ const InventoryTable = () => {
 
       <TableRow>
         <TableColumn>
-          {equipments.map((equipment, index) => (
-            <EquipmentLabel key={index}>{equipment.name}</EquipmentLabel>
+          {data.map((equipment) => (
+            <EquipmentLabel key={equipment.id}>{equipment.name}</EquipmentLabel>
           ))}
         </TableColumn>
 
         <TableColumn>
-          {equipments.map((equipment, index) => (
-            <EquipmentCount key={index}>
-              {equipment.available !== 0 ? <AvailableCount>{equipment.available}</AvailableCount> : <UnavailableCount>{equipment.available}</UnavailableCount>}
-              <TotalCount>/ {equipment.max}</TotalCount>
+          {data.map((equipment) => (
+            <EquipmentCount key={equipment.id}>
+              <AvailableCount available={equipment.availableStock !== 0}>{equipment.availableStock}</AvailableCount>
+              <TotalCount>/ {equipment.totalStock}</TotalCount>
             </EquipmentCount>
           ))}
         </TableColumn>
         <TableColumn>
-          {equipments.map((equipment, index) => (
-            <LendButton key={index} disabled={equipment.available === 0} onClick={() => navigate('/rental')} />
+          {data.map((equipment) => (
+            <LendButton key={equipment.id} disabled={equipment.availableStock === 0} onClick={() => navigate('/rental')} />
           ))}
         </TableColumn>
       </TableRow>

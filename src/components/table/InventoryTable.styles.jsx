@@ -47,12 +47,7 @@ export const EquipmentCount = styled.div`
 export const AvailableCount = styled.div`
   font-size: 20px;
   font-weight: 300;
-`;
-
-export const UnavailableCount = styled.div`
-  font-size: 20px;
-  font-weight: 300;
-  color: red;
+  color: ${({ available }) => (available ? 'inherit' : 'red')};
 `;
 
 export const TotalCount = styled.div`

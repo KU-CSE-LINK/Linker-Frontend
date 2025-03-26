@@ -4,7 +4,7 @@ import axios from 'axios';
 const useRentalRequest = () => {
   const navigate = useNavigate();
 
-  const submitRental = async (data) => {
+  const submitRental = (data) => {
     axios
       .post('http://localhost:8080/rental', data)
       .then((response) => {

@@ -36,7 +36,7 @@ const Rental = () => {
   const [rentalType, setRentalType] = useState(null);
   const submitRental = useRentalRequest();
 
-  const handleRentalSubmit = async () => {
+  const handleRentalSubmit = () => {
     const selectedEquipment = dummyEquipments.find((_, index) => equipmentRefs[index].current?.checked);
 
     if (!selectedEquipment) {

@@ -16,7 +16,6 @@ import {
 
 const InventoryTable = () => {
   const { data, loading, error } = useEquipment();
-  console.log(data);
   const navigate = useNavigate();
 
   if (loading) return <p>🔄 기자재 목록을 불러오는 중...</p>;

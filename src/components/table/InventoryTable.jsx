@@ -1,5 +1,4 @@
 import LendButton from '../button/LendButton.jsx';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useEquipment from '../../apis/equipments/useEquipment.js';
 import {
@@ -19,11 +18,7 @@ const InventoryTable = () => {
   const { data, loading, error } = useEquipment();
   console.log(data);
   const navigate = useNavigate();
-  const [equipments, setEquipments] = useState([
-    { name: `블루투스 키보드  &\n 마우스 세트`, available: 15, max: 15 },
-    { name: '노트북 거치대', available: 8, max: 15 },
-    { name: '노트북 C 타입 충전기', available: 0, max: 5 },
-  ]);
+
   if (loading) return <p>🔄 기자재 목록을 불러오는 중...</p>;
   if (error) return <p>❌ 오류 발생: {error}</p>;
   return (
@@ -37,22 +32,26 @@ const InventoryTable = () => {
 
       <TableRow>
         <TableColumn>
-          {equipments.map((equipment, index) => (
-            <EquipmentLabel key={index}>{equipment.name}</EquipmentLabel>
+          {data.slice(0, 3).map((equipment) => (
+            <EquipmentLabel key={equipment.id}>{equipment.name}</EquipmentLabel>
           ))}
         </TableColumn>
 
         <TableColumn>
-          {equipments.map((equipment, index) => (
-            <EquipmentCount key={index}>
-              {equipment.available !== 0 ? <AvailableCount>{equipment.available}</AvailableCount> : <UnavailableCount>{equipment.available}</UnavailableCount>}
-              <TotalCount>/ {equipment.max}</TotalCount>
+          {data.slice(0, 3).map((equipment) => (
+            <EquipmentCount key={equipment.id}>
+              {equipment.availableStock !== 0 ? (
+                <AvailableCount>{equipment.availableStock}</AvailableCount>
+              ) : (
+                <UnavailableCount>{equipment.availableStock}</UnavailableCount>
+              )}
+              <TotalCount>/ {equipment.totalStock}</TotalCount>
             </EquipmentCount>
           ))}
         </TableColumn>
         <TableColumn>
-          {equipments.map((equipment, index) => (
-            <LendButton key={index} disabled={equipment.available === 0} onClick={() => navigate('/rental')} />
+          {data.slice(0, 3).map((equipment) => (
+            <LendButton key={equipment.id} disabled={equipment.availableStock === 0} onClick={() => navigate('/rental')} />
           ))}
         </TableColumn>
       </TableRow>

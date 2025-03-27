@@ -11,7 +11,21 @@ const useAdminRental = () => {
     return response.data;
   };
 
-  return { getAdminRental };
+  const updateStatus = (id, status) => {
+    return adminApi
+      .post('/rental', {
+        id: id,
+        status: status,
+      })
+      .then((response) => {
+        return response.data.status;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return { getAdminRental, updateStatus };
 };
 
 export default useAdminRental;

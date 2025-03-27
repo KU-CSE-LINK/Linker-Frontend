@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RentalStatusCard from '../../../components/admin/rental/RentalStatusCard';
 import RentalStatusButton from '../../../components/button/RentalStatusButton';
 import Header from '../../../components/header/Header';
-import useUpdateStatus from '../../../hooks/admin/useUpdateStatus';
 import { useSearchParams } from 'react-router-dom';
 import useAdminRental from '../../../hooks/admin/useAdminRental.jsx';
 
@@ -49,22 +48,20 @@ const AdminRentalStatus = () => {
   const [rentalData, setRentalData] = useState();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
-  const { getAdminRental } = useAdminRental();
-  const updateStatus = useUpdateStatus();
+  const { getAdminRental, updateStatus } = useAdminRental();
 
   useEffect(() => {
     if (!id) return;
-    const fetchRentalData = async () => {
+
+    (async () => {
       const rental = await getAdminRental(id);
       setRentalData(rental);
-    };
-    fetchRentalData();
+    })();
   }, [id]);
 
   const onClick = async (status) => {
-    await updateStatus(id, status);
-    const updatedRentalData = await getAdminRental(id);
-    setRentalData(updatedRentalData);
+    const updatedStatus = await updateStatus(id, status);
+    setRentalData((prev) => ({ ...prev, status: updatedStatus }));
   };
 
   return (

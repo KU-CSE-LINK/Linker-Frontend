@@ -73,6 +73,10 @@ const RentalStatusCard = ({ rental }) => {
         return '반납 완료';
     }
   };
+  const formatDate = (date) => {
+    const formattedDate = new Date(date);
+    return `${String(formattedDate.getFullYear()).padStart(2, '0')}-${String(formattedDate.getMonth() + 1).padStart(2, '0')}-${String(formattedDate.getDate()).padStart(2, '0')}`;
+  };
   return (
     <Container>
       <UserProfile>
@@ -90,11 +94,11 @@ const RentalStatusCard = ({ rental }) => {
         </InfoItem>
         <InfoItem>
           <InfoLabel>대여일</InfoLabel>
-          <InfoValue>{rental.createdAt}</InfoValue>
+          <InfoValue>{formatDate(rental.createdAt)}</InfoValue>
         </InfoItem>
         <InfoItem>
           <InfoLabel>반납일</InfoLabel>
-          <InfoValue>{/*서버에서 받아올 예정*/}</InfoValue>
+          <InfoValue>{formatDate(rental.returnDate)}</InfoValue>
         </InfoItem>
         <InfoItem>
           <InfoLabel>신청 상황</InfoLabel>

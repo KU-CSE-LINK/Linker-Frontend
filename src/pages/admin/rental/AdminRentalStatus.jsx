@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RentalStatusCard from '../../../components/admin/rental/RentalStatusCard';
 import RentalStatusButton from '../../../components/button/RentalStatusButton';
-import { useParams } from 'react-router-dom';
 import Header from '../../../components/header/Header';
+import useUpdateStatus from '../../../apis/admin/useUpdateStatus';
+import { useSearchParams } from 'react-router-dom';
+import useAdminRental from '../../../apis/admin/useAdminRental';
 
 const Wrapper = styled.div`
   padding: 50px 75px 75px 75px;
@@ -44,12 +46,24 @@ const AdminRentalStatus = () => {
     { type: 'RENTED', label: '대여중' },
     { type: 'RETURNED', label: '반납 완료' },
   ];
-  const [rentalData, setRentalData] = useState(null);
-  const { id } = useParams();
+  const [rentalData, setRentalData] = useState();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+  const getAdminRental = useAdminRental();
+  const updateStatus = useUpdateStatus();
   useEffect(() => {
     if (!id) return;
-    console.log(id);
+    const fetchRentalData = async () => {
+      const rental = await getAdminRental(id);
+      setRentalData(rental);
+    };
+    fetchRentalData();
   }, [id]);
+  const onClick = async (status) => {
+    await updateStatus(id, status);
+    const updatedRentalData = await getAdminRental(id);
+    setRentalData(updatedRentalData);
+  };
 
   return (
     <>
@@ -60,14 +74,18 @@ const AdminRentalStatus = () => {
           <PageLink>물품 별로 보기 →</PageLink>
         </TitleWrapper>
         <ContentWrapper>
-          <RentalStatusCard rental={rentalData} />
-          <ButtonContainer>
-            {statusButtons.map(({ type, label }) => (
-              <RentalStatusButton key={type} onClick={() => console.log(type)} isClicked={rentalData.status === type}>
-                {label}
-              </RentalStatusButton>
-            ))}
-          </ButtonContainer>
+          {rentalData && (
+            <>
+              <RentalStatusCard rental={rentalData} />
+              <ButtonContainer>
+                {statusButtons.map(({ type, label }) => (
+                  <RentalStatusButton key={type} onClick={() => onClick(type)} isClicked={rentalData.status === type}>
+                    {label}
+                  </RentalStatusButton>
+                ))}
+              </ButtonContainer>
+            </>
+          )}
         </ContentWrapper>
       </Wrapper>
     </>

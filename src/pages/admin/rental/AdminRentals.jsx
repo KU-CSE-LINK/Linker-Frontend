@@ -40,7 +40,7 @@ const AdminRentals = () => {
       <TitleText>신청 내역 관리</TitleText>
       <SubContainer>
         {rentals.map((rental) => (
-          <RentalCard key={rental.studentId} rental={rental} />
+          <RentalCard key={rental.id} rental={rental} />
         ))}
       </SubContainer>
       <Footer />

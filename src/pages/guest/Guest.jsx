@@ -3,7 +3,7 @@ import Header from '../../components/header/Header';
 import { Container, InputContainer, InputPanel, SubContainer, SubmitButton, TitleText } from './Guest.styles';
 import InputWithLabel from '../../components/input/InputWithLabel';
 import Footer from '../../components/footer/footer';
-import useRental from '../../apis/rental/useRental.js';
+import useRental from '../../hooks/rental/useRental.js';
 
 const Guest = () => {
   const nameInputRef = createRef();

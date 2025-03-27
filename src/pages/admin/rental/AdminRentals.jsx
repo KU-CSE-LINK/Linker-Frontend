@@ -2,7 +2,7 @@ import { Container, EmptyCard, EmptyContent, EmptyTitle, SubContainer, TitleText
 import Header from '../../../components/header/Header.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 import RentalCard from '../../../components/admin/rental/RentalCard.jsx';
-import useRentalList from '../../../apis/admin/useRentalList.js';
+import useRentalList from '../../../hooks/admin/useRentalList.js';
 import { useEffect, useState } from 'react';
 
 const AdminRentals = () => {

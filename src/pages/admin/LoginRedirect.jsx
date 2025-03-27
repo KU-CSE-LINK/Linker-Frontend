@@ -1,5 +1,5 @@
 import React from 'react';
-import useDiscordLogin from '../../apis/auth/useDiscordLogin';
+import useDiscordLogin from '../../hooks/auth/useDiscordLogin';
 
 const LoginRedirect = () => {
   const { loading, error } = useDiscordLogin();

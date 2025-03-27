@@ -2,7 +2,7 @@ import LendButton from '../button/LendButton.jsx';
 import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import useEquipment from '../../apis/equipments/useEquipment.js';
+import useEquipment from '../../hooks/equipments/useEquipment.js';
 import {
   AvailableCount,
   Divider,

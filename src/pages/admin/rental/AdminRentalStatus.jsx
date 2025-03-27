@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import RentalStatusCard from '../../../components/admin/rental/RentalStatusCard';
 import RentalStatusButton from '../../../components/button/RentalStatusButton';
 import Header from '../../../components/header/Header';
-import useUpdateStatus from '../../../apis/admin/useUpdateStatus';
+import useUpdateStatus from '../../../hooks/admin/useUpdateStatus';
 import { useSearchParams } from 'react-router-dom';
-import useAdminRental from '../../../apis/admin/useAdminRental';
+import useAdminRental from '../../../hooks/admin/useAdminRental';
 
 const Wrapper = styled.div`
   padding: 50px 75px 75px 75px;

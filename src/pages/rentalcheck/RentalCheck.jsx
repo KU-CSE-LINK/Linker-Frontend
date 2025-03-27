@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Container, GuestName, SubText, BoxContainer } from './RentalCheck.styles';
+import { BoxContainer, Container, GuestName, SubText } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
-import getRentalData from '../../apis/rental/getRentalData';
+import getRentalData from '../../hooks/rental/getRentalData';
 
 const RentalCheck = () => {
   const [searchParams] = useSearchParams();

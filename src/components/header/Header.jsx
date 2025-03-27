@@ -1,7 +1,7 @@
 import 'react';
 import styled from 'styled-components';
 import profileIcon from '../../assets/profileIcon.svg';
-import postDiscordLink from '../../apis/auth/postDiscordLink';
+import postDiscordLink from '../../hooks/auth/postDiscordLink';
 
 const HeaderContainer = styled.div`
   display: flex;

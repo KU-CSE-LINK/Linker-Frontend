@@ -3,12 +3,23 @@ import useApi from '../useApi.jsx';
 const useAdminRental = () => {
   const { adminApi } = useApi();
 
-  const getAdminRental = async (id) => {
+  const getRentalById = async (id) => {
     const response = await adminApi.get('/rental', {
       params: { id },
     });
 
     return response.data;
+  };
+
+  const getAllRentals = () => {
+    return adminApi
+      .get('/rentals')
+      .then((response) => {
+        return response.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const updateStatus = (id, status) => {
@@ -25,7 +36,7 @@ const useAdminRental = () => {
       });
   };
 
-  return { getAdminRental, updateStatus };
+  return { getAdminRental: getRentalById, updateStatus, getAllRentals };
 };
 
 export default useAdminRental;

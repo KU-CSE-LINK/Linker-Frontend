@@ -2,7 +2,7 @@ import LendButton from '../button/LendButton.jsx';
 import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import useEquipment from '../../hooks/equipments/useEquipment.js';
+import useEquipment from '../../hooks/equipments/useEquipment.jsx';
 import {
   AvailableCount,
   Divider,
@@ -16,13 +16,13 @@ import {
 } from './InventoryTable.styles';
 
 const InventoryTable = () => {
-  const fetchEquipment = useEquipment();
+  const { getAllEquipments } = useEquipment();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchEquipment()
+    getAllEquipments()
       .then((result) => {
         setData(result);
       })

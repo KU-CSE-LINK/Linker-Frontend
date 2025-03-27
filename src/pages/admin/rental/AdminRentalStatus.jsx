@@ -5,7 +5,7 @@ import RentalStatusButton from '../../../components/button/RentalStatusButton';
 import Header from '../../../components/header/Header';
 import useUpdateStatus from '../../../hooks/admin/useUpdateStatus';
 import { useSearchParams } from 'react-router-dom';
-import useAdminRental from '../../../hooks/admin/useAdminRental';
+import useAdminRental from '../../../hooks/admin/useAdminRental.jsx';
 
 const Wrapper = styled.div`
   padding: 50px 75px 75px 75px;
@@ -49,8 +49,9 @@ const AdminRentalStatus = () => {
   const [rentalData, setRentalData] = useState();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
-  const getAdminRental = useAdminRental();
+  const { getAdminRental } = useAdminRental();
   const updateStatus = useUpdateStatus();
+
   useEffect(() => {
     if (!id) return;
     const fetchRentalData = async () => {
@@ -59,6 +60,7 @@ const AdminRentalStatus = () => {
     };
     fetchRentalData();
   }, [id]);
+
   const onClick = async (status) => {
     await updateStatus(id, status);
     const updatedRentalData = await getAdminRental(id);

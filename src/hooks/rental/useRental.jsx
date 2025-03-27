@@ -1,16 +1,16 @@
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import useApi from '../useApi.jsx';
 
 const useRental = () => {
   const navigate = useNavigate();
+  const { api } = useApi();
 
   const getRentals = (data) => {
     console.log(data);
-    axios
-      .get('http://localhost:8080/rentals', { params: data })
-      .then(() => {
-        const param = new URLSearchParams(data);
-        navigate({ pathname: '/check', search: param.toString() });
+    return api
+      .get('/rentals', { params: data })
+      .then((response) => {
+        return response.data;
       })
       .catch((error) => {
         console.error('[ERROR] 대여 신청 조회 실패:', error);
@@ -19,8 +19,8 @@ const useRental = () => {
   };
 
   const submitRental = (data) => {
-    axios
-      .post('http://localhost:8080/rental', data)
+    api
+      .post('/rental', data)
       .then((response) => {
         console.log('[DEBUG] 대여 신청 성공:', response.data);
 

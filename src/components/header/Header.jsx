@@ -1,7 +1,7 @@
 import 'react';
 import styled from 'styled-components';
 import profileIcon from '../../assets/profileIcon.svg';
-import postDiscordLink from '../../hooks/auth/postDiscordLink';
+import useAuth from '../../hooks/auth/useAuth.jsx';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -25,10 +25,12 @@ const HiddenIcon = styled.img`
 `;
 
 const Header = () => {
+  const { sendLoginUrl } = useAuth();
+
   return (
     <HeaderContainer>
       <HiddenIcon src={profileIcon} alt="헤더바 아이콘" />
-      <HeaderTitle onClick={postDiscordLink}>LINKER</HeaderTitle>
+      <HeaderTitle onClick={sendLoginUrl}>LINKER</HeaderTitle>
       <img src={profileIcon} alt="헤더바 아이콘" />
     </HeaderContainer>
   );

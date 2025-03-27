@@ -20,7 +20,7 @@ import EquipmentCheckBox from '../../components/equipment/CustomCheckBox.jsx';
 import InputWithLabel from '../../components/input/InputWithLabel.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import useRentalRequest from '../../apis/rental/useRentalRequest.js';
+import useRental from '../../apis/rental/useRental.js';
 
 const dummyEquipments = [
   { id: 1, name: '블루투스 키보드 & 마우스 세트', totalStock: 10, availableStock: 5 },
@@ -34,7 +34,7 @@ const Rental = () => {
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
   const [rentalType, setRentalType] = useState(null);
-  const submitRental = useRentalRequest();
+  const { submitRental } = useRental();
 
   const handleRentalSubmit = () => {
     const selectedEquipment = dummyEquipments.find((_, index) => equipmentRefs[index].current?.checked);
@@ -72,8 +72,6 @@ const Rental = () => {
       rentalType: rentalType === 'short' ? 'SHORT_TERM' : 'LONG_TERM',
     };
 
-    localStorage.setItem('userName', name);
-    localStorage.setItem('userStudentId', studentId);
     submitRental(data);
   };
 

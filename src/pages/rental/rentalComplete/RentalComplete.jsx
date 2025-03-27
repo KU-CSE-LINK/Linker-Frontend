@@ -1,14 +1,18 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Header from '../../../components/header/Header';
-import { Container, TitleText, SubContainer, SubTitleText, CheckBtn } from './RentalComplete.styles';
+import { CheckBtn, Container, SubContainer, SubTitleText, TitleText } from './RentalComplete.styles';
 import Footer from '../../../components/footer/footer';
 
 const RentalComplete = () => {
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get('name');
+  const studentId = searchParams.get('studentId');
+
   const navigate = useNavigate();
   const handleCheckClick = () => {
-    const userName = localStorage.getItem('userName');
-    const userStudentId = localStorage.getItem('userStudentId');
-    navigate(`/check?name=${userName}&studentId=${userStudentId}`);
+    const param = new URLSearchParams({ name, studentId });
+
+    navigate({ pathname: '/check', search: param.toString() });
   };
 
   return (

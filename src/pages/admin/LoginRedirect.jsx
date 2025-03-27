@@ -1,10 +1,15 @@
-import React from 'react';
-import useDiscordLogin from '../../apis/auth/useDiscordLogin';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import useAuth from '../../hooks/auth/useAuth.jsx';
 
 const LoginRedirect = () => {
-  const { loading, error } = useDiscordLogin();
-  if (loading) return <div>로그인 중입니다...</div>;
-  if (error) return <div>로그인 실패 : {error.message}</div>;
+  const [searchParams] = useSearchParams();
+  const code = searchParams.get('code');
+  const { login } = useAuth();
+
+  useEffect(() => {
+    login(code);
+  }, []);
 };
 
 export default LoginRedirect;

@@ -1,16 +1,10 @@
-import axios from 'axios';
-
-const equipmentApi = axios.create({
-  baseURL: 'http://localhost:8080',
-  withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+import useApi from '../useApi.jsx';
 
 const useEquipment = () => {
-  const fetchEquipment = () => {
-    return equipmentApi
+  const { api } = useApi();
+
+  const getAllEquipments = () => {
+    return api
       .get('/equipments')
       .then((response) => {
         console.log('📦 기자재 목록:', response.data);
@@ -22,7 +16,7 @@ const useEquipment = () => {
       });
   };
 
-  return fetchEquipment;
+  return { getAllEquipments };
 };
 
 export default useEquipment;

@@ -2,22 +2,23 @@ import { Container, EmptyCard, EmptyContent, EmptyTitle, SubContainer, TitleText
 import Header from '../../../components/header/Header.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 import RentalCard from '../../../components/admin/rental/RentalCard.jsx';
-import useRentalList from '../../../apis/admin/useRentalList.js';
 import { useEffect, useState } from 'react';
+import useAdminRental from '../../../hooks/admin/useAdminRental.jsx';
 
 const AdminRentals = () => {
-  const fetchRentalList = useRentalList();
-  const [data, setData] = useState(null);
+  const { getAllRentals } = useAdminRental();
+  const [rentals, setRentals] = useState(null);
   const [error, setError] = useState(null);
+
   useEffect(() => {
-    fetchRentalList()
-      .then((result) => setData(result))
+    getAllRentals()
+      .then((result) => setRentals(result))
       .catch((err) => setError(err.message || '에러 발생'));
   }, []);
 
   if (error) return <div>❌ 오류: {error}</div>;
-  if (!data) return <div>⌛ 로딩 중...</div>;
-  const rentals = data?.content || [];
+  if (!rentals) return <div>⌛ 로딩 중...</div>;
+
   if (!rentals.length) {
     return (
       <Container>

@@ -13,7 +13,7 @@ const AdminRentals = () => {
     fetchRentalList()
       .then((result) => setData(result))
       .catch((err) => setError(err.message || '에러 발생'));
-  }, [fetchRentalList]);
+  }, []);
 
   if (error) return <div>❌ 오류: {error}</div>;
   if (!data) return <div>⌛ 로딩 중...</div>;

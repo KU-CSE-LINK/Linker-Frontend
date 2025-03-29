@@ -5,7 +5,6 @@ const RentalInfos = ({ rentals }) => {
   if (!rentals.length) {
     return <RentalInfoTitle color="#9D9D9D">대여자가 없습니다.</RentalInfoTitle>;
   }
-
   return (
     <Container>
       <RentalInfoTitleContainer>
@@ -19,10 +18,9 @@ const RentalInfos = ({ rentals }) => {
             <RentalUserName>{rental.name}</RentalUserName>
           </RentalInfoCell>
           <RentalInfoCell>
-            <RentalDate>{rental.createdAt}</RentalDate>
+            <RentalDate>{rental.createdAt.split('T')[0]}</RentalDate>
           </RentalInfoCell>
           <RentalInfoCell>
-            {/*todo : 반납일자 추가*/}
             <RentalDate>{rental.rentalEndDate || '2022-10-10'}</RentalDate>
           </RentalInfoCell>
         </RentalInfo>

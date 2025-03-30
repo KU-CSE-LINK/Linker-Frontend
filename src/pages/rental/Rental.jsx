@@ -20,7 +20,7 @@ import EquipmentCheckBox from '../../components/equipment/CustomCheckBox.jsx';
 import InputWithLabel from '../../components/input/InputWithLabel.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import useRental from '../../apis/rental/useRental.js';
+import useRental from '../../hooks/rental/useRental.jsx';
 
 const dummyEquipments = [
   { id: 1, name: '블루투스 키보드 & 마우스 세트', totalStock: 10, availableStock: 5 },

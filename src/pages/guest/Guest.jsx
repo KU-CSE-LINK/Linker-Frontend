@@ -3,12 +3,15 @@ import Header from '../../components/header/Header';
 import { Container, InputContainer, InputPanel, SubContainer, SubmitButton, TitleText } from './Guest.styles';
 import InputWithLabel from '../../components/input/InputWithLabel';
 import Footer from '../../components/footer/footer';
-import useRental from '../../apis/rental/useRental.js';
+import useRental from '../../hooks/rental/useRental.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Guest = () => {
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
+
+  const navigate = useNavigate();
 
   const { getRentals } = useRental();
 
@@ -31,7 +34,11 @@ const Guest = () => {
       alert('학번을 입력해주세요.');
     }
 
-    getRentals({ name, studentId });
+    const data = { name, studentId };
+    getRentals(data).then(() => {
+      const param = new URLSearchParams(data);
+      navigate({ pathname: '/check', search: param.toString() });
+    });
   };
 
   return (

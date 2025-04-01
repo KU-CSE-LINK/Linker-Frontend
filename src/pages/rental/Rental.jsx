@@ -1,4 +1,4 @@
-import { createRef, useState } from 'react';
+import { createRef, useState, useEffect } from 'react';
 import {
   ButtonContainer,
   CheckboxContainer,
@@ -21,23 +21,29 @@ import InputWithLabel from '../../components/input/InputWithLabel.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import useRental from '../../hooks/rental/useRental.jsx';
-
-const dummyEquipments = [
-  { id: 1, name: '블루투스 키보드 & 마우스 세트', totalStock: 10, availableStock: 5 },
-  { id: 2, name: '노트북 거치대', totalStock: 5, availableStock: 0 },
-  { id: 3, name: '노트북 C타입 충전기', totalStock: 5, availableStock: 5 },
-];
+import useEquipment from '../../hooks/equipments/useEquipment.jsx';
 
 const Rental = () => {
-  const equipmentRefs = dummyEquipments.map(() => createRef());
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
   const [rentalType, setRentalType] = useState(null);
   const { submitRental } = useRental();
+  const { getAllEquipments } = useEquipment();
+  const [equipments, setEquipments] = useState([]);
+  const equipmentRefs = equipments.map(() => createRef());
 
+  useEffect(() => {
+    getAllEquipments()
+      .then((data) => {
+        setEquipments(data);
+      })
+      .catch((err) => {
+        console.log('기자재 불러오기 실패 ', err);
+      });
+  }, []);
   const handleRentalSubmit = () => {
-    const selectedEquipment = dummyEquipments.find((_, index) => equipmentRefs[index].current?.checked);
+    const selectedEquipment = equipments.find((_, index) => equipmentRefs[index].current?.checked);
 
     if (!selectedEquipment) {
       alert('기자재를 선택해주세요.');
@@ -99,7 +105,7 @@ const Rental = () => {
             <DescriptionText>중복 선택 가능</DescriptionText>
           </EquipmentTitleContainer>
           <CheckboxContainer>
-            {dummyEquipments.map((item, index) => (
+            {equipments.map((item, index) => (
               <EquipmentCheckBox key={item.id} equipment={item} ref={equipmentRefs[index]} />
             ))}
           </CheckboxContainer>

@@ -12,19 +12,22 @@ const RentalInfos = ({ rentals }) => {
         <RentalInfoTitle>대여일</RentalInfoTitle>
         <RentalInfoTitle>반납일</RentalInfoTitle>
       </RentalInfoTitleContainer>
-      {rentals.map((rental) => (
-        <RentalInfo key={rental.studentId}>
-          <RentalInfoCell>
-            <RentalUserName>{rental.name}</RentalUserName>
-          </RentalInfoCell>
-          <RentalInfoCell>
-            <RentalDate>{rental.createdAt.split('T')[0]}</RentalDate>
-          </RentalInfoCell>
-          <RentalInfoCell>
-            <RentalDate>{rental.rentalEndDate || '2022-10-10'}</RentalDate>
-          </RentalInfoCell>
-        </RentalInfo>
-      ))}
+      {rentals.map((rental) => {
+        const rentalDate = rental.createdAt?.split('T')[0] ?? '';
+        return (
+          <RentalInfo key={rental.studentId}>
+            <RentalInfoCell>
+              <RentalUserName>{rental.name}</RentalUserName>
+            </RentalInfoCell>
+            <RentalInfoCell>
+              <RentalDate>{rentalDate}</RentalDate>
+            </RentalInfoCell>
+            <RentalInfoCell>
+              <RentalDate>{rental.rentalEndDate}</RentalDate>
+            </RentalInfoCell>
+          </RentalInfo>
+        );
+      })}
     </Container>
   );
 };

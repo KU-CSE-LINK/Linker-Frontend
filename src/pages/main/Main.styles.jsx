@@ -10,12 +10,6 @@ export const Container = styled.div`
   ${mediaQueries[1]} {
     width: 100%;
     padding: 0 24px;
-    gap: 100px;
-  }
-
-  ${mediaQueries[0]} {
-    padding: 0 16px;
-    gap: 60px;
   }
 `;
 

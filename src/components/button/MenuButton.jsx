@@ -1,7 +1,7 @@
 import 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 const Container = styled.button`
   display: flex;
   box-sizing: content-box;
@@ -24,6 +24,12 @@ const Container = styled.button`
     color: #fff;
     font-weight: 600;
     border: none;
+  }
+  ${mediaQueries[0]} {
+    max-width: 210px;
+    aspect-ratio: 280/52;
+    font-size: 17px;
+    height: auto;
   }
 `;
 

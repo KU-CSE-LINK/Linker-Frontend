@@ -23,6 +23,8 @@ export const GlobalStyles = createGlobalStyle`
 
   ${mediaQueries[0]} {
     max-width: 576px;
+    margin :auto;
+    height: 100%;
   }
   } 
 `;

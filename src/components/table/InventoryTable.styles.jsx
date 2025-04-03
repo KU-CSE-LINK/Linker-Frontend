@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 export const TableContainer = styled.div`
   padding: 40px;
+  ${mediaQueries[0]} {
+    padding: 40px 0;
+  }
 `;
 
 export const TableRow = styled.div`
@@ -15,6 +18,9 @@ export const TableRow = styled.div`
 
 export const TableHeader = styled.div`
   font-size: 22px;
+  ${mediaQueries[0]} {
+    font-size: 17px;
+  }
 `;
 
 export const Divider = styled.div`
@@ -35,6 +41,13 @@ export const EquipmentLabel = styled.div`
   font-size: 20px;
   font-weight: 300;
   white-space: pre-line;
+  ${mediaQueries[0]} {
+    font-size: 15px;
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const EquipmentCount = styled.div`
@@ -42,11 +55,18 @@ export const EquipmentCount = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+  ${mediaQueries[0]} {
+    height: 41px;
+    line-height: 41px;
+  }
 `;
 
 export const AvailableCount = styled.div`
   font-size: 20px;
   font-weight: 300;
+  ${mediaQueries[0]} {
+    font-size: 15px;
+  }
   color: ${({ available }) => (available ? 'inherit' : 'red')};
 `;
 
@@ -54,4 +74,7 @@ export const TotalCount = styled.div`
   font-size: 16px;
   font-weight: 300;
   color: #9d9d9d;
+  ${mediaQueries[0]} {
+    font-size: 15px;
+  }
 `;

@@ -1,7 +1,7 @@
 import 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { forwardRef, useState } from 'react';
+import { forwardRef } from 'react';
 import CheckSvg from '../../assets/check.svg';
 import UncheckSvg from '../../assets/uncheck.svg';
 import DisabledCheckSvg from '../../assets/disabledCheck.svg';
@@ -28,13 +28,8 @@ const UnAvailableCheckboxLabel = styled.label`
   color: #d9d9d9;
 `;
 
-const CustomCheckBox = forwardRef(({ equipment }, ref) => {
-  const [checked, setChecked] = useState(false);
+const CustomCheckBox = forwardRef(({ equipment, selected, onSelect }, ref) => {
   const isAvailable = equipment.availableStock > 0;
-
-  const handleChange = () => {
-    setChecked((prevState) => !prevState);
-  };
 
   if (!isAvailable) {
     return (
@@ -46,10 +41,10 @@ const CustomCheckBox = forwardRef(({ equipment }, ref) => {
   }
 
   return (
-    <Container onClick={handleChange}>
-      <HiddenCheckbox ref={ref} checked={checked} readOnly={true} />
-      <Image src={checked ? CheckSvg : UncheckSvg} alt="체크박스" />
-      <CheckboxLabel $checked={checked}>{equipment.name}</CheckboxLabel>
+    <Container onClick={onSelect}>
+      <HiddenCheckbox ref={ref} checked={selected} readOnly={true} />
+      <Image src={selected ? CheckSvg : UncheckSvg} alt="체크박스" />
+      <CheckboxLabel $checked={selected}>{equipment.name}</CheckboxLabel>
     </Container>
   );
 });
@@ -63,6 +58,8 @@ CustomCheckBox.propTypes = {
     totalStock: PropTypes.number.isRequired,
     availableStock: PropTypes.number.isRequired,
   }).isRequired,
+  selected: PropTypes.bool.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default CustomCheckBox;

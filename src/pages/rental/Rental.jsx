@@ -29,7 +29,8 @@ const dummyEquipments = [
 ];
 
 const Rental = () => {
-  const equipmentRefs = dummyEquipments.map(() => createRef());
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState(null);
+  //const equipmentRefs = dummyEquipments.map(() => createRef());
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
@@ -37,7 +38,7 @@ const Rental = () => {
   const { submitRental } = useRental();
 
   const handleRentalSubmit = () => {
-    const selectedEquipment = dummyEquipments.find((_, index) => equipmentRefs[index].current?.checked);
+    const selectedEquipment = dummyEquipments.find((item) => item.id === selectedEquipmentId);
 
     if (!selectedEquipment) {
       alert('기자재를 선택해주세요.');
@@ -96,11 +97,11 @@ const Rental = () => {
         <EquipmentContainer>
           <EquipmentTitleContainer>
             <SubTitleText>대여할 기자재 선택</SubTitleText>
-            <DescriptionText>중복 선택 가능</DescriptionText>
+            <DescriptionText>하나만 선택 가능</DescriptionText>
           </EquipmentTitleContainer>
           <CheckboxContainer>
-            {dummyEquipments.map((item, index) => (
-              <EquipmentCheckBox key={item.id} equipment={item} ref={equipmentRefs[index]} />
+            {dummyEquipments.map((item) => (
+              <EquipmentCheckBox key={item.id} equipment={item} selected={selectedEquipmentId === item.id} onSelect={() => setSelectedEquipmentId(item.id)} />
             ))}
           </CheckboxContainer>
         </EquipmentContainer>

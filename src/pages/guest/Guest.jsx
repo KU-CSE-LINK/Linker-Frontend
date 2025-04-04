@@ -57,7 +57,7 @@ const Guest = () => {
             <InputWithLabel text={'학번'} ref={studentIdInputRef} />
           </InputPanel>
         </InputContainer>
-        <SubmitButton onClick={handleGuestSubmit}>비회원 인증하기</SubmitButton>
+        <SubmitButton onClick={handleGuestSubmit}>내역 조회하기</SubmitButton>
       </SubContainer>
       <Footer />
     </Container>

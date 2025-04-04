@@ -25,3 +25,13 @@ export const BoxContainer = styled.div`
   flex-direction: column;
   gap: 42px;
 `;
+
+export const EmptyText = styled.div`
+  height: 478px;
+  text-align: center;
+  line-height: 478px;
+  color: #9d9d9d;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+`;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { BoxContainer, Container, GuestName, SubText } from './RentalCheck.styles';
+import { BoxContainer, Container, GuestName, SubText, EmptyText } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
@@ -34,16 +34,20 @@ const RentalCheck = () => {
         <GuestName>{name}</GuestName>님의 신청내역
       </SubText>
       <BoxContainer>
-        {rentals.map((rental) => (
-          <RentalBox
-            key={rental.id}
-            itemName={''}
-            imageUrl={rental.imageUrl}
-            status={rental.status}
-            rentalDate={rental.createdAt}
-            returnDate={rental.returnDate}
-          />
-        ))}
+        {rentals.length === 0 ? (
+          <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>
+        ) : (
+          rentals.map((rental) => (
+            <RentalBox
+              key={rental.id}
+              itemName={''}
+              imageUrl={rental.imageUrl}
+              status={rental.status}
+              rentalDate={rental.createdAt}
+              returnDate={rental.returnDate}
+            />
+          ))
+        )}
       </BoxContainer>
       <Footer />
     </Container>

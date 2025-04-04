@@ -21,12 +21,9 @@ const RentalCheck = () => {
     }
 
     (async () => {
-      const res = await getRentals({ name, studentId });
-      if (Array.isArray(res)) {
+      getRentals({ name, studentId }).then((res) => {
         setRentals(res);
-      } else {
-        setRentals([]);
-      }
+      });
     })();
   }, []);
 

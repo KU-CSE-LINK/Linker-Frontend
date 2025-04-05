@@ -8,7 +8,6 @@ const Container = styled.div`
   color: #dbdbdb;
   font-size: 15px;
   font-weight: 400;
-  cursor: pointer;
 `;
 
 function Footer() {

@@ -2,7 +2,7 @@ import 'react';
 import styled from 'styled-components';
 import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,6 +12,9 @@ const Container = styled.div`
 const Label = styled.label`
   font-size: 22px;
   font-weight: 600;
+  ${mediaQueries[0]} {
+    font-size: 17px;
+  }
 `;
 
 const Input = styled.input`
@@ -19,6 +22,9 @@ const Input = styled.input`
   height: 46px;
   border-radius: 10px;
   border: 1px solid #e2e2e2;
+  ${mediaQueries[1]} {
+    height: 35px;
+  }
 `;
 
 const InputWithLabel = forwardRef(({ text, width }, ref) => {

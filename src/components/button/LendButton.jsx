@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 const Container = styled.button`
   color: ${({ disabled }) => (disabled ? '#9D9D9D' : '#fff')};
   background-color: ${({ disabled }) => (disabled ? '#F1F1F1' : '#3773F5')};
@@ -15,6 +15,9 @@ const Container = styled.button`
   border-radius: 10px;
   border: none;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  ${mediaQueries[1]} {
+    font-size: 15px;
+  }
 `;
 
 const LendButton = ({ type = 'button', onClick, disabled }) => {

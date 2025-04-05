@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,6 +7,10 @@ export const Container = styled.div`
   padding: 0 50px;
   gap: 180px;
   box-sizing: border-box;
+  ${mediaQueries[1]} {
+    width: 100%;
+    padding: 0 24px;
+  }
 `;
 
 export const SubContainer = styled.div`
@@ -15,4 +19,7 @@ export const SubContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 19px;
+  ${mediaQueries[1]} {
+    gap: 12px;
+  }
 `;

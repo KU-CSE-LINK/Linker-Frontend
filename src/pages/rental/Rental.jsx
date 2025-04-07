@@ -24,6 +24,7 @@ import useRental from '../../hooks/rental/useRental.jsx';
 import useEquipment from '../../hooks/equipments/useEquipment.jsx';
 
 const Rental = () => {
+  const buttonRef = createRef();
   const [selectedEquipmentId, setSelectedEquipmentId] = useState(null);
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
@@ -44,10 +45,12 @@ const Rental = () => {
       });
   }, []);
   const handleRentalSubmit = () => {
+    buttonRef.current.disabled = true;
     const selectedEquipment = equipments.find((_, index) => equipmentRefs[index].current?.checked);
 
     if (!selectedEquipment) {
       alert('기자재를 선택해주세요.');
+      buttonRef.current.disabled = false;
       return;
     }
 
@@ -57,16 +60,19 @@ const Rental = () => {
     const studentId = studentIdInputRef.current?.value || '';
 
     if (!name) {
+      buttonRef.current.disabled = false;
       alert('이름을 입력해주세요.');
       return;
     }
 
     if (!cleanedPhone || !/^\d{10,11}$/.test(cleanedPhone)) {
+      buttonRef.current.disabled = false;
       alert('전화번호를 정확히 입력해주세요. (숫자만 10~11자리)');
       return;
     }
 
     if (!/^\d{9}$/.test(studentId)) {
+      buttonRef.current.disabled = false;
       alert('학번은 9자리 숫자여야 합니다.');
       return;
     }
@@ -79,7 +85,9 @@ const Rental = () => {
       rentalType: rentalType === 'short' ? 'SHORT_TERM' : 'LONG_TERM',
     };
 
-    submitRental(data);
+    submitRental(data).then(() => {
+      buttonRef.current.disabled = false;
+    });
   };
 
   return (
@@ -129,7 +137,9 @@ const Rental = () => {
           </SubButtonContainer>
         </ButtonContainer>
 
-        <SubmitButton onClick={handleRentalSubmit}>대여 신청하기</SubmitButton>
+        <SubmitButton ref={buttonRef} onClick={handleRentalSubmit}>
+          대여 신청하기
+        </SubmitButton>
       </SubContainer>
       <Footer />
     </Container>

@@ -11,9 +11,9 @@ const useAdminRental = () => {
     return response.data;
   };
 
-  const getAllRentals = () => {
+  const getAllRentals = (data) => {
     return adminApi
-      .get('/rentals')
+      .get('/rentals', { params: data })
       .then((response) => {
         return response.data;
       })

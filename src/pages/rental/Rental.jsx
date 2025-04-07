@@ -1,4 +1,4 @@
-import { createRef, useState, useEffect } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import {
   ButtonContainer,
   CheckboxContainer,
@@ -24,6 +24,7 @@ import useRental from '../../hooks/rental/useRental.jsx';
 import useEquipment from '../../hooks/equipments/useEquipment.jsx';
 
 const Rental = () => {
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState(null);
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
@@ -106,7 +107,13 @@ const Rental = () => {
           </EquipmentTitleContainer>
           <CheckboxContainer>
             {equipments.map((item, index) => (
-              <EquipmentCheckBox key={item.id} equipment={item} ref={equipmentRefs[index]} />
+              <EquipmentCheckBox
+                key={item.id}
+                equipment={item}
+                ref={equipmentRefs[index]}
+                selected={selectedEquipmentId === item.id}
+                onSelect={() => setSelectedEquipmentId(item.id)}
+              />
             ))}
           </CheckboxContainer>
         </EquipmentContainer>

@@ -40,7 +40,7 @@ const RentalCheck = () => {
           rentals.map((rental) => (
             <RentalBox
               key={rental.id}
-              itemName={''}
+              itemName={rental.equipment.name}
               imageUrl={rental.equipment.imageUrl}
               status={rental.status}
               rentalDate={rental.createdAt}

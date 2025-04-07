@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { mediaQueries } from '../../styles/GlobalStyles';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -148,7 +149,7 @@ export const RadioLabel = styled.label`
   }
 `;
 
-export const SubmitButton = styled.div`
+export const SubmitButton = styled.button`
   width: 380px;
   height: 60px;
   text-align: center;

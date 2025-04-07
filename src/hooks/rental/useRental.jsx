@@ -19,7 +19,7 @@ const useRental = () => {
   };
 
   const submitRental = (data) => {
-    api
+    return api
       .post('/rental', data)
       .then((response) => {
         console.log('[DEBUG] 대여 신청 성공:', response.data);

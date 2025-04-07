@@ -1,15 +1,13 @@
 import 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import profileIcon from '../../assets/profileIcon.svg';
-import useAuth from '../../hooks/auth/useAuth.jsx';
 
 const HeaderContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
-
 const HeaderTitle = styled.h1`
   color: #000;
   font-size: 40px;
@@ -20,20 +18,12 @@ const HeaderTitle = styled.h1`
   cursor: pointer;
 `;
 
-const HiddenIcon = styled.img`
-  visibility: hidden;
-`;
-
 const Header = () => {
-  const { sendLoginUrl } = useAuth();
-
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <HiddenIcon src={profileIcon} alt="헤더바 아이콘" />
-      <HeaderTitle onClick={sendLoginUrl}>LINKER</HeaderTitle>
-      <img src={profileIcon} alt="헤더바 아이콘" />
+      <HeaderTitle onClick={() => navigate('/')}>LINKER</HeaderTitle>
     </HeaderContainer>
   );
 };
-
 export default Header;

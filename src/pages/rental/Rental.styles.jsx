@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,16 +7,26 @@ export const Container = styled.div`
   padding: 0 50px;
   gap: 65px;
   box-sizing: border-box;
+  ${mediaQueries[1]} {
+    width: 100%;
+    padding: 0 24px;
+  }
 `;
 
 export const TitleText = styled.span`
   font-size: 25px;
   font-weight: 700;
+  ${mediaQueries[0]} {
+    font-size: 20px;
+  }
 `;
 
 export const SubTitleText = styled.span`
   font-size: 22px;
   font-weight: 700;
+  ${mediaQueries[0]} {
+    font-size: 17px;
+  }
 `;
 
 export const DescriptionText = styled.span`
@@ -40,10 +50,18 @@ export const InputContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 50px;
+  ${mediaQueries[1]} {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+  }
 `;
 
 export const InputPanel = styled.div`
   grid-column: ${({ fill = 1 }) => `${fill} span / ${fill} span`};
+  ${mediaQueries[1]} {
+    grid-column: 1 / -1;
+  }
 `;
 
 export const EquipmentContainer = styled.div`
@@ -52,6 +70,9 @@ export const EquipmentContainer = styled.div`
   justify-content: start;
   width: 500px;
   gap: 10px;
+  ${mediaQueries[1]} {
+    width: 100%;
+  }
 `;
 
 export const EquipmentTitleContainer = styled.div`
@@ -81,12 +102,18 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   width: 500px;
   gap: 10px;
+  ${mediaQueries[1]} {
+    width: 100%;
+  }
 `;
 
 export const SubButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  ${mediaQueries[1]} {
+    grid-column: 1 / -1;
+  }
 `;
 
 export const HiddenRadio = styled.input`
@@ -114,6 +141,11 @@ export const RadioLabel = styled.label`
     color: #3773f5;
     border: 2px solid #3773f5;
   }
+  ${mediaQueries[1]} {
+    width: 45%;
+    height: auto;
+    aspect-ratio: 246/46;
+  }
 `;
 
 export const SubmitButton = styled.div`
@@ -127,4 +159,10 @@ export const SubmitButton = styled.div`
   font-weight: 700;
   line-height: 60px;
   cursor: pointer;
+  ${mediaQueries[1]} {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 380/60;
+    font-size: 22px;
+  }
 `;

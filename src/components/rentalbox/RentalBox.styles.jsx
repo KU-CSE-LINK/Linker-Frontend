@@ -1,11 +1,15 @@
 import styled from 'styled-components';
-
+import { mediaQueries } from '../../styles/GlobalStyles';
 export const Container = styled.div`
   width: 750px;
   height: 200px;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0px 0px 15px 8px rgba(139, 139, 139, 0.15);
+  ${mediaQueries[1]} {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const ItemTitle = styled.div`
@@ -26,6 +30,11 @@ export const ItemName = styled.span`
 export const RentInfo = styled.div`
   display: flex;
   justify-content: space-evenly;
+  ${mediaQueries[1]} {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
 `;
 
 export const CategoryWrapper = styled.div`

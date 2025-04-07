@@ -1,7 +1,8 @@
 import {
-  Container,
+  ButtonContent,
   CardContainer,
-  Date,
+  Container,
+  DateLabel,
   Divider,
   InfoItem,
   InfoLabel,
@@ -10,7 +11,6 @@ import {
   UserIcon,
   UserName,
   UserProfile,
-  ButtonContent,
 } from './RentalCard.styles.jsx';
 import request from '../../../assets/admin/request.svg';
 import PropTypes from 'prop-types';
@@ -24,11 +24,15 @@ const RentalCard = ({ rental }) => {
     navigate({ pathname: '/admin/rentals/status', search: param.toString() });
   };
 
+  const rentalDate = rental.createdAt.split('T')[0];
+  const returnDate = rental.returnDate.split('T')[0];
+  const dateRange = `${rentalDate} ~ ${returnDate}`;
+
   return (
     <Container>
       <CardContainer>
         <UserProfile>
-          <Date>{rental.equipment.createdAt}</Date>
+          <DateLabel>{dateRange}</DateLabel>
           <UserIcon src={request} alt="requestIcon" />
           <UserName>{rental.name}</UserName>
         </UserProfile>

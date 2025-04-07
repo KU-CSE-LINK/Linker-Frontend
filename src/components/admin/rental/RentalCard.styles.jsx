@@ -29,7 +29,7 @@ export const UserProfile = styled.div`
   padding: 11px 0;
 `;
 
-export const Date = styled.div`
+export const DateLabel = styled.div`
   color: #9d9d9d;
   text-align: center;
   font-size: 16px;

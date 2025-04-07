@@ -26,6 +26,13 @@ export const SubContainer = styled.div`
   gap: 100px;
 `;
 
+export const StatusContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
 export const EmptyTitle = styled.div`
   color: #9d9d9d;
   text-align: center;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { BoxContainer, Container, GuestName, SubText, EmptyText } from './RentalCheck.styles';
+import { BoxContainer, Container, EmptyText, GuestName, SubText } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
@@ -41,7 +41,7 @@ const RentalCheck = () => {
             <RentalBox
               key={rental.id}
               itemName={''}
-              imageUrl={rental.imageUrl}
+              imageUrl={rental.equipment.imageUrl}
               status={rental.status}
               rentalDate={rental.createdAt}
               returnDate={rental.returnDate}

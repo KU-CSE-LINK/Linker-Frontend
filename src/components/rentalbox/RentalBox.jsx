@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { CategoryWrapper, Container, DateText, ItemName, ItemTitle, MainText, RentInfo, StatusText } from './RentalBox.styles';
+import { CategoryWrapper, Container, DateText, ItemName, ItemTitle, MainText, RentInfo, StatusText, ItemImage } from './RentalBox.styles';
 
 const RentalBox = ({ itemName, imageUrl, status, rentalDate, returnDate }) => {
   const parsedRentalDate = rentalDate.split('T')[0];
@@ -23,7 +23,7 @@ const RentalBox = ({ itemName, imageUrl, status, rentalDate, returnDate }) => {
   return (
     <Container>
       <ItemTitle>
-        <img src={imageUrl} alt={`${itemName} 사진`} />
+        <ItemImage src={imageUrl} alt={`${itemName} 사진`} />
         <ItemName>{itemName}</ItemName>
       </ItemTitle>
       <RentInfo>

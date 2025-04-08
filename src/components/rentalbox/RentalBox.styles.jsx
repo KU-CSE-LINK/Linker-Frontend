@@ -16,9 +16,13 @@ export const ItemTitle = styled.div`
   display: flex;
   gap: 9px;
   margin-top: 30px;
-  img {
-    margin-left: 33px;
-  }
+`;
+
+export const ItemImage = styled.img`
+  margin-left: 30px;
+  max-width: 65px;
+  max-height: 30px;
+  object-fit: contain;
 `;
 
 export const ItemName = styled.span`

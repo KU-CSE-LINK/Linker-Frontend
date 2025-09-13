@@ -10,7 +10,8 @@ export default function Main() {
       <Header />
       <SubContainer>
         <MenuButton onClick={() => navigate('/equipments')}>대여 가능 기자재 조회</MenuButton>
-        <MenuButton onClick={() => navigate('/rental')}>대여 신청</MenuButton>
+        <MenuButton onClick={() => navigate('/rental')}>기자재 대여 신청</MenuButton>
+        <MenuButton onClick={() => navigate('/locker-rental')}>사물함 대여 신청</MenuButton>
         <MenuButton onClick={() => navigate('/guest')}>신청 내역 조회</MenuButton>
       </SubContainer>
       <Footer />

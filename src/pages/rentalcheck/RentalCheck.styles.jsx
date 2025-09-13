@@ -21,7 +21,10 @@ export const GuestName = styled.span`
   }
 `;
 
-export const SubText = styled.span`
+export const SubText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: #000;
   font-size: 25px;
   font-weight: 400;

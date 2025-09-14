@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import { Container, LockerTitle, LockerInfo, CategoryWrapper, MainText, StatusText, LocationText, NumberText, DateText } from './LockerBox.styles';
 
-const LockerBox = ({ status, location, number}) => {
-
-
+const LockerBox = ({ status, location, number }) => {
   const statusConverter = (status) => {
     switch (status) {
       case 'REQUESTED':
@@ -16,7 +14,7 @@ const LockerBox = ({ status, location, number}) => {
         return '기타문의';
     }
   };
-  const returnDate = "2025-12-19";
+  const returnDate = '2025-12-19';
 
   return (
     <Container>

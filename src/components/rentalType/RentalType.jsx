@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { Container, ToggleBox, ToggleButton } from './RentalType.styles';
 
 export default function RentalType({ type, onChange }) {
-
   return (
     <Container>
       <ToggleBox>

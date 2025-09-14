@@ -22,7 +22,6 @@ const RentalCheck = () => {
     setSelectedType(type);
   };
 
-
   useEffect(() => {
     if (!name || !studentId) {
       return;
@@ -45,7 +44,7 @@ const RentalCheck = () => {
         <RentalType type={selectedType} onChange={handleTypeChange} />
       </SubText>
       <BoxContainer>
-        {selectedType === "equipment" ? (
+        {selectedType === 'equipment' ? (
           rentals.length === 0 ? (
             <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>
           ) : (
@@ -61,11 +60,7 @@ const RentalCheck = () => {
             ))
           )
         ) : (
-          <LockerBox
-            status="RENTED"
-            location="1층 101호"
-            number="A-123"
-          />
+          <LockerBox status="RENTED" location="1층 101호" number="A-123" />
         )}
       </BoxContainer>
       <Footer />

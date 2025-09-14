@@ -19,17 +19,16 @@ const AdminRentals = () => {
     { value: 'RETURNED', label: '반납완료' },
   ];
   const dummyRentals = [
-  {
-    id: 1,
-    equipment: { name: "노트북", imageUrl: "https://via.placeholder.com/65x30" },
-    status: "REQUESTED",
-    createdAt: "2025-01-10T12:00:00",
-    returnDate: "2025-01-15T12:00:00",
-  },
-  // ...추가 데이터
-];
+    {
+      id: 1,
+      equipment: { name: '노트북', imageUrl: 'https://via.placeholder.com/65x30' },
+      status: 'REQUESTED',
+      createdAt: '2025-01-10T12:00:00',
+      returnDate: '2025-01-15T12:00:00',
+    },
+    // ...추가 데이터
+  ];
   const [rentals, setRentals] = useState(dummyRentals);
-
 
   // useEffect(() => {
   //   const param = status ? { status } : null;
@@ -41,8 +40,6 @@ const AdminRentals = () => {
 
   // if (error) return <div>❌ 오류: {error}</div>;
   // if (!rentals) return <div>⌛ 로딩 중...</div>;
-
- 
 
   return (
     <Container>
@@ -66,9 +63,7 @@ const AdminRentals = () => {
             <EmptyContent>（*＾-＾*）</EmptyContent>
           </EmptyCard>
         ) : (
-          rentals.map((rental) => (
-            <RentalCard key={rental.id} rental={rental} />
-          ))
+          rentals.map((rental) => <RentalCard key={rental.id} rental={rental} />)
         )}
       </SubContainer>
       <Footer />

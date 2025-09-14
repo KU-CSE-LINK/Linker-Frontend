@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import { LockerGridWrapper, LockerCell, LockerNumber } from "./LockerGrid.styles.jsx";
-import { getDirection } from "../constant/Location.js";
+import PropTypes from 'prop-types';
+import { LockerGridWrapper, LockerCell, LockerNumber } from './LockerGrid.styles.jsx';
+import { getDirection } from '../constant/Location.js';
 
-export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer , direction = "row" }) {
+export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, direction = 'row' }) {
   const rowCount = maxPer;
   const colCount = Math.ceil(lockers.length / rowCount);
   const rows = getDirection(direction, rowCount, colCount, lockers);
@@ -10,7 +10,7 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer ,
   return (
     <LockerGridWrapper>
       {rows.map((row, rowIdx) => (
-        <div key={rowIdx} style={{ display: "flex" }}>
+        <div key={rowIdx} style={{ display: 'flex' }}>
           {row.map((locker, idx) => {
             const isTopLeft = rowIdx === 0 && idx === 0;
             const isTopRight = rowIdx === 0 && idx === row.length - 1;
@@ -19,9 +19,9 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer ,
             return (
               <LockerCell
                 key={locker.number}
-                disabled={locker.status === "disabled"}
+                disabled={locker.status === 'disabled'}
                 selected={selectedLocker === locker.number}
-                onClick={locker.status === "available" ? onSelect(locker.number) : null}
+                onClick={locker.status === 'available' ? onSelect(locker.number) : null}
                 isFirstCol={idx === 0}
                 isFirstRow={rowIdx === 0}
                 isLastCol={idx === row.length - 1}
@@ -31,9 +31,7 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer ,
                 isBottomLeft={isBottomLeft}
                 isBottomRight={isBottomRight}
               >
-                <LockerNumber>
-                  {locker.number}
-                </LockerNumber>
+                <LockerNumber>{locker.number}</LockerNumber>
               </LockerCell>
             );
           })}
@@ -48,5 +46,5 @@ LockerGrid.propTypes = {
   selectedLocker: PropTypes.number,
   onSelect: PropTypes.func.isRequired,
   maxPer: PropTypes.number,
-  direction: PropTypes.oneOf(["row", "column"]),
+  direction: PropTypes.oneOf(['row', 'column']),
 };

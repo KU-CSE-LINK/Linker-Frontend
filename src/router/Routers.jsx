@@ -10,6 +10,7 @@ import Guest from '../pages/guest/Guest';
 import AdminRentalStatus from '../pages/admin/rental/AdminRentalStatus.jsx';
 import RentalCheck from '../pages/rentalcheck/RentalCheck.jsx';
 import LoginRedirect from '../pages/admin/LoginRedirect.jsx';
+import Locker from '../pages/locker/Locker.jsx';
 
 const Routers = () => {
   const router = createBrowserRouter([
@@ -25,9 +26,17 @@ const Routers = () => {
       path: '/rental',
       element: <Rental />,
     },
+    // {
+    //   path: '/locker-rental',
+    //   element: <LockerRental />,
+    // },
     {
       path: '/rental/complete',
       element: <RentalComplete />,
+    },
+    {
+      path: '/locker',
+      element: <Locker />,
     },
     {
       path: '/admin',

@@ -50,3 +50,24 @@ export const EmptyContent = styled.div`
   font-weight: 500;
   line-height: normal;
 `;
+
+export const StatusButton = styled.button`
+    min-width: 160px;
+    height: 48px;
+    border-radius: 24px;
+    border: 2px solid #d3d3d3;
+    background: #fff;
+    color: #b0b0b0;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 24px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    outline: none;
+    &:last-child { margin-right: 0; }
+    &.selected {
+      border: 2px solid #3773f5;
+      background: #eaf1ff;
+      color: #3773f5;
+    }
+  `;

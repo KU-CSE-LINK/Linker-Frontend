@@ -45,7 +45,7 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
 
 LockerGrid.propTypes = {
   lockers: PropTypes.array.isRequired,
-  selectedLocker: PropTypes.number,
+  selectedLocker: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   onSelect: PropTypes.func.isRequired,
   maxPer: PropTypes.number,
   direction: PropTypes.oneOf(['row', 'column']),

@@ -24,14 +24,14 @@ export const LockerCell = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: ${({ isFirstCol }) => (isFirstCol ? '1px solid #3773f5' : 'none')};
-  border-top: ${({ isFirstRow }) => (isFirstRow ? '1px solid #3773f5' : 'none')};
-  border-radius: ${({ isTopLeft, isTopRight, isBottomLeft, isBottomRight }) => {
-    if (isTopLeft) return '10px 0 0 0';
-    if (isTopRight) return '0 10px 0 0';
-    if (isBottomLeft) return '0 0 0 10px';
-    if (isBottomRight) return '0 0 10px 0';
-    return '0';
+  border-left: ${({ $isFirstCol }) => ($isFirstCol ? '1px solid #3773f5' : 'none')};
+  border-top: ${({ $isFirstRow }) => ($isFirstRow ? '1px solid #3773f5' : 'none')};
+  border-radius: ${({ $isTopLeft, $isTopRight, $isBottomLeft, $isBottomRight }) => {
+    const tl = $isTopLeft ? '10px' : '0';
+    const tr = $isTopRight ? '10px' : '0';
+    const br = $isBottomRight ? '10px' : '0';
+    const bl = $isBottomLeft ? '10px' : '0';
+    return `${tl} ${tr} ${br} ${bl}`;
   }};
 `;
 

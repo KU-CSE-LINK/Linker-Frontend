@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import { Container, Title, SubTitle, LocationSelect, Bottom } from './Locker.styles.jsx';
 import polygonBottom from '../../assets/polygonBottom.svg';
-// import polygonTop from "../../assets/polygonTop.svg";
-
 import ActionButton from '../../components/button/ActionButton.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import { locations, getLocationPartition } from './constant/Location.js';
 import LockerGrid from './component/LockerGrid.jsx';
+import { useRecoilState } from 'recoil';
+import { selectedLockerState, selectedLocationState} from './recoil/selectedLockerState.js';
+import { useNavigate } from 'react-router-dom';
 
 const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
   number: `3a${10 + i}`,
@@ -14,23 +14,34 @@ const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
 }));
 
 export default function Locker() {
-  const [selectedLocation, setSelectedLocation] = useState(locations[0].name);
-  const [selectedLocker, setSelectedLocker] = useState(null);
+const navigate = useNavigate();
+  const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
+  const [selectedLocker, setSelectedLocker] = useRecoilState(selectedLockerState);
   const locationNames = locations.map((loc) => loc.name);
-  const handleSelectLocker = (number) => () => {
-    setSelectedLocker(number);
+  const handleSelectLocker = (locker) => () => {
+	console.log(locker);
+    setSelectedLocker(locker);
   };
+  const handleSubmit = () => {
+	console.log(selectedLocker);
+		console.log(selectedLocation);
+
+    if (selectedLocker && selectedLocation) {
+      navigate(`/rental/locker`);
+    }
+  };
+
   return (
     <Container>
       <Title>LINKER</Title>
       <SubTitle>사물함 대여 신청</SubTitle>
       <LocationSelect>
         <div />
-        <div>{selectedLocation}</div>
+        <div>{selectedLocation ? selectedLocation.name : '위치를 선택하세요'}</div>
         <img src={polygonBottom} alt="select icon" />
         <select
-          value={selectedLocation}
-          onChange={(e) => setSelectedLocation(e.target.value)}
+          value={selectedLocation ? selectedLocation.name : ''}
+          onChange={(e) => setSelectedLocation(locations.find((loc) => loc.name === e.target.value))}
           style={{
             position: 'absolute',
             left: 0,
@@ -57,7 +68,7 @@ export default function Locker() {
         maxPer={getLocationPartition(selectedLocation)?.number || 3}
       />
       <Bottom>
-        <ActionButton>대여 신청하기</ActionButton>
+        <ActionButton onClick={handleSubmit}>대여 신청하기</ActionButton>
       </Bottom>
       <Footer />
     </Container>

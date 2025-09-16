@@ -5,7 +5,7 @@ import Footer from '../../components/footer/footer.jsx';
 import { locations, getLocationPartition } from './constant/Location.js';
 import LockerGrid from './component/LockerGrid.jsx';
 import { useRecoilState } from 'recoil';
-import { selectedLockerState, selectedLocationState} from './recoil/selectedLockerState.js';
+import { selectedLockerState, selectedLocationState } from './recoil/selectedLockerState.js';
 import { useNavigate } from 'react-router-dom';
 
 const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
@@ -14,17 +14,17 @@ const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
 }));
 
 export default function Locker() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
   const [selectedLocker, setSelectedLocker] = useRecoilState(selectedLockerState);
   const locationNames = locations.map((loc) => loc.name);
   const handleSelectLocker = (locker) => () => {
-	console.log(locker);
+    console.log(locker);
     setSelectedLocker(locker);
   };
   const handleSubmit = () => {
-	console.log(selectedLocker);
-		console.log(selectedLocation);
+    console.log(selectedLocker);
+    console.log(selectedLocation);
 
     if (selectedLocker && selectedLocation) {
       navigate(`/rental/locker`);

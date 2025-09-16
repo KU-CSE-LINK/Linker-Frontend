@@ -91,25 +91,24 @@ export const LockerInfo = styled.div`
   margin-bottom: 30px;
 `;
 export const LockerInfoTitle = styled.span`
-color: #000;
-font-family: Pretendard;
-font-size: 22px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-margin-bottom: 20px;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 20px;
 `;
 
 export const LockerInfoSubTitle = styled.div`
   color: #000;
   width: fit-content;
-font-family: 'Pretendard';
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-  background: linear-gradient(0deg, #FFA835 60%, transparent 60%);
-
+  font-family: 'Pretendard';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: linear-gradient(0deg, #ffa835 60%, transparent 60%);
 `;
 
 export const LockerInfoContent = styled.span`

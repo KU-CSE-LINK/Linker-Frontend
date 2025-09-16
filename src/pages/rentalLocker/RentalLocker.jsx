@@ -6,27 +6,25 @@ import {
   SubContainer,
   SubmitButton,
   TitleText,
-    LockerInfoContainer,
-    LockerInfo,
-    LockerInfoTitle,
-    LockerInfoContent,
-    LockerInfoSubTitle,
+  LockerInfoContainer,
+  LockerInfo,
+  LockerInfoTitle,
+  LockerInfoContent,
+  LockerInfoSubTitle,
 } from './RentalLocker.styles.jsx';
 import InputWithLabel from '../../components/input/InputWithLabel.jsx';
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import { useRecoilValue } from 'recoil';
-import { selectedLockerState,selectedLocationState } from '../locker/recoil/selectedLockerState.js';
-
+import { selectedLockerState, selectedLocationState } from '../locker/recoil/selectedLockerState.js';
 
 const RentalLocker = () => {
-  
   const buttonRef = createRef();
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
-const selectedLocker = useRecoilValue(selectedLockerState);
-const selectedLoc = useRecoilValue(selectedLocationState);
+  const selectedLocker = useRecoilValue(selectedLockerState);
+  const selectedLoc = useRecoilValue(selectedLocationState);
   return (
     <Container>
       <Header />
@@ -45,7 +43,7 @@ const selectedLoc = useRecoilValue(selectedLocationState);
           </InputPanel>
         </InputContainer>
         <LockerInfoContainer>
-            <LockerInfoTitle>대여할 사물함</LockerInfoTitle>
+          <LockerInfoTitle>대여할 사물함</LockerInfoTitle>
           <LockerInfo>
             <LockerInfoSubTitle>위치</LockerInfoSubTitle>
             <LockerInfoContent>{selectedLoc ? `선택된 사물함: ${selectedLoc.name}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
@@ -53,7 +51,7 @@ const selectedLoc = useRecoilValue(selectedLocationState);
           <LockerInfo>
             <LockerInfoSubTitle>번호</LockerInfoSubTitle>
             <LockerInfoContent>{selectedLocker ? `선택된 사물함: ${selectedLocker.number}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
-          </LockerInfo>       
+          </LockerInfo>
         </LockerInfoContainer>
         <SubmitButton ref={buttonRef} onClick={() => {}}>
           대여 신청하기

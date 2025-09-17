@@ -1,7 +1,7 @@
 import polygonBottom from '../../assets/polygonBottom.svg';
 import ActionButton from '../../components/button/ActionButton.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import { locations, locationNames } from './constant/Location.js';
+import { locations } from './constant/Location.js';
 import LockerGrid from './component/LockerGrid.jsx';
 import { useRecoilState } from 'recoil';
 import { selectedLockerState, selectedLocationState } from './recoil/selectedLockerState.js';
@@ -95,9 +95,9 @@ export default function Locker() {
           value={selectedLocation ? selectedLocation.name : ''}
           onChange={(e) => setSelectedLocation(locations.find((loc) => loc.name === e.target.value))}
         >
-          {locationNames.map((loc) => (
-            <option key={loc} value={loc}>
-              {loc}
+          {locations.map((loc) => (
+            <option key={loc.name} value={loc.name}>
+              {loc.name}
             </option>
           ))}
         </StyledSelect>

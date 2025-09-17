@@ -9,5 +9,3 @@ export const locations = [
   { name: '새천년관 4층', partition: { type: 'row', number: 4 } },
   { name: '새천년관 5층', partition: { type: 'row', number: 4 } },
 ];
-
-export const locationNames = locations.map((loc) => loc.name);

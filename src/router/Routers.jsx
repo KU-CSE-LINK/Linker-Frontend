@@ -27,10 +27,6 @@ const Routers = () => {
       path: '/rental',
       element: <Rental />,
     },
-    // {
-    //   path: '/locker-rental',
-    //   element: <LockerRental />,
-    // },
     {
       path: '/rental/complete',
       element: <RentalComplete />,

@@ -58,7 +58,7 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
   return (
     <LockerGridWrapper>
       {rows.map((row, rowIdx) => (
-        <div key={rowIdx} style={{ display: 'flex' }}>
+        <div key={`row-${row[0].number}`} style={{ display: 'flex' }}>
           {row.map((locker, idx) => {
             if (!locker) return null;
             const isTopLeft = rowIdx === 0 && idx === 0;

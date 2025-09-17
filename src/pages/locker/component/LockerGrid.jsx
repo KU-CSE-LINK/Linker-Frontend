@@ -67,10 +67,10 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
             const isBottomRight = rowIdx === rows.length - 1 && idx === row.length - 1;
             return (
               <LockerCell
-                key={locker.number}
-                disabled={locker.status === 'disabled'}
-                selected={selectedLocker && selectedLocker.number === locker.number}
-                onClick={locker.status === 'available' ? onSelect(locker) : null}
+                key={locker.id}
+                disabled={locker.status != 'AVAILABLE'}
+                selected={selectedLocker && selectedLocker.id === locker.id}
+                onClick={locker.status === 'AVAILABLE' ? onSelect(locker) : null}
                 $isFirstCol={idx === 0}
                 $isFirstRow={rowIdx === 0}
                 $isTopLeft={isTopLeft}
@@ -78,7 +78,7 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
                 $isBottomLeft={isBottomLeft}
                 $isBottomRight={isBottomRight}
               >
-                <LockerNumber>{locker.number}</LockerNumber>
+                <LockerNumber>{locker.lockerName}</LockerNumber>
               </LockerCell>
             );
           })}

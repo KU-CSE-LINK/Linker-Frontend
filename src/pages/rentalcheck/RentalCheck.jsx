@@ -8,6 +8,7 @@ import RentalType from '../../components/rentalType/RentalType.jsx';
 import LockerBox from '../../components/rentalbox/LockerBox.jsx';
 import styled from 'styled-components';
 import { mediaQueries } from '../../styles/GlobalStyles';
+import useLocker from '../../hooks/locker/useLocker.jsx';
 
 const Container = styled.div`
   display: flex;
@@ -64,8 +65,10 @@ const RentalCheck = () => {
   const name = searchParams.get('name');
   const studentId = searchParams.get('studentId');
   const [rentals, setRentals] = useState([]);
-  const { getRentals } = useRental();
+  const [lockers, setLockers] = useState([]);
 
+  const { getRentals } = useRental();
+  const { getMyLockers } = useLocker();
   const handleTypeChange = (type) => {
     setSelectedType(type);
   };
@@ -78,6 +81,11 @@ const RentalCheck = () => {
     (async () => {
       getRentals({ name, studentId }).then((res) => {
         setRentals(res);
+      });
+    })();
+    (async () => {
+      getMyLockers(studentId).then((res) => {
+        setLockers(res);
       });
     })();
   }, []);

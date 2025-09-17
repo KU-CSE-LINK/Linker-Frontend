@@ -1,4 +1,3 @@
-import { Container, Title, SubTitle, LocationSelect, Bottom } from './Locker.styles.jsx';
 import polygonBottom from '../../assets/polygonBottom.svg';
 import ActionButton from '../../components/button/ActionButton.jsx';
 import Footer from '../../components/footer/footer.jsx';
@@ -7,6 +6,52 @@ import LockerGrid from './component/LockerGrid.jsx';
 import { useRecoilState } from 'recoil';
 import { selectedLockerState, selectedLocationState } from './recoil/selectedLockerState.js';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  padding: 48px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  text-align: center;
+`;
+
+const SubTitle = styled.h2`
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: left;
+  width: 100%;
+`;
+
+const LocationSelect = styled.div`
+  width: 160px;
+  padding: 5px 11px;
+  border-radius: 50px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d9d9d9;
+  position: relative;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+`;
 
 const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
   number: `3a${10 + i}`,

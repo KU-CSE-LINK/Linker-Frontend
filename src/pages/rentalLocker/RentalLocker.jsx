@@ -7,7 +7,7 @@ import { selectedLockerState, selectedLocationState } from '../locker/recoil/sel
 import styled from 'styled-components';
 import { mediaQueries } from '../../styles/GlobalStyles';
 
- const Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -20,7 +20,7 @@ import { mediaQueries } from '../../styles/GlobalStyles';
   }
 `;
 
- const TitleText = styled.span`
+const TitleText = styled.span`
   font-size: 25px;
   font-weight: 700;
   ${mediaQueries[0]} {
@@ -28,7 +28,7 @@ import { mediaQueries } from '../../styles/GlobalStyles';
   }
 `;
 
- const SubContainer = styled.div`
+const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +36,7 @@ import { mediaQueries } from '../../styles/GlobalStyles';
   gap: 50px;
 `;
 
- const InputContainer = styled.div`
+const InputContainer = styled.div`
   display: grid;
   width: 500px;
   grid-template-rows: 1fr 1fr;
@@ -50,14 +50,14 @@ import { mediaQueries } from '../../styles/GlobalStyles';
   }
 `;
 
- const InputPanel = styled.div`
+const InputPanel = styled.div`
   grid-column: ${({ fill = 1 }) => `${fill} span / ${fill} span`};
   ${mediaQueries[1]} {
     grid-column: 1 / -1;
   }
 `;
 
- const SubmitButton = styled.button`
+const SubmitButton = styled.button`
   width: 380px;
   height: 60px;
   text-align: center;
@@ -76,7 +76,7 @@ import { mediaQueries } from '../../styles/GlobalStyles';
   }
 `;
 
- const LockerInfoContainer = styled.div`
+const LockerInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;

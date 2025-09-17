@@ -85,8 +85,6 @@ const TotalCount = styled.div`
   }
 `;
 
-
-
 const InventoryTable = () => {
   const { getAllEquipments } = useEquipment();
   const [data, setData] = useState(null);

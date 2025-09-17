@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import { getDirection } from '../util/getDirection';
 import styled from 'styled-components';
 
- const LockerGridWrapper = styled.div`
+const LockerGridWrapper = styled.div`
   width: 100%;
   margin-bottom: 48px;
   overflow-x: auto;
   white-space: nowrap;
 `;
 
- const LockerCell = styled.button`
+const LockerCell = styled.button`
   height: 80px;
   min-width: 80px;
   border-bottom: 1px solid #3773f5;
@@ -37,7 +37,7 @@ import styled from 'styled-components';
   }};
 `;
 
- const LockerNumber = styled.div`
+const LockerNumber = styled.div`
   display: flex;
   width: 41px;
   height: 20px;

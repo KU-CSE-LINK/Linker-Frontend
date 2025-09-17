@@ -22,7 +22,7 @@ const Container = styled.div`
   }
 `;
 
- const GuestName = styled.span`
+const GuestName = styled.span`
   font-size: 30px;
   font-weight: 700;
   ${mediaQueries[0]} {
@@ -30,7 +30,7 @@ const Container = styled.div`
   }
 `;
 
- const SubText = styled.div`
+const SubText = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,13 +42,13 @@ const Container = styled.div`
   }
 `;
 
- const BoxContainer = styled.div`
+const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 42px;
 `;
 
- const EmptyText = styled.div`
+const EmptyText = styled.div`
   height: 478px;
   text-align: center;
   line-height: 478px;

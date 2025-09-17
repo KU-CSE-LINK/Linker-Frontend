@@ -102,7 +102,6 @@ const ButtonContent = styled.span`
   font-weight: 600;
 `;
 
-
 const RentalCard = ({ rental }) => {
   const navigate = useNavigate();
   const param = new URLSearchParams({ id: rental.id });

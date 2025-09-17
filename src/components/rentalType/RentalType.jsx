@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
- const Container = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   position: relative;
   justify-content: center;
 `;
 
- const ToggleBox = styled.div`
+const ToggleBox = styled.div`
   display: flex;
   padding: 1px 8px;
   border: 2px solid #222;
@@ -23,7 +23,7 @@ import styled from 'styled-components';
   z-index: 1;
 `;
 
- const ToggleButton = styled.button`
+const ToggleButton = styled.button`
   flex: 1;
   width: 90%;
   height: 90%;

@@ -6,7 +6,7 @@ import useAdminRental from '../../../hooks/admin/useAdminRental.jsx';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
- const Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -15,16 +15,16 @@ import styled from 'styled-components';
   box-sizing: border-box;
 `;
 
- const TitleText = styled.span`
+const TitleText = styled.span`
   font-size: 25px;
   font-weight: 700;
 `;
 
- const EmptyCard = styled.div`
+const EmptyCard = styled.div`
   padding: 200px 0;
 `;
 
- const SubContainer = styled.div`
+const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,14 +32,14 @@ import styled from 'styled-components';
   gap: 100px;
 `;
 
- const StatusContainer = styled.div`
+const StatusContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 `;
 
- const EmptyTitle = styled.div`
+const EmptyTitle = styled.div`
   color: #9d9d9d;
   text-align: center;
   font-size: 22px;
@@ -48,7 +48,7 @@ import styled from 'styled-components';
   line-height: normal;
 `;
 
- const EmptyContent = styled.div`
+const EmptyContent = styled.div`
   color: #9d9d9d;
   text-align: center;
   font-size: 40px;
@@ -57,7 +57,7 @@ import styled from 'styled-components';
   line-height: normal;
 `;
 
- const StatusButton = styled.button`
+const StatusButton = styled.button`
   min-width: 160px;
   height: 48px;
   border-radius: 24px;

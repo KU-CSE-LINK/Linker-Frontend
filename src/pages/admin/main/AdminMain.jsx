@@ -4,7 +4,7 @@ import MenuButton from '../../../components/button/MenuButton.jsx';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
- const Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -13,14 +13,13 @@ import styled from 'styled-components';
   box-sizing: border-box;
 `;
 
- const SubContainer = styled.div`
+const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 19px;
 `;
-
 
 export default function AdminMain() {
   const navigate = useNavigate();

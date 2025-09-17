@@ -10,6 +10,8 @@ import Guest from '../pages/guest/Guest';
 import AdminRentalStatus from '../pages/admin/rental/AdminRentalStatus.jsx';
 import RentalCheck from '../pages/rentalcheck/RentalCheck.jsx';
 import LoginRedirect from '../pages/admin/LoginRedirect.jsx';
+import Locker from '../pages/locker/Locker.jsx';
+import RentalLocker from '../pages/rentalLocker/RentalLocker.jsx';
 
 const Routers = () => {
   const router = createBrowserRouter([
@@ -28,6 +30,14 @@ const Routers = () => {
     {
       path: '/rental/complete',
       element: <RentalComplete />,
+    },
+    {
+      path: '/rental/locker',
+      element: <RentalLocker />,
+    },
+    {
+      path: '/locker',
+      element: <Locker />,
     },
     {
       path: '/admin',

@@ -1,21 +1,69 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { BoxContainer, Container, EmptyText, GuestName, SubText } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
 import useRental from '../../hooks/rental/useRental.jsx';
 import RentalType from '../../components/rentalType/RentalType.jsx';
 import LockerBox from '../../components/rentalbox/LockerBox.jsx';
+import styled from 'styled-components';
+import { mediaQueries } from '../../styles/GlobalStyles';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 0 50px;
+  gap: 65px;
+  box-sizing: border-box;
+  ${mediaQueries[1]} {
+    width: 100%;
+    padding: 0 24px;
+  }
+`;
+
+ const GuestName = styled.span`
+  font-size: 30px;
+  font-weight: 700;
+  ${mediaQueries[0]} {
+    font-size: 25px;
+  }
+`;
+
+ const SubText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  font-size: 25px;
+  font-weight: 400;
+  ${mediaQueries[0]} {
+    font-size: 20px;
+  }
+`;
+
+ const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+`;
+
+ const EmptyText = styled.div`
+  height: 478px;
+  text-align: center;
+  line-height: 478px;
+  color: #9d9d9d;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+`;
 
 const RentalCheck = () => {
   const [searchParams] = useSearchParams();
   const [selectedType, setSelectedType] = useState('equipment');
   const name = searchParams.get('name');
   const studentId = searchParams.get('studentId');
-
   const [rentals, setRentals] = useState([]);
-
   const { getRentals } = useRental();
 
   const handleTypeChange = (type) => {

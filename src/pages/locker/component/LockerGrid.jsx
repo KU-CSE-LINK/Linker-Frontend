@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { getDirection } from '../constant/Location.js';
+import { getDirection } from '../util/getDirection';
 import styled from 'styled-components';
 
  const LockerGridWrapper = styled.div`
@@ -61,7 +61,6 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
         <div key={rowIdx} style={{ display: 'flex' }}>
           {row.map((locker, idx) => {
             if (!locker) return null;
-
             const isTopLeft = rowIdx === 0 && idx === 0;
             const isTopRight = rowIdx === 0 && idx === row.length - 1;
             const isBottomLeft = rowIdx === rows.length - 1 && idx === 0;

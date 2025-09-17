@@ -1,7 +1,7 @@
 import polygonBottom from '../../assets/polygonBottom.svg';
 import ActionButton from '../../components/button/ActionButton.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import { locations, getLocationPartition } from './constant/Location.js';
+import { locations, locationNames } from './constant/Location.js';
 import LockerGrid from './component/LockerGrid.jsx';
 import { useRecoilState } from 'recoil';
 import { selectedLockerState, selectedLocationState } from './recoil/selectedLockerState.js';
@@ -58,19 +58,27 @@ const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
   status: 'available',
 }));
 
+export const StyledSelect = styled.select`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+`;
+
+/*컴포넌트 내부에서는 Recoil 상태 관리 라이브러리의 useRecoilState 훅을 사용하여 상태 변수를 설정해버립니다
+이 상태 변수들은 selectedLocation과 selectedLocker이며, 각각 선택된 위치와 선택된 사물함을 관리하는 데 사용됨*/
 export default function Locker() {
   const navigate = useNavigate();
   const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
   const [selectedLocker, setSelectedLocker] = useRecoilState(selectedLockerState);
-  const locationNames = locations.map((loc) => loc.name);
   const handleSelectLocker = (locker) => () => {
-    console.log(locker);
     setSelectedLocker(locker);
   };
   const handleSubmit = () => {
-    console.log(selectedLocker);
-    console.log(selectedLocation);
-
     if (selectedLocker && selectedLocation) {
       navigate(`/rental/locker`);
     }
@@ -84,33 +92,23 @@ export default function Locker() {
         <div />
         <div>{selectedLocation ? selectedLocation.name : '위치를 선택하세요'}</div>
         <img src={polygonBottom} alt="select icon" />
-        <select
+        <StyledSelect
           value={selectedLocation ? selectedLocation.name : ''}
           onChange={(e) => setSelectedLocation(locations.find((loc) => loc.name === e.target.value))}
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            width: '100%',
-            height: '100%',
-            opacity: 0,
-            cursor: 'pointer',
-            zIndex: 2,
-          }}
         >
           {locationNames.map((loc) => (
             <option key={loc} value={loc}>
               {loc}
             </option>
           ))}
-        </select>
+        </StyledSelect>
       </LocationSelect>
       <LockerGrid
         lockers={dummyLockers}
         selectedLocker={selectedLocker}
         onSelect={handleSelectLocker}
-        direction={getLocationPartition(selectedLocation)?.type || 'row'}
-        maxPer={getLocationPartition(selectedLocation)?.number || 3}
+        direction={selectedLocation?.partition?.type || 'row'}
+        maxPer={selectedLocation?.partition?.number || 3}
       />
       <Bottom>
         <ActionButton onClick={handleSubmit}>대여 신청하기</ActionButton>

@@ -1,5 +1,73 @@
 import PropTypes from 'prop-types';
-import { CategoryWrapper, Container, DateText, ItemName, ItemTitle, MainText, RentInfo, StatusText, ItemImage } from './RentalBox.styles';
+import styled from 'styled-components';
+import { mediaQueries } from '../../styles/GlobalStyles';
+
+const Container = styled.div`
+  width: 750px;
+  height: 200px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 0px 15px 8px rgba(139, 139, 139, 0.15);
+  ${mediaQueries[1]} {
+    width: 100%;
+    height: auto;
+  }
+`;
+
+const ItemTitle = styled.div`
+  display: flex;
+  gap: 9px;
+  margin-top: 30px;
+`;
+
+const ItemImage = styled.img`
+  margin-left: 30px;
+  max-width: 65px;
+  max-height: 30px;
+  object-fit: contain;
+`;
+
+const ItemName = styled.span`
+  color: #000;
+  font-size: 22px;
+  font-weight: 700;
+`;
+
+const RentInfo = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  ${mediaQueries[1]} {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+`;
+
+const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  margin-top: 27px;
+`;
+
+const MainText = styled.span`
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+`;
+
+const StatusText = styled.span`
+  color: #3773f5;
+  font-size: 16px;
+  font-weight: 300;
+`;
+
+const DateText = styled.span`
+  color: #000;
+  font-size: 16px;
+  font-weight: 300;
+`;
 
 const RentalBox = ({ itemName, imageUrl, status, rentalDate, returnDate }) => {
   const parsedRentalDate = rentalDate.split('T')[0];

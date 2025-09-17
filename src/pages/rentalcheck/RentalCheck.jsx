@@ -84,24 +84,24 @@ const RentalCheck = () => {
 
   const renderEquipmentBox = () => {
     if (rentals.length === 0) {
-        return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
-      }
-      return rentals.map((rental) => (
-        <RentalBox
-          key={rental.id}
-          itemName={rental.equipment.name}
-          imageUrl={rental.equipment.imageUrl}
-          status={rental.status}
-          rentalDate={rental.createdAt}
-          returnDate={rental.returnDate}
-        />
-      ));
+      return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
+    }
+    return rentals.map((rental) => (
+      <RentalBox
+        key={rental.id}
+        itemName={rental.equipment.name}
+        imageUrl={rental.equipment.imageUrl}
+        status={rental.status}
+        rentalDate={rental.createdAt}
+        returnDate={rental.returnDate}
+      />
+    ));
   };
   const renderLockerBox = () => {
     return <LockerBox status="RENTED" location="1층 101호" number="A-123" />;
   };
   const renderContent = () => {
-     if (selectedType === 'equipment') {
+    if (selectedType === 'equipment') {
       return renderEquipmentBox();
     } else {
       return renderLockerBox();

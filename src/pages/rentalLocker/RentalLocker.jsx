@@ -152,9 +152,7 @@ const RentalLocker = () => {
             <LockerInfoContent>{selectedLocker ? `선택된 사물함: ${selectedLocker.number}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
           </LockerInfo>
         </LockerInfoContainer>
-        <SubmitButton onClick={() => {}}>
-          대여 신청하기
-        </SubmitButton>
+        <SubmitButton onClick={() => {}}>대여 신청하기</SubmitButton>
       </SubContainer>
       <Footer />
     </Container>

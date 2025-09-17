@@ -119,7 +119,6 @@ const LockerInfoContent = styled.span`
 `;
 
 const RentalLocker = () => {
-  const buttonRef = createRef();
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
@@ -153,7 +152,7 @@ const RentalLocker = () => {
             <LockerInfoContent>{selectedLocker ? `선택된 사물함: ${selectedLocker.number}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
           </LockerInfo>
         </LockerInfoContainer>
-        <SubmitButton ref={buttonRef} onClick={() => {}}>
+        <SubmitButton onClick={() => {}}>
           대여 신청하기
         </SubmitButton>
       </SubContainer>

@@ -8,6 +8,7 @@ import RentalType from '../../components/rentalType/RentalType.jsx';
 import LockerBox from '../../components/rentalbox/LockerBox.jsx';
 import styled from 'styled-components';
 import { mediaQueries } from '../../styles/GlobalStyles';
+import useLocker from '../../hooks/locker/useLocker.jsx';
 
 const Container = styled.div`
   display: flex;
@@ -60,12 +61,15 @@ const EmptyText = styled.div`
 
 const RentalCheck = () => {
   const [searchParams] = useSearchParams();
-  const [selectedType, setSelectedType] = useState('equipment');
+  const type = searchParams.get('type');
+  const [selectedType, setSelectedType] = useState(type);
   const name = searchParams.get('name');
   const studentId = searchParams.get('studentId');
   const [rentals, setRentals] = useState([]);
-  const { getRentals } = useRental();
+  const [lockers, setLockers] = useState([]);
 
+  const { getRentals } = useRental();
+  const { getMyLockers } = useLocker();
   const handleTypeChange = (type) => {
     setSelectedType(type);
   };
@@ -78,6 +82,11 @@ const RentalCheck = () => {
     (async () => {
       getRentals({ name, studentId }).then((res) => {
         setRentals(res);
+      });
+    })();
+    (async () => {
+      getMyLockers(studentId).then((res) => {
+        setLockers(res);
       });
     })();
   }, []);
@@ -98,7 +107,9 @@ const RentalCheck = () => {
     ));
   };
   const renderLockerBox = () => {
-    return <LockerBox status="RENTED" location="1층 101호" number="A-123" />;
+    if(lockers.length === 0)
+      return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
+    return <LockerBox status="RENTED" location={lockers.location} number={lockers.lockerName} />;
   };
   const renderContent = () => {
     if (selectedType === 'equipment') {

@@ -105,7 +105,7 @@ const Guest = () => {
       alert('학번을 입력해주세요.');
     }
 
-    const data = { name, studentId };
+    const data = { name, studentId, type: 'equipment' };
     getRentals(data).then(() => {
       const param = new URLSearchParams(data);
       navigate({ pathname: '/check', search: param.toString() });

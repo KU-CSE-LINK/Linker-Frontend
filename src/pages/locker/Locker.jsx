@@ -7,6 +7,8 @@ import { useRecoilState } from 'recoil';
 import { selectedLockerState, selectedLocationState } from './recoil/selectedLockerState.js';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import useLocker from '../../hooks/locker/useLocker.jsx';
+import { useState, useEffect, useMemo } from 'react';
 
 const Container = styled.div`
   max-width: 700px;
@@ -36,7 +38,7 @@ const SubTitle = styled.h2`
 `;
 
 const LocationSelect = styled.div`
-  width: 160px;
+  width: 210px;
   padding: 5px 11px;
   border-radius: 50px;
   margin-bottom: 32px;
@@ -52,11 +54,6 @@ const Bottom = styled.div`
   justify-content: center;
   margin-bottom: 70px;
 `;
-
-const dummyLockers = Array.from({ length: 30 }, (_, i) => ({
-  number: `3a${10 + i}`,
-  status: 'available',
-}));
 
 export const StyledSelect = styled.select`
   position: absolute;
@@ -75,6 +72,30 @@ export default function Locker() {
   const navigate = useNavigate();
   const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
   const [selectedLocker, setSelectedLocker] = useRecoilState(selectedLockerState);
+  const [allLockers, setAllLockers] = useState([]);
+  const { getAllLockers } = useLocker();
+
+  async function fetchLockers() {
+    const lockers = await getAllLockers();
+    setAllLockers(lockers);
+  }
+  useEffect(() => {
+    setSelectedLocation(null);
+    setSelectedLocker(null);
+    fetchLockers();
+  }, []);
+
+  const lockersByLocation = useMemo(() => {
+    const map = {};
+    allLockers.forEach((locker) => {
+      if (!map[locker.location]) map[locker.location] = [];
+      map[locker.location].push(locker);
+    });
+    return map;
+  }, [allLockers]);
+
+  const filteredLockers = lockersByLocation[selectedLocation?.location] || [];
+
   const handleSelectLocker = (locker) => () => {
     setSelectedLocker(locker);
   };
@@ -89,21 +110,22 @@ export default function Locker() {
       <Title>LINKER</Title>
       <SubTitle>사물함 대여 신청</SubTitle>
       <LocationSelect>
-        <div>{selectedLocation ? selectedLocation.name : '위치를 선택하세요'}</div>
+        <div />
+        <div>{selectedLocation ? selectedLocation.location : '위치를 선택하세요'}</div>
         <img src={polygonBottom} alt="select icon" />
         <StyledSelect
-          value={selectedLocation ? selectedLocation.name : ''}
-          onChange={(e) => setSelectedLocation(locations.find((loc) => loc.name === e.target.value))}
+          value={selectedLocation ? selectedLocation.location : ''}
+          onChange={(e) => setSelectedLocation(locations.find((loc) => loc.location === e.target.value))}
         >
           {locations.map((loc) => (
-            <option key={loc.name} value={loc.name}>
-              {loc.name}
+            <option key={loc.location} value={loc.location}>
+              {loc.location}
             </option>
           ))}
         </StyledSelect>
       </LocationSelect>
       <LockerGrid
-        lockers={dummyLockers}
+        lockers={filteredLockers}
         selectedLocker={selectedLocker}
         onSelect={handleSelectLocker}
         direction={selectedLocation?.partition?.type || 'row'}

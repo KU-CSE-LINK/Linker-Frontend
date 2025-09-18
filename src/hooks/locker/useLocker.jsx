@@ -13,7 +13,7 @@ const useLocker = () => {
         throw error;
       });
   };
-  const getMyLockers = (studentId) => {
+  const getMyLocker = (studentId) => {
     return api
       .get('/lockers/my', {
         params: { studentId },
@@ -53,7 +53,7 @@ const useLocker = () => {
       });
   };
 
-  return { getAllLockers, getMyLockers, postRentalLocker, postReturnLocker };
+  return { getAllLockers, getMyLocker, postRentalLocker, postReturnLocker };
 };
 
 export default useLocker;

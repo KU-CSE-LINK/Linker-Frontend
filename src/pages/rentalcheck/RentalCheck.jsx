@@ -66,10 +66,10 @@ const RentalCheck = () => {
   const name = searchParams.get('name');
   const studentId = searchParams.get('studentId');
   const [rentals, setRentals] = useState([]);
-  const [lockers, setLockers] = useState([]);
+  const [locker, setLocker] = useState([]);
 
   const { getRentals } = useRental();
-  const { getMyLockers } = useLocker();
+  const { getMyLocker } = useLocker();
   const handleTypeChange = (type) => {
     setSelectedType(type);
   };
@@ -85,8 +85,8 @@ const RentalCheck = () => {
       });
     })();
     (async () => {
-      getMyLockers(studentId).then((res) => {
-        setLockers(res);
+      getMyLocker(studentId).then((res) => {
+        setLocker(res);
       });
     })();
   }, []);
@@ -107,8 +107,8 @@ const RentalCheck = () => {
     ));
   };
   const renderLockerBox = () => {
-    if (lockers.length === 0) return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
-    return <LockerBox status="RENTED" location={lockers.location} number={lockers.lockerName} />;
+    if (locker.length === 0) return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
+    return <LockerBox status="RENTED" location={locker.location} number={locker.lockerName} />;
   };
   const renderContent = () => {
     if (selectedType === 'equipment') {

@@ -107,8 +107,7 @@ const RentalCheck = () => {
     ));
   };
   const renderLockerBox = () => {
-    if(lockers.length === 0)
-      return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
+    if (lockers.length === 0) return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
     return <LockerBox status="RENTED" location={lockers.location} number={lockers.lockerName} />;
   };
   const renderContent = () => {

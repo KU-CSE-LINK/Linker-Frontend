@@ -68,9 +68,9 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
             return (
               <LockerCell
                 key={locker.id}
-                disabled={locker.status != 'AVAILABLE'&&!admin}
+                disabled={locker.status != 'AVAILABLE' && !admin}
                 selected={selectedLocker && selectedLocker.id === locker.id}
-                onClick={locker.status === 'AVAILABLE'||admin ? onSelect(locker) : null}
+                onClick={locker.status === 'AVAILABLE' || admin ? onSelect(locker) : null}
                 $isFirstCol={idx === 0}
                 $isFirstRow={rowIdx === 0}
                 $isTopLeft={isTopLeft}

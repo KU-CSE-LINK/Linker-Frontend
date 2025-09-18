@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
-import useLocker from "../../../hooks/locker/useLocker";
-import styled from "styled-components";
-import LockerGrid from "../../locker/component/LockerGrid";
-import { locations } from "../../locker/constant/Location";
-import { useRecoilState } from "recoil";
-import { selectedLocationState } from "../../locker/recoil/selectedLockerState";
-import useAdminLocker from "../../../hooks/admin/useAdminLocker";
+import { useEffect, useMemo, useState } from 'react';
+import useLocker from '../../../hooks/locker/useLocker';
+import styled from 'styled-components';
+import LockerGrid from '../../locker/component/LockerGrid';
+import { locations } from '../../locker/constant/Location';
+import { useRecoilState } from 'recoil';
+import { selectedLocationState } from '../../locker/recoil/selectedLockerState';
+import useAdminLocker from '../../../hooks/admin/useAdminLocker';
 
 const Container = styled.div`
   max-width: 700px;
@@ -58,39 +58,40 @@ export const StyledSelect = styled.select`
 `;
 
 export default function AdminLocker() {
-const [allLockers, setAllLockers] = useState([]);
+  const [allLockers, setAllLockers] = useState([]);
   const { getAllLockers } = useLocker();
-    const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
-    const {patchLockerStatus} = useAdminLocker();
-    const handleSelectLocker = (locker) => async () => {
-        if(locker.status ==='AVAILABLE') {
-            patchLockerStatus(locker.id, 'BROKEN');
-            fetchLockers();
-            return;
-        }else {patchLockerStatus(locker.id, 'AVAILABLE')
-          fetchLockers();
-        };
-    };
-  
-   async function fetchLockers() {
-      const lockers = await getAllLockers();
-      setAllLockers(lockers);
-    }
-    useEffect(() => {
+  const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
+  const { patchLockerStatus } = useAdminLocker();
+  const handleSelectLocker = (locker) => async () => {
+    if (locker.status === 'AVAILABLE') {
+      patchLockerStatus(locker.id, 'BROKEN');
       fetchLockers();
-    }, []);
-      const lockersByLocation = useMemo(() => {
-        const map = {};
-        allLockers.forEach((locker) => {
-          if (!map[locker.location]) map[locker.location] = [];
-          map[locker.location].push(locker);
-        });
-        return map;
-      }, [allLockers]);
-        const filteredLockers = lockersByLocation[selectedLocation?.location] || [];
+      return;
+    } else {
+      patchLockerStatus(locker.id, 'AVAILABLE');
+      fetchLockers();
+    }
+  };
+
+  async function fetchLockers() {
+    const lockers = await getAllLockers();
+    setAllLockers(lockers);
+  }
+  useEffect(() => {
+    fetchLockers();
+  }, []);
+  const lockersByLocation = useMemo(() => {
+    const map = {};
+    allLockers.forEach((locker) => {
+      if (!map[locker.location]) map[locker.location] = [];
+      map[locker.location].push(locker);
+    });
+    return map;
+  }, [allLockers]);
+  const filteredLockers = lockersByLocation[selectedLocation?.location] || [];
 
   return (
-     <Container>
+    <Container>
       <Title>LINKER Locker Admin</Title>
       <SubTitle>사물함 관리</SubTitle>
       <LocationSelect>
@@ -115,5 +116,5 @@ const [allLockers, setAllLockers] = useState([]);
         admin={true}
       />
     </Container>
-  )
+  );
 }

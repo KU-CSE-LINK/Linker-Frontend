@@ -110,7 +110,6 @@ export default function Locker() {
       <Title>LINKER</Title>
       <SubTitle>사물함 대여 신청</SubTitle>
       <LocationSelect>
-        <div />
         <div>{selectedLocation ? selectedLocation.location : '위치를 선택하세요'}</div>
         <img src={polygonBottom} alt="select icon" />
         <StyledSelect

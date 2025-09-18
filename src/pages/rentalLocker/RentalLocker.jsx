@@ -137,16 +137,16 @@ const RentalLocker = () => {
       alert('모든 항목을 입력해주세요.');
       return;
     }
-
-    try {
-      const response = await postRentalLocker(selectedLocker.id, studentId, userName, phoneNumber);
+    postRentalLocker(selectedLocker.id, studentId, userName, phoneNumber)
+    .then((response) => {
       console.log(response);
       alert('사물함 대여 신청이 완료되었습니다.');
       navigate('/check?name=' + userName + '&studentId=' + studentId + '&type=locker');
-    } catch (error) {
+    })
+    .catch((error) => {
       console.error(error);
       alert('사물함 대여 신청에 실패하였습니다.');
-    }
+    });
   };
 
   return (

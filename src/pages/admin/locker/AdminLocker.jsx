@@ -8,9 +8,6 @@ import useAdminLocker from '../../../hooks/admin/useAdminLocker';
 import { selectedLocationState } from '../../locker/recoil/selectedLockerState';
 import { locations } from '../../locker/constant/Location';
 
-
-
-
 const Container = styled.div`
   max-width: 700px;
   margin: 40px auto;
@@ -69,10 +66,9 @@ export default function AdminLocker() {
 
   const handleSelectLocker = (locker) => async () => {
     const newStatus = locker.status === 'AVAILABLE' ? 'BROKEN' : 'AVAILABLE';
-    patchLockerStatus(locker.id, newStatus)
-    .then((response)=>{
+    patchLockerStatus(locker.id, newStatus).then((response) => {
       console.log('Locker status updated:', response);
-    })
+    });
     fetchLockers();
   };
 

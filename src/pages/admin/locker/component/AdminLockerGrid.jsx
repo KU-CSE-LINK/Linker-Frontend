@@ -50,7 +50,7 @@ const LockerNumber = styled.div`
   background: #f1f1f1;
 `;
 
-export default function AdminLockerGrid({ lockers, onSelect, maxPer, direction = 'row'}) {
+export default function AdminLockerGrid({ lockers, onSelect, maxPer, direction = 'row' }) {
   const rowCount = maxPer;
   const colCount = Math.ceil(lockers.length / rowCount);
   const rows = getDirection(direction, rowCount, colCount, lockers);
@@ -68,7 +68,7 @@ export default function AdminLockerGrid({ lockers, onSelect, maxPer, direction =
             return (
               <LockerCell
                 key={locker.id}
-                $identificColor={locker.status != 'AVAILABLE' }
+                $identificColor={locker.status != 'AVAILABLE'}
                 onClick={onSelect(locker)}
                 $isFirstCol={idx === 0}
                 $isFirstRow={rowIdx === 0}

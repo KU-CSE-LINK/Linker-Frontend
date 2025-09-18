@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { getDirection } from '../util/getDirection';
+import { getDirection } from '../../../locker/util/getDirection';
 import styled from 'styled-components';
 
 const LockerGridWrapper = styled.div`
@@ -14,7 +14,7 @@ const LockerCell = styled.button`
   min-width: 80px;
   border-bottom: 1px solid #3773f5;
   border-right: 1px solid #3773f5;
-  background: ${({ selected, disabled }) => (selected ? '#3773f5' : disabled ? '#f0f0f0' : '#fff')};
+  background: ${({ $identificColor }) => ($identificColor ? '#f0f0f0' : '#fff')};
   color: #222;
   font-size: 12px;
   cursor: pointer;
@@ -50,7 +50,7 @@ const LockerNumber = styled.div`
   background: #f1f1f1;
 `;
 
-export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, direction = 'row'}) {
+export default function AdminLockerGrid({ lockers, onSelect, maxPer, direction = 'row'}) {
   const rowCount = maxPer;
   const colCount = Math.ceil(lockers.length / rowCount);
   const rows = getDirection(direction, rowCount, colCount, lockers);
@@ -68,9 +68,8 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
             return (
               <LockerCell
                 key={locker.id}
-                disabled={locker.status != 'AVAILABLE' }
-                selected={selectedLocker && selectedLocker.id === locker.id}
-                onClick={locker.status === 'AVAILABLE' ? onSelect(locker) : null}
+                $identificColor={locker.status != 'AVAILABLE' }
+                onClick={onSelect(locker)}
                 $isFirstCol={idx === 0}
                 $isFirstRow={rowIdx === 0}
                 $isTopLeft={isTopLeft}
@@ -88,7 +87,7 @@ export default function LockerGrid({ lockers, selectedLocker, onSelect, maxPer, 
   );
 }
 
-LockerGrid.propTypes = {
+AdminLockerGrid.propTypes = {
   lockers: PropTypes.array.isRequired,
   selectedLocker: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   onSelect: PropTypes.func.isRequired,

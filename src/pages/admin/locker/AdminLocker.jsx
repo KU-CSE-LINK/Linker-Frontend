@@ -1,11 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
-import useLocker from '../../../hooks/locker/useLocker';
+
 import styled from 'styled-components';
-import LockerGrid from '../../locker/component/LockerGrid';
-import { locations } from '../../locker/constant/Location';
+import AdminLockerGrid from '../../admin/locker/component/AdminLockerGrid';
 import { useRecoilState } from 'recoil';
-import { selectedLocationState } from '../../locker/recoil/selectedLockerState';
+import useLocker from '../../../hooks/locker/useLocker';
 import useAdminLocker from '../../../hooks/admin/useAdminLocker';
+import { selectedLocationState } from '../../locker/recoil/selectedLockerState';
+import { locations } from '../../locker/constant/Location';
+
+
+
 
 const Container = styled.div`
   max-width: 700px;
@@ -62,24 +66,25 @@ export default function AdminLocker() {
   const { getAllLockers } = useLocker();
   const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
   const { patchLockerStatus } = useAdminLocker();
+
   const handleSelectLocker = (locker) => async () => {
-    if (locker.status === 'AVAILABLE') {
-      patchLockerStatus(locker.id, 'BROKEN');
-      fetchLockers();
-      return;
-    } else {
-      patchLockerStatus(locker.id, 'AVAILABLE');
-      fetchLockers();
-    }
+    const newStatus = locker.status === 'AVAILABLE' ? 'BROKEN' : 'AVAILABLE';
+    patchLockerStatus(locker.id, newStatus)
+    .then((response)=>{
+      console.log('Locker status updated:', response);
+    })
+    fetchLockers();
   };
 
   async function fetchLockers() {
     const lockers = await getAllLockers();
     setAllLockers(lockers);
   }
+
   useEffect(() => {
     fetchLockers();
   }, []);
+
   const lockersByLocation = useMemo(() => {
     const map = {};
     allLockers.forEach((locker) => {
@@ -88,6 +93,7 @@ export default function AdminLocker() {
     });
     return map;
   }, [allLockers]);
+
   const filteredLockers = lockersByLocation[selectedLocation?.location] || [];
 
   return (
@@ -95,7 +101,6 @@ export default function AdminLocker() {
       <Title>LINKER Locker Admin</Title>
       <SubTitle>사물함 관리</SubTitle>
       <LocationSelect>
-        <div />
         <div>{selectedLocation ? selectedLocation.location : '위치를 선택하세요'}</div>
         <StyledSelect
           value={selectedLocation ? selectedLocation.location : ''}
@@ -108,12 +113,11 @@ export default function AdminLocker() {
           ))}
         </StyledSelect>
       </LocationSelect>
-      <LockerGrid
+      <AdminLockerGrid
         lockers={filteredLockers}
         onSelect={handleSelectLocker}
         direction={selectedLocation?.partition?.type || 'row'}
         maxPer={selectedLocation?.partition?.number || 3}
-        admin={true}
       />
     </Container>
   );

@@ -29,7 +29,7 @@ export default function AdminMain() {
       <Header />
       <SubContainer>
         <MenuButton onClick={() => navigate('/admin/rentals')}>신청 목록 조회</MenuButton>
-        <MenuButton>물품 별로 보기</MenuButton>
+        <MenuButton onClick={() => navigate('/admin/lockers')}>사물함 반납 기능</MenuButton>
         <MenuButton>블랙리스트</MenuButton>
       </SubContainer>
       <Footer />

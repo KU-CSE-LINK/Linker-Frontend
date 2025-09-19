@@ -1,14 +1,12 @@
-import polygonBottom from '../../assets/polygonBottom.svg';
-import ActionButton from '../../components/button/ActionButton.jsx';
-import Footer from '../../components/footer/footer.jsx';
-import { locations } from './constant/Location.js';
-import LockerGrid from './component/LockerGrid.jsx';
-import { useRecoilState } from 'recoil';
-import { selectedLockerState, selectedLocationState } from './recoil/selectedLockerState.js';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+
 import styled from 'styled-components';
-import useLocker from '../../hooks/locker/useLocker.jsx';
-import { useState, useEffect, useMemo } from 'react';
+import AdminLockerGrid from '../../admin/locker/component/AdminLockerGrid';
+import { useRecoilState } from 'recoil';
+import useLocker from '../../../hooks/locker/useLocker';
+import useAdminLocker from '../../../hooks/admin/useAdminLocker';
+import { selectedLocationState } from '../../locker/recoil/selectedLockerState';
+import { locations } from '../../locker/constant/Location';
 
 const Container = styled.div`
   max-width: 700px;
@@ -49,12 +47,6 @@ const LocationSelect = styled.div`
   position: relative;
 `;
 
-const Bottom = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 70px;
-`;
-
 export const StyledSelect = styled.select`
   position: absolute;
   left: 0;
@@ -66,22 +58,26 @@ export const StyledSelect = styled.select`
   z-index: 2;
 `;
 
-/*컴포넌트 내부에서는 Recoil 상태 관리 라이브러리의 useRecoilState 훅을 사용하여 상태 변수를 설정해버립니다
-이 상태 변수들은 selectedLocation과 selectedLocker이며, 각각 선택된 위치와 선택된 사물함을 관리하는 데 사용됨*/
-export default function Locker() {
-  const navigate = useNavigate();
-  const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
-  const [selectedLocker, setSelectedLocker] = useRecoilState(selectedLockerState);
+export default function AdminLocker() {
   const [allLockers, setAllLockers] = useState([]);
   const { getAllLockers } = useLocker();
+  const [selectedLocation, setSelectedLocation] = useRecoilState(selectedLocationState);
+  const { patchLockerStatus } = useAdminLocker();
+
+  const handleSelectLocker = (locker) => async () => {
+    const newStatus = locker.status === 'AVAILABLE' ? 'BROKEN' : 'AVAILABLE';
+    patchLockerStatus(locker.id, newStatus).then((response) => {
+      console.log('Locker status updated:', response);
+    });
+    fetchLockers();
+  };
 
   async function fetchLockers() {
     const lockers = await getAllLockers();
     setAllLockers(lockers);
   }
+
   useEffect(() => {
-    setSelectedLocation(null);
-    setSelectedLocker(null);
     fetchLockers();
   }, []);
 
@@ -96,22 +92,12 @@ export default function Locker() {
 
   const filteredLockers = lockersByLocation[selectedLocation?.location] || [];
 
-  const handleSelectLocker = (locker) => () => {
-    setSelectedLocker(locker);
-  };
-  const handleSubmit = () => {
-    if (selectedLocker && selectedLocation) {
-      navigate(`/rental/locker`);
-    }
-  };
-
   return (
     <Container>
-      <Title>LINKER</Title>
-      <SubTitle>사물함 대여 신청</SubTitle>
+      <Title>LINKER Locker Admin</Title>
+      <SubTitle>사물함 관리</SubTitle>
       <LocationSelect>
         <div>{selectedLocation ? selectedLocation.location : '위치를 선택하세요'}</div>
-        <img src={polygonBottom} alt="select icon" />
         <StyledSelect
           value={selectedLocation ? selectedLocation.location : ''}
           onChange={(e) => setSelectedLocation(locations.find((loc) => loc.location === e.target.value))}
@@ -123,17 +109,12 @@ export default function Locker() {
           ))}
         </StyledSelect>
       </LocationSelect>
-      <LockerGrid
+      <AdminLockerGrid
         lockers={filteredLockers}
-        selectedLocker={selectedLocker}
         onSelect={handleSelectLocker}
         direction={selectedLocation?.partition?.type || 'row'}
         maxPer={selectedLocation?.partition?.number || 3}
       />
-      <Bottom>
-        <ActionButton onClick={handleSubmit}>대여 신청하기</ActionButton>
-      </Bottom>
-      <Footer />
     </Container>
   );
 }

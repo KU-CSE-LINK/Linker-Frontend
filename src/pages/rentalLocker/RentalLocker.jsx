@@ -6,6 +6,8 @@ import { useRecoilValue } from 'recoil';
 import { selectedLockerState, selectedLocationState } from '../locker/recoil/selectedLockerState.js';
 import styled from 'styled-components';
 import { mediaQueries } from '../../styles/GlobalStyles';
+import useLocker from '../../hooks/locker/useLocker.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -119,11 +121,34 @@ const LockerInfoContent = styled.span`
 `;
 
 const RentalLocker = () => {
+  const navigate = useNavigate();
   const nameInputRef = createRef();
   const phoneInputRef = createRef();
   const studentIdInputRef = createRef();
   const selectedLocker = useRecoilValue(selectedLockerState);
   const selectedLoc = useRecoilValue(selectedLocationState);
+  const { postRentalLocker } = useLocker();
+  const handleSubmit = async () => {
+    const userName = nameInputRef.current.value;
+    const phoneNumber = phoneInputRef.current.value;
+    const studentId = studentIdInputRef.current.value;
+
+    if (!userName || !phoneNumber || !studentId) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
+    postRentalLocker(selectedLocker.id, studentId, userName, phoneNumber)
+      .then((response) => {
+        console.log(response);
+        alert('사물함 대여 신청이 완료되었습니다.');
+        navigate('/check?name=' + userName + '&studentId=' + studentId + '&type=locker');
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('사물함 대여 신청에 실패하였습니다.');
+      });
+  };
+
   return (
     <Container>
       <Header />
@@ -145,14 +170,14 @@ const RentalLocker = () => {
           <LockerInfoTitle>대여할 사물함</LockerInfoTitle>
           <LockerInfo>
             <LockerInfoSubTitle>위치</LockerInfoSubTitle>
-            <LockerInfoContent>{selectedLoc ? `선택된 사물함: ${selectedLoc.name}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
+            <LockerInfoContent>{selectedLoc ? `선택된 위치: ${selectedLoc.location}` : '선택된 위치가 없습니다.'}</LockerInfoContent>
           </LockerInfo>
           <LockerInfo>
             <LockerInfoSubTitle>번호</LockerInfoSubTitle>
-            <LockerInfoContent>{selectedLocker ? `선택된 사물함: ${selectedLocker.number}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
+            <LockerInfoContent>{selectedLocker ? `선택된 사물함: ${selectedLocker.lockerName}` : '선택된 사물함이 없습니다.'}</LockerInfoContent>
           </LockerInfo>
         </LockerInfoContainer>
-        <SubmitButton onClick={() => {}}>대여 신청하기</SubmitButton>
+        <SubmitButton onClick={handleSubmit}>대여 신청하기</SubmitButton>
       </SubContainer>
       <Footer />
     </Container>

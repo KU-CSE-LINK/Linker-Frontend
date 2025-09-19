@@ -1,19 +1,78 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { BoxContainer, Container, EmptyText, GuestName, SubText } from './RentalCheck.styles';
 import Header from '../../components/header/Header';
 import RentalBox from '../../components/rentalbox/RentalBox';
 import Footer from '../../components/footer/footer';
 import useRental from '../../hooks/rental/useRental.jsx';
+import RentalType from '../../components/rentalType/RentalType.jsx';
+import LockerBox from '../../components/rentalbox/LockerBox.jsx';
+import styled from 'styled-components';
+import { mediaQueries } from '../../styles/GlobalStyles';
+import useLocker from '../../hooks/locker/useLocker.jsx';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 0 50px;
+  gap: 65px;
+  box-sizing: border-box;
+  ${mediaQueries[1]} {
+    width: 100%;
+    padding: 0 24px;
+  }
+`;
+
+const GuestName = styled.span`
+  font-size: 30px;
+  font-weight: 700;
+  ${mediaQueries[0]} {
+    font-size: 25px;
+  }
+`;
+
+const SubText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  font-size: 25px;
+  font-weight: 400;
+  ${mediaQueries[0]} {
+    font-size: 20px;
+  }
+`;
+
+const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+`;
+
+const EmptyText = styled.div`
+  height: 478px;
+  text-align: center;
+  line-height: 478px;
+  color: #9d9d9d;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+`;
 
 const RentalCheck = () => {
   const [searchParams] = useSearchParams();
+  const type = searchParams.get('type');
+  const [selectedType, setSelectedType] = useState(type);
   const name = searchParams.get('name');
   const studentId = searchParams.get('studentId');
-
   const [rentals, setRentals] = useState([]);
+  const [locker, setLocker] = useState([]);
 
   const { getRentals } = useRental();
+  const { getMyLocker } = useLocker();
+  const handleTypeChange = (type) => {
+    setSelectedType(type);
+  };
 
   useEffect(() => {
     if (!name || !studentId) {
@@ -25,30 +84,50 @@ const RentalCheck = () => {
         setRentals(res);
       });
     })();
+    (async () => {
+      getMyLocker(studentId).then((res) => {
+        setLocker(res);
+      });
+    })();
   }, []);
+
+  const renderEquipmentBox = () => {
+    if (rentals.length === 0) {
+      return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
+    }
+    return rentals.map((rental) => (
+      <RentalBox
+        key={rental.id}
+        itemName={rental.equipment.name}
+        imageUrl={rental.equipment.imageUrl}
+        status={rental.status}
+        rentalDate={rental.createdAt}
+        returnDate={rental.returnDate}
+      />
+    ));
+  };
+  const renderLockerBox = () => {
+    if (locker.length === 0) return <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>;
+    return <LockerBox status="RENTED" location={locker.location} number={locker.lockerName} />;
+  };
+  const renderContent = () => {
+    if (selectedType === 'equipment') {
+      return renderEquipmentBox();
+    } else {
+      return renderLockerBox();
+    }
+  };
 
   return (
     <Container>
       <Header />
       <SubText>
-        <GuestName>{name}</GuestName>님의 신청내역
+        <div>
+          <GuestName>{name}</GuestName>님의 신청내역
+        </div>
+        <RentalType type={selectedType} onChange={handleTypeChange} />
       </SubText>
-      <BoxContainer>
-        {rentals.length === 0 ? (
-          <EmptyText>대여 신청 내역이 존재하지 않습니다.</EmptyText>
-        ) : (
-          rentals.map((rental) => (
-            <RentalBox
-              key={rental.id}
-              itemName={rental.equipment.name}
-              imageUrl={rental.equipment.imageUrl}
-              status={rental.status}
-              rentalDate={rental.createdAt}
-              returnDate={rental.returnDate}
-            />
-          ))
-        )}
-      </BoxContainer>
+      <BoxContainer>{renderContent()}</BoxContainer>
       <Footer />
     </Container>
   );
